@@ -1,0 +1,12 @@
+.LeftWindow {
+  width: 20%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+
+  border-radius: 20px 20px 0px 0px;
+  -moz-border-radius: 20px 20px 0px 0px;
+  -webkit-border-radius: 20px 20px 0px 0px;
+  border: 0px solid #000000;
+  stroke-width: 1.5px;
+  position: fixed;
+}

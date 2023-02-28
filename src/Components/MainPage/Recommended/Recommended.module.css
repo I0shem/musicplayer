@@ -1,0 +1,83 @@
+.RightWindow {
+  width: 80vw;
+  height: 100vh;
+  margin-left: 20vw;
+}
+
+.Playlists {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -2vh;
+  margin-left: 0;
+}
+.Playlist {
+  position: relative;
+  width: 12vw;
+  height: 26vh;
+  margin-top: 2vh;
+  margin-left: 1vw;
+}
+
+.Playlists img {
+  height: 26vh;
+  width: 12vw;
+  outline: 1px solid white;
+  border-radius: 0.9vw;
+  outline-offset: -1px;
+  margin-left: 0px;
+}
+.Playlists p {
+  margin-left: 1vw;
+  margin-top: -25.6vh;
+  font-weight: bold;
+  font-size: 1.1em;
+  width: 4vw;
+  text-shadow: 1px 1px 3vw black;
+}
+.Recommended {
+  height: auto;
+}
+.Playlist:hover,
+.PlaylistNew:hover {
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+  cursor: pointer;
+}
+
+.PlaylistNew .AddNewImage {
+  object-fit: scale-down;
+  transform: scale(0.3);
+  outline: none;
+  border-radius: none;
+  outline-offset: none;
+  margin-left: 1vw;
+}
+
+.PlaylistNew span {
+  margin-left: 2vw;
+  margin-top: -25.6vh;
+  font-weight: bold;
+  font-size: 1.1em;
+  width: 4vw;
+  text-shadow: 1px 1px 3vw black;
+}
+
+.PlaylistNew {
+  margin-top: 2vh;
+  width: 12vw;
+  height: 26vh;
+  outline: 1px solid white;
+  border-radius: 0.9vw;
+  outline-offset: -1px;
+  margin-left: 1vw;
+}
+
+.Remove {
+  position: absolute;
+  bottom: 10px;
+  left: 80%;
+  fill: white;
+  stroke: white;
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+}

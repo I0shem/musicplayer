@@ -1,0 +1,9 @@
+.TrackImage img {
+  top: 280px;
+  border-radius: 15px;
+  width: 90%;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

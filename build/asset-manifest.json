@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/music-app-deploy-test/static/css/main.6bc83f9a.css",
+    "main.js": "/music-app-deploy-test/static/js/main.9f2909eb.js",
+    "static/media/80sPop.png": "/music-app-deploy-test/static/media/80sPop.f16639cbcc09e61f43c1.png",
+    "static/media/RockLegends.png": "/music-app-deploy-test/static/media/RockLegends.45a9fab81691b8fee087.png",
+    "static/media/ClassicLikeNew.png": "/music-app-deploy-test/static/media/ClassicLikeNew.aa234a4ad17ac0f03aed.png",
+    "static/media/TrackImage.png": "/music-app-deploy-test/static/media/TrackImage.d480f4dcd8b3d2c6e135.png",
+    "static/media/Gorillaz.jpg": "/music-app-deploy-test/static/media/Gorillaz.a62840a59b62de11a3ff.jpg",
+    "static/media/Pop.png": "/music-app-deploy-test/static/media/Pop.f5fb55c77a72061af500.png",
+    "static/media/ArcticMonkeys.jpg": "/music-app-deploy-test/static/media/ArcticMonkeys.90817629ed45b6d2fe44.jpg",
+    "static/media/Jazz.png": "/music-app-deploy-test/static/media/Jazz.cff3d08e29d3f912ca97.png",
+    "static/media/Classic.png": "/music-app-deploy-test/static/media/Classic.e456d69404fe63fd14ef.png",
+    "static/media/HipHop.png": "/music-app-deploy-test/static/media/HipHop.96d8c60ed7da32cfdd01.png",
+    "static/media/Rock.png": "/music-app-deploy-test/static/media/Rock.7158839f4af8fdf1a8fd.png",
+    "static/media/Blues.png": "/music-app-deploy-test/static/media/Blues.9b105b7b7b203f6698bb.png",
+    "static/media/ACDC.jpg": "/music-app-deploy-test/static/media/ACDC.ae4f333732e540be73b9.jpg",
+    "static/media/records.jpg": "/music-app-deploy-test/static/media/records.974f4d2298e2e6eb3411.jpg",
+    "static/media/add-new.jpg": "/music-app-deploy-test/static/media/add-new.371a53083c7f40a5f235.jpg",
+    "static/media/cassets.jpg": "/music-app-deploy-test/static/media/cassets.5447b40ddc82f4421582.jpg",
+    "static/media/heart.png": "/music-app-deploy-test/static/media/heart.8767cdf9ad768c587af1.png",
+    "static/media/frame-4.svg": "/music-app-deploy-test/static/media/frame-4.978f1f7ccf269c521b3e000a663c928a.svg",
+    "static/media/frame-5.svg": "/music-app-deploy-test/static/media/frame-5.98292131e8420ef3475301e381a4511e.svg",
+    "static/media/frame-3.svg": "/music-app-deploy-test/static/media/frame-3.fcd418279aadc18b0314af066e4d53ce.svg",
+    "static/media/frame-6.svg": "/music-app-deploy-test/static/media/frame-6.9a50b02ec5d3b751ba19b6b6a2f7196b.svg",
+    "static/media/frame-1.svg": "/music-app-deploy-test/static/media/frame-1.68263da50eb0db1124af7db54a08a748.svg",
+    "static/media/cross.svg": "/music-app-deploy-test/static/media/cross.e5a3bc998f57074a3d04727da972d177.svg",
+    "static/media/frame-2.svg": "/music-app-deploy-test/static/media/frame-2.568aee9deb3f789b55a3feed7416981f.svg",
+    "index.html": "/music-app-deploy-test/index.html",
+    "static/media/bin.svg": "/music-app-deploy-test/static/media/bin.d8e4c86223609736968c20afefc42f8a.svg",
+    "static/media/menu-burger.svg": "/music-app-deploy-test/static/media/menu-burger.7e853c0a5ab48acf91c0582f7c6756bf.svg",
+    "main.6bc83f9a.css.map": "/music-app-deploy-test/static/css/main.6bc83f9a.css.map",
+    "main.9f2909eb.js.map": "/music-app-deploy-test/static/js/main.9f2909eb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6bc83f9a.css",
+    "static/js/main.9f2909eb.js"
+  ]
+}

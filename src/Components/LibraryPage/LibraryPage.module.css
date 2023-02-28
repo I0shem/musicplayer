@@ -1,0 +1,27 @@
+ul {
+  list-style: none;
+  padding-top: 20px;
+  margin-left: -20px;
+  font-size: 3vh;
+}
+
+ul li::before {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.MainPage {
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  color: inherit;
+}
+
+.App {
+  background-color: transparent;
+  font-size: var(--font-size-lg);
+  color: inherit;
+  font-family: var(--font-montserrat);
+}

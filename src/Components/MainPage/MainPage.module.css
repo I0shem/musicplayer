@@ -1,0 +1,49 @@
+.MainPage {
+  width: 100vw;
+  height: 100vh;
+}
+
+.MainWindow {
+  width: 80%;
+  min-height: 100vh;
+  color: inherit;
+  display: block;
+  margin-left: 20vw;
+}
+.Text {
+  margin-left: 1vw;
+  padding-top: 1vh;
+  margin-bottom: 1vh;
+  font-size: 3vh;
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+  padding-top: 20px;
+  margin-left: -20px;
+  font-size: 3vh;
+}
+
+ul li::before {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.App {
+  background-color: transparent;
+  font-size: var(--font-size-lg);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+  color: inherit;
+}
+
+.rectangle {
+  position: fixed;
+  height: 40px;
+  width: 15px;
+  background-color: rgb(255, 255, 255);
+  margin-left: -20vw;
+  margin-top: 5.3vh;
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+}

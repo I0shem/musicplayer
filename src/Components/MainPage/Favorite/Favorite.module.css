@@ -1,0 +1,59 @@
+.Bands {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: -0.2vw;
+  position: relative;
+}
+
+.Bands img {
+  margin-left: 1vw;
+  height: 26vh;
+  outline: 1px solid white;
+  border-radius: 0.9vw;
+  outline-offset: -1px;
+  width: 12vw;
+  object-fit: fill;
+}
+.Band:hover,
+.NewFavorite:hover {
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+  cursor: pointer;
+}
+
+.NewFavorite {
+  height: 26vh;
+  margin-left: 1vw;
+  outline: 1px solid white;
+  border-radius: 0.9vw;
+  outline-offset: -3px;
+  margin-left: 1vw;
+  position: relative;
+}
+.NewFavorite .AddNewImage {
+  object-fit: scale-down;
+  transform: scale(0.3);
+  outline: none;
+  border-radius: none;
+  outline-offset: none;
+}
+
+.NewFavorite p {
+  margin-left: 2vw;
+  margin-top: -25.6vh;
+  font-weight: bold;
+  font-size: 1.1em;
+  width: 4vw;
+  text-shadow: 1px 1px 3vw black;
+}
+
+.link,
+.Remove {
+  box-shadow: 30px white;
+  fill: white;
+  stroke: white;
+  height: 3vh;
+  width: 3vw;
+  position: absolute;
+  top: 12vh;
+  margin-left: -1.3vw;
+}
