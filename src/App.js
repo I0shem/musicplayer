@@ -67,7 +67,7 @@ function App(props) {
             <div id={MyTheme}>
               <Routes>
                 <Route
-                  path="/m/"
+                  path="/m"
                   element={
                     <HomePage
                       dispatch={props.dispatch}
@@ -77,9 +77,9 @@ function App(props) {
                     />
                   }
                 />
-                <Route path="/m/SearchPage/" element={<SearchPage />} />
+                <Route path="/m/SearchPage" element={<SearchPage />} />
                 <Route
-                  path="/m/LibraryPage/"
+                  path="/m/LibraryPage"
                   element={
                     <LibraryPage
                       dispatch={props.dispatch}
