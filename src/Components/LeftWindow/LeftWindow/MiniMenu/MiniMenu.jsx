@@ -13,12 +13,12 @@ function MiniMenu() {
         <MiniMenuBox text="Home" To="/m" Sprite={Sprite1}></MiniMenuBox>
         <MiniMenuBox
           text="Search"
-          To="/SearchPage"
+          To="/m/SearchPage"
           Sprite={Sprite2}
         ></MiniMenuBox>
         <MiniMenuBox
           text="Library"
-          To="/LibraryPage"
+          To="/m/LibraryPage"
           Sprite={Sprite3}
         ></MiniMenuBox>
       </ul>
