@@ -56,7 +56,7 @@ function App(props) {
   }, []);
 
   return (
-    <BrowserRouter basename="#/m">
+    <BrowserRouter basename="/m">
       <div
         style={{ color: { Color }, minHeight: { height } }}
         title="Music Player"
@@ -77,9 +77,9 @@ function App(props) {
                     />
                   }
                 />
-                <Route path="/m/SearchPage" element={<SearchPage />} />
+                <Route path="/SearchPage" element={<SearchPage />} />
                 <Route
-                  path="/m/LibraryPage"
+                  path="/LibraryPage"
                   element={
                     <LibraryPage
                       dispatch={props.dispatch}
