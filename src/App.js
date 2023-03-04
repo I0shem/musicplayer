@@ -9,7 +9,6 @@ import { ReactComponent as BurgerIcon } from "./Components/Icons/menu-burger.svg
 import { ReactComponent as CrossIcon } from "./Components/Icons/cross.svg";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "./ThemeContext";
-import NotFound from "./components/NotFound";
 
 function App(props) {
   const [MyTheme, setMyTheme] = useState("dark");
@@ -88,7 +87,6 @@ function App(props) {
                     />
                   }
                 />
-                <Route component={NotFound} />
               </Routes>
             </div>
           </ThemeContext.Provider>
