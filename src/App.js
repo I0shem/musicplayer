@@ -1,7 +1,7 @@
 import "./App.css";
 import style from "./App.module.css";
 import React, { useEffect, useState, useLayoutEffect } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import HomePage from "./Components/MainPage/MainPage";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import LibraryPage from "./Components/LibraryPage/LibraryPage";
@@ -9,6 +9,7 @@ import { ReactComponent as BurgerIcon } from "./Components/Icons/menu-burger.svg
 import { ReactComponent as CrossIcon } from "./Components/Icons/cross.svg";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "./ThemeContext";
+import NotFound from "./components/NotFound";
 
 function App(props) {
   const [MyTheme, setMyTheme] = useState("dark");
@@ -56,7 +57,7 @@ function App(props) {
   }, []);
 
   return (
-    <BrowserRouter basename="/m">
+    <HashRouter>
       <div
         style={{ color: { Color }, minHeight: { height } }}
         title="Music Player"
@@ -65,7 +66,7 @@ function App(props) {
         <div className="Container">
           <ThemeContext.Provider value={{ toggleTheme }}>
             <div id={MyTheme}>
-              <Routes basename="/m">
+              <Routes>
                 <Route
                   path="/m"
                   element={
@@ -77,9 +78,9 @@ function App(props) {
                     />
                   }
                 />
-                <Route path="/SearchPage" element={<SearchPage />} />
+                <Route path="/m/SearchPage" element={<SearchPage />} />
                 <Route
-                  path="/LibraryPage"
+                  path="/m/LibraryPage"
                   element={
                     <LibraryPage
                       dispatch={props.dispatch}
@@ -87,6 +88,7 @@ function App(props) {
                     />
                   }
                 />
+                <Route component={NotFound} />
               </Routes>
             </div>
           </ThemeContext.Provider>
@@ -198,7 +200,7 @@ function App(props) {
           </div>
         )}
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
