@@ -56,7 +56,7 @@ function App(props) {
   }, []);
 
   return (
-    <HashRouter>
+    <HashRouter basename="#/m">
       <div
         style={{ color: { Color }, minHeight: { height } }}
         title="Music Player"
