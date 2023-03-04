@@ -1,7 +1,7 @@
 import "./App.css";
 import style from "./App.module.css";
 import React, { useEffect, useState, useLayoutEffect } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import HomePage from "./Components/MainPage/MainPage";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import LibraryPage from "./Components/LibraryPage/LibraryPage";
@@ -56,7 +56,7 @@ function App(props) {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div
         style={{ color: { Color }, minHeight: { height } }}
         title="Music Player"
@@ -67,7 +67,7 @@ function App(props) {
             <div id={MyTheme}>
               <Routes>
                 <Route
-                  path="/m"
+                  path="#/m"
                   element={
                     <HomePage
                       dispatch={props.dispatch}
@@ -77,9 +77,9 @@ function App(props) {
                     />
                   }
                 />
-                <Route path="/m/SearchPage" element={<SearchPage />} />
+                <Route path="#/m/SearchPage" element={<SearchPage />} />
                 <Route
-                  path="/m/LibraryPage"
+                  path="#/m/LibraryPage"
                   element={
                     <LibraryPage
                       dispatch={props.dispatch}
@@ -198,7 +198,7 @@ function App(props) {
           </div>
         )}
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
