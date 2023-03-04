@@ -10,15 +10,15 @@ function MiniMenu() {
   return (
     <div className={styles.MiniMenu}>
       <ul>
-        <MiniMenuBox text="Home" To="#/m" Sprite={Sprite1}></MiniMenuBox>
+        <MiniMenuBox text="Home" To="/m" Sprite={Sprite1}></MiniMenuBox>
         <MiniMenuBox
           text="Search"
-          To="#/m/SearchPage"
+          To="/m/SearchPage"
           Sprite={Sprite2}
         ></MiniMenuBox>
         <MiniMenuBox
           text="Library"
-          To="#/m/LibraryPage"
+          To="/m/LibraryPage"
           Sprite={Sprite3}
         ></MiniMenuBox>
       </ul>
