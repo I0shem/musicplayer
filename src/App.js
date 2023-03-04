@@ -65,7 +65,7 @@ function App(props) {
         <div className="Container">
           <ThemeContext.Provider value={{ toggleTheme }}>
             <div id={MyTheme}>
-              <Routes>
+              <Routes basename="/m">
                 <Route
                   path="/m"
                   element={
