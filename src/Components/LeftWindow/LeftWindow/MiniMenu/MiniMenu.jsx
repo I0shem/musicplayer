@@ -5,11 +5,13 @@ import { ReactComponent as Sprite1 } from "../../../Icons/frame-1.svg";
 import { ReactComponent as Sprite2 } from "../../../Icons/frame-2.svg";
 import { ReactComponent as Sprite3 } from "../../../Icons/frame-3.svg";
 import { Outlet } from "react-router-dom";
+import Authentication from "./../../../Authentication/auth";
 
 function MiniMenu() {
   return (
     <div className={styles.MiniMenu}>
       <ul>
+        <Authentication />
         <MiniMenuBox text="Home" To="/m" Sprite={Sprite1}></MiniMenuBox>
         <MiniMenuBox
           text="Search"
