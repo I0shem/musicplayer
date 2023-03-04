@@ -12,6 +12,7 @@
   border: 2px solid white;
   border-radius: 20px;
   font-weight: 600;
+  font-size: 0.7vw;
   height: 40px;
 }
 
@@ -22,6 +23,7 @@
   cursor: pointer;
 }
 .SignInBtn {
+  font-size: 0.7vw;
   position: fixed;
   top: 0.5vh;
   margin-top: 0.5vh;

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./MiniMenu.module.css";
+import s from "./MiniMenu.module.css";
 import MiniMenuBox from "./MiniMenuBox";
 import { ReactComponent as Sprite1 } from "../../../Icons/frame-1.svg";
 import { ReactComponent as Sprite2 } from "../../../Icons/frame-2.svg";
@@ -9,9 +9,11 @@ import Authentication from "./../../../Authentication/auth";
 
 function MiniMenu() {
   return (
-    <div className={styles.MiniMenu}>
+    <div className={s.MiniMenu}>
       <ul>
-        <Authentication />
+        <div className={s.Auth}>
+          <Authentication />
+        </div>
         <MiniMenuBox text="Home" To="/m" Sprite={Sprite1}></MiniMenuBox>
         <MiniMenuBox
           text="Search"

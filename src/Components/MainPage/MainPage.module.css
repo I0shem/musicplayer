@@ -44,6 +44,6 @@ ul li::before {
   width: 15px;
   background-color: rgb(255, 255, 255);
   margin-left: -20vw;
-  margin-top: 5.3vh;
+  margin-top: 6.2vh;
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
 }
