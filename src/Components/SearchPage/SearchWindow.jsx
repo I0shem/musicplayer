@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import s from "./SearchWindow.module.css";
 import clr from "../Icons/cross.svg";
@@ -8,36 +8,49 @@ function SearchWindow() {
   const [musicDB, setMusicDB] = useState([]);
   const [value, setValue] = useState("");
   const API_KEY = "OTMxMmMxMGEtNzllYi00Yjg4LWE5NmItNWI2MTdkOWMyNmMz";
-
-  const options = {
-    metod: "GET",
-    url: `https://api.napster.com/v2.2/search/verbose?apikey=${API_KEY}&query=${value}`,
-  };
-
-  const getMusicDB = () => {
-    if (value === "") {
-    } else {
-      axios(options).then((response) => {
-        setMusicDB(response.data.search.data.tracks);
-        console.log(musicDB);
-      });
-    }
-  };
-
   const Clear = () => {
     setValue("");
     setMusicDB([]);
   };
-  useEffect(
-    () => {
-      const timer = setTimeout(() => {
-        getMusicDB();
-      }, 1000);
-      return () => clearTimeout(timer);
+
+  const getMusicDB = useCallback(
+    (options) => {
+      if (value) {
+        // check if value exists or not
+        axios(options)
+          .then((response) => {
+            setMusicDB(response.data.search.data.tracks);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     },
-    [getMusicDB, options.url],
-    []
+    [musicDB, value]
   );
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      url: `https://api.napster.com/v2.2/search/verbose?apikey=${API_KEY}&query=${value}`,
+    };
+    const timer = setTimeout(() => {
+      getMusicDB(options);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [value]);
+
+  const onChangeValue = (value) => {
+    setValue(value.target.value);
+    console.log(musicDB);
+  };
+
+  //Console update
+  useEffect(() => {
+    console.log(musicDB);
+  }, [musicDB]);
+
   //Pagination MUI
   const [page, setPage] = useState(1);
   const [countElement] = useState(8);
@@ -45,7 +58,7 @@ function SearchWindow() {
   const firstImageIndex = lastMusicIndex - countElement;
   const currentMusic = musicDB.slice(firstImageIndex, lastMusicIndex);
   const pagesCount = Math.ceil(musicDB.length / countElement);
-  const handleChange = (event, value) => {
+  const handleChange = (value) => {
     setPage(value);
   };
   return (
@@ -58,11 +71,9 @@ function SearchWindow() {
               <input
                 className={s.Search}
                 type="text"
-                placeholder="Songs, Artists, Podcasts ..."
+                placeholder="Songs, Artists, Podcasts..."
                 value={value}
-                onChange={(e) => {
-                  setValue(e.target.value);
-                }}
+                onChange={(e) => onChangeValue(e)}
               />
               <img src={clr} alt="" className={s.searchIcon} onClick={Clear} />
             </form>
