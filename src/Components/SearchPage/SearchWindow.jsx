@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import s from "./SearchWindow.module.css";
 import clr from "../Icons/cross.svg";
@@ -8,6 +8,7 @@ function SearchWindow() {
   const [musicDB, setMusicDB] = useState([]);
   const [value, setValue] = useState("");
   const API_KEY = "OTMxMmMxMGEtNzllYi00Yjg4LWE5NmItNWI2MTdkOWMyNmMz";
+
   const Clear = () => {
     setValue("");
     setMusicDB([]);
@@ -26,7 +27,7 @@ function SearchWindow() {
           });
       }
     },
-    [musicDB, value]
+    [value]
   );
 
   useEffect(() => {
@@ -39,11 +40,10 @@ function SearchWindow() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [value]);
+  }, [value, getMusicDB]);
 
   const onChangeValue = (value) => {
     setValue(value.target.value);
-    console.log(musicDB);
   };
 
   //Console update
@@ -58,9 +58,10 @@ function SearchWindow() {
   const firstImageIndex = lastMusicIndex - countElement;
   const currentMusic = musicDB.slice(firstImageIndex, lastMusicIndex);
   const pagesCount = Math.ceil(musicDB.length / countElement);
-  const handleChange = (value) => {
+  const handleChange = (event, value) => {
     setPage(value);
   };
+
   return (
     <>
       <div className={s.RightWindow}>
@@ -81,6 +82,8 @@ function SearchWindow() {
 
           <div className={s.MusicData}>
             {currentMusic.map((m) => {
+              const audioId = `audio-${m.id}`;
+
               return (
                 <div key={m.id} className={s.TrackBox}>
                   <img
@@ -98,7 +101,9 @@ function SearchWindow() {
                     <p>Album: {m.albumName}</p>
                   </div>
                   <div className={s.audioPlayer}>
-                    <audio id="myAudio" src={m.previewURL} controls />
+                    {!!m.previewURL && (
+                      <audio id={audioId} src={m.previewURL} controls></audio>
+                    )}
                   </div>
                 </div>
               );
