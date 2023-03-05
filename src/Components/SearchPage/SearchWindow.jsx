@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import s from "./SearchWindow.module.css";
 import clr from "../Icons/cross.svg";
+import Pagination from "@mui/material/Pagination";
 
 function SearchWindow() {
   const [musicDB, setMusicDB] = useState([]);
@@ -27,7 +28,6 @@ function SearchWindow() {
     setValue("");
     setMusicDB([]);
   };
-
   useEffect(
     () => {
       const timer = setTimeout(() => {
@@ -38,7 +38,16 @@ function SearchWindow() {
     [getMusicDB, options.url],
     []
   );
-
+  //Pagination MUI
+  const [page, setPage] = useState(1);
+  const [countElement] = useState(8);
+  const lastMusicIndex = page * countElement;
+  const firstImageIndex = lastMusicIndex - countElement;
+  const currentMusic = musicDB.slice(firstImageIndex, lastMusicIndex);
+  const pagesCount = Math.ceil(musicDB.length / countElement);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   return (
     <>
       <div className={s.RightWindow}>
@@ -60,7 +69,7 @@ function SearchWindow() {
           </div>
 
           <div className={s.MusicData}>
-            {musicDB.map((m) => {
+            {currentMusic.map((m) => {
               return (
                 <div key={m.id} className={s.TrackBox}>
                   <img
@@ -83,6 +92,19 @@ function SearchWindow() {
                 </div>
               );
             })}
+            <div className={s.PaginationBox}>
+              <Pagination
+                count={pagesCount}
+                page={page}
+                showFirstButton
+                color="secondary"
+                showLastButton
+                onChange={handleChange}
+                className={s.Pagination}
+                textPrimary
+                variant="text"
+              />
+            </div>
           </div>
         </div>
         <div className={s.rectangle}></div>
