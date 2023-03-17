@@ -9,7 +9,7 @@ const Modal = ({ setIsOpen, CreateBtn, newFavoriteBandImageURL }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={style.ButtonClose} onClick={() => setIsOpen(false)}>
-          <span>X</span>
+          <text>X</text>
         </div>
         <div className={style.Header}>New Favorite</div>
         <div className={style.Inputs}>{newFavoriteBandImageURL}</div>

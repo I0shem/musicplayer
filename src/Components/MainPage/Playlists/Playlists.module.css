@@ -1,21 +1,17 @@
-.RightWindow {
-  width: 80vw;
-  height: 100vh;
-  margin-left: 20vw;
-}
-
 .Playlists {
   display: flex;
   flex-wrap: wrap;
   margin-top: -2vh;
-  margin-left: 0;
+  margin-left: 2vw;
 }
 .Playlist {
   position: relative;
   width: 12vw;
   height: 26vh;
   margin-top: 2vh;
-  margin-left: 1vw;
+}
+.Playlist {
+  margin-left: 3vw;
 }
 
 .Playlists img {
@@ -68,7 +64,7 @@
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -1px;
-  margin-left: 1vw;
+  margin-left: 3.2vw;
 }
 
 .Remove {

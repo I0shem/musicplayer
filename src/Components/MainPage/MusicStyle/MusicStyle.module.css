@@ -36,41 +36,9 @@
   border-radius: 0.9vw;
   outline-offset: -2px;
   display: block;
-  width: 100%;
+  width: 12vw;
 }
 
-.newMusicStyle .AddNewImage {
-  object-fit: scale-down;
-  transform: scale(0.15);
-  outline: none;
-  border-radius: none;
-  outline-offset: none;
-  margin-top: -11vh;
-  margin-left: 7vh;
-}
-
-.AddNewText {
-  margin-left: 2.5vw;
-  font-size: 0.7em;
-  width: 100px;
-}
-.newMusicStyle {
-  height: 79px;
-  width: 230px;
-  max-height: 79px;
-  max-width: 230px;
-  outline: 1px solid white;
-  border-radius: 0.9vw;
-  outline-offset: -3px;
-  margin-left: 1vw;
-  position: relative;
-}
-
-.AddNewImage,
-.AddNewText {
-  display: flex;
-  position: absolute;
-}
 .ImageFilter {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -85,5 +53,5 @@
   margin-left: 2vw;
 }
 .Styles:first-child {
-  margin-left: 5px;
+  margin-left: 0px;
 }

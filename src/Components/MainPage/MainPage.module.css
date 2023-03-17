@@ -1,14 +1,8 @@
-.MainPage {
-  width: 100vw;
-  height: 100vh;
-}
-
 .MainWindow {
   width: 80%;
-  min-height: 100vh;
   color: inherit;
   display: block;
-  margin-left: 20vw;
+  margin-left: 20%;
 }
 .Text {
   margin-left: 1vw;

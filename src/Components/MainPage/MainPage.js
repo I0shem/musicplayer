@@ -2,7 +2,7 @@ import LeftWindow from "../LeftWindow/LeftWindow/LeftWindow.jsx";
 import React from "react";
 import MusicStyle from "./MusicStyle/MusicStyle";
 import styles from "./MainPage.module.css";
-import Recommended from "./Recommended/Recommended";
+import Playlists from "./Playlists/Playlists";
 import Favorite from "./Favorite/Favorite";
 
 function AppProps(props) {
@@ -20,7 +20,7 @@ function MainPage(props) {
           <div className={styles.Text}>Good Morning!</div>
           <MusicStyle Data1={props.Data1} />
           <div className={styles.Text}>Playlists</div>
-          <Recommended
+          <Playlists
             dispatch={props.dispatch}
             createNewRecommended={props.createNewRecommended}
             Data2={props.Data2}

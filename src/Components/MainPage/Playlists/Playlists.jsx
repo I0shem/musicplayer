@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Recommended.module.css";
+import styles from "./Playlists.module.css";
 import newimage from "../../Images/add-new.jpg";
 import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";

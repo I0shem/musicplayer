@@ -1,6 +1,6 @@
 import "./App.css";
 import style from "./App.module.css";
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./Components/MainPage/MainPage";
 import SearchPage from "./Components/SearchPage/SearchPage";
@@ -13,7 +13,6 @@ import { ThemeContext } from "./ThemeContext";
 function App(props) {
   const [MyTheme, setMyTheme] = useState("dark");
   const [buttonText, setButtonText] = useState("Dark mode");
-
   const toggleTheme = () => {
     setMyTheme((curr) =>
       curr === "dark" ? "light" : curr === "light" ? "custom" : "dark"
@@ -31,6 +30,7 @@ function App(props) {
   const click = (theme) => {
     setTheme(theme);
   };
+
   useEffect(() => {
     document.body.style.background = theme;
   }, [theme]);
@@ -46,26 +46,20 @@ function App(props) {
 
   const [active, IsActive] = useState(false);
 
-  const [height, setHeight] = useState(window.innerHeight);
-  useLayoutEffect(() => {
-    function updateHeight() {
-      setHeight(window.innerHeight);
-    }
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
-
   return (
     <BrowserRouter>
       <div
-        style={{ color: { Color }, minHeight: { height } }}
+        style={{ color: { Color } }}
         title="Music Player"
         className={style.App}
       >
         <div className="Container">
           <ThemeContext.Provider value={{ toggleTheme }}>
+            {" "}
             <div id={MyTheme}>
+              {" "}
               <Routes>
+                {" "}
                 <Route
                   path="/m"
                   element={
@@ -91,19 +85,14 @@ function App(props) {
             </div>
           </ThemeContext.Provider>
         </div>
-
         <div className={style.SideBar} onClick={() => IsActive(true)}>
           <Link className="Link">
-            <BurgerIcon
-              fill="white"
-              stroke="current"
-              className={style.IconSettings}
-              alt=""
-            ></BurgerIcon>
+            <BurgerIcon className={style.IconSettings} alt=""></BurgerIcon>
           </Link>
         </div>
-
         {active && (
+          //*TODO: Варто доопрацювати теми: кастомна тема має мати інші кольори.
+          //*TODO: Додати зміну мови, перенести методи входу. Додати субменю.
           <div className={style.SettingsMenu} onClick={() => IsActive(false)}>
             <div
               className={style.settingsSidebar}
@@ -111,8 +100,6 @@ function App(props) {
             >
               <div className={style.containerIcon}>
                 <CrossIcon
-                  fill="white"
-                  stroke="current"
                   className={style.IconQuit}
                   onClick={() => IsActive(false)}
                   alt=""
@@ -125,11 +112,12 @@ function App(props) {
                   </button>
                 </label>
               </div>
-
               <div className={style.Settings}>
                 <ul>
                   <li>
-                    <label>Choose custom background and text color</label>
+                    <h1 style={{ color: "white" }}>
+                      Choose custom background and text color
+                    </h1>
                   </li>
                   <li>
                     <div className={style.ColorInput}>
@@ -166,7 +154,7 @@ function App(props) {
                             document.getElementById("ColorInputPrimary").value +
                             " 10%, " +
                             document.getElementById("ColorInputPrimary").value +
-                            " 30%," +
+                            " 30%, " +
                             document.getElementById("ColorInputSecondary")
                               .value +
                             " 100%)"

@@ -25,16 +25,17 @@
   justify-content: flex-end;
   margin-right: 20px;
   margin-top: 10px;
+  color: #ffffff;
 }
 
-.ButtonClose span:hover {
+.ButtonClose text:hover {
   cursor: pointer;
   transform: rotate(360deg);
   transition-duration: 500ms;
 }
 
 .Header {
-  margin-top: -7%;
+  margin-top: -5%;
   margin-left: 2%;
   top: 0;
 }

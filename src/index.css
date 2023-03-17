@@ -23,10 +23,3 @@ code {
   --br-sm: 16px;
   --br-md: 17px;
 }
-
-html,
-body,
-#root {
-  width: 100%;
-  min-height: 100%;
-}
