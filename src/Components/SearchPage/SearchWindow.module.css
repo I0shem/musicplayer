@@ -82,7 +82,7 @@
 
 .MusicData {
   margin-top: 10vh;
-  margin-left: 1vw;
+  margin-left: 3.9vw;
   width: 76vw;
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +121,7 @@ h6 {
 }
 .PaginationBox {
   position: fixed;
-  left: 55%;
+  left: 60%;
   transform: translateX(-50%);
   bottom: 20px;
 }

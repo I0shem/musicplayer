@@ -23,18 +23,20 @@
 .ButtonClose {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+  right: 0;
+  top: -20px;
   margin-right: 20px;
-  margin-top: 10px;
 }
 
-.ButtonClose span:hover {
+.ButtonClose text:hover {
   cursor: pointer;
   transform: rotate(360deg);
   transition-duration: 500ms;
 }
 
 .Header {
-  margin-top: -7%;
+  margin-top: -10%;
   margin-left: 2%;
   top: 0;
 }
@@ -63,4 +65,7 @@
   background-color: rgba(128, 128, 128, 0.6);
   color: black;
   font-weight: bold;
+}
+.Content {
+  margin-top: 4vh;
 }

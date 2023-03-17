@@ -13,16 +13,18 @@ const Modal = ({
         className={style.ModalWindow__content}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={style.ButtonClose} onClick={() => setIsOpen(false)}>
-          <span>X</span>
+        <div className={style.Content}>
+          <div className={style.ButtonClose} onClick={() => setIsOpen(false)}>
+            <text>X</text>
+          </div>
+          <div className={style.Header}>Create New list</div>
+          <div className={style.Inputs}>
+            {newLibraryElementName}
+            {newLibraryElementImg}
+          </div>
+          <button onClick={() => setIsOpen(false)}>Close</button>
+          {CreateBtn}
         </div>
-        <div className={style.Header}>New list</div>
-        <div className={style.Inputs}>
-          {newLibraryElementName}
-          {newLibraryElementImg}
-        </div>
-        <button onClick={() => setIsOpen(false)}>Close</button>
-        {CreateBtn}
       </div>
     </div>
   );

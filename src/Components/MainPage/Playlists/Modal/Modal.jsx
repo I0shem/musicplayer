@@ -14,9 +14,9 @@ const Modal = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className={style.ButtonClose} onClick={() => setIsOpen(false)}>
-          <span>X</span>
+          <text>X</text>
         </div>
-        <div className={style.Header}>New Recommended</div>
+        <div className={style.Header}>Create New Playlist</div>
         <div className={style.Inputs}>
           {newRecommendedNameText}
           {newRecommendedImageURL}

@@ -38,8 +38,8 @@ let store = {
     ],
     libraries: [
       { id: 1, Img: Image1, text: "Liked" },
-      { id: 2, Img: Image2, text: "Favorites" },
-      { id: 3, Img: Image3, text: "MyPlaylist#1" },
+      { id: 2, Img: Image2, text: "MyPlaylist#1" },
+      { id: 3, Img: Image3, text: "MyPlaylist#2" },
     ],
   },
   getState() {

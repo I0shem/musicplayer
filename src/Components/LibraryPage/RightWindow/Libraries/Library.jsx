@@ -70,7 +70,7 @@ function Library(props) {
               ref={newLibraryElementName}
               maxLength={14}
               type="text"
-              placeholder="List name"
+              placeholder="Name"
             ></input>
           }
           newLibraryElementImg={
@@ -78,7 +78,7 @@ function Library(props) {
               ref={newLibraryElementImg}
               maxLength={100}
               type="text"
-              placeholder="List imge URL"
+              placeholder="Image URL"
             ></input>
           }
           CreateBtn={<button onClick={createPlaylist}>Save</button>}

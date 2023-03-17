@@ -68,7 +68,7 @@ function Recommended(props) {
               ref={newRecommendedNameText}
               maxLength={14}
               type="text"
-              placeholder="List name"
+              placeholder="Name"
             ></input>
           }
           newRecommendedImageURL={
@@ -76,7 +76,7 @@ function Recommended(props) {
               ref={newRecommendedImageURL}
               maxLength={200}
               type="text"
-              placeholder="Recommended imge URL"
+              placeholder="Image URL"
             ></input>
           }
           CreateBtn={<button onClick={createRecommended}>Save</button>}

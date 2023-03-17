@@ -11,7 +11,7 @@ const Modal = ({ setIsOpen, CreateBtn, newFavoriteBandImageURL }) => {
         <div className={style.ButtonClose} onClick={() => setIsOpen(false)}>
           <text>X</text>
         </div>
-        <div className={style.Header}>New Favorite</div>
+        <div className={style.Header}>Create New Favorite</div>
         <div className={style.Inputs}>{newFavoriteBandImageURL}</div>
         <button onClick={() => setIsOpen(false)}>Close</button>
         {CreateBtn}
