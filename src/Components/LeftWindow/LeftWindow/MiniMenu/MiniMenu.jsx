@@ -7,7 +7,7 @@ import { ReactComponent as Sprite3 } from "../../../Icons/frame-3.svg";
 import { Outlet } from "react-router-dom";
 import Authentication from "./../../../Authentication/auth";
 
-function MiniMenu() {
+const MiniMenu = () => {
   return (
     <div className={s.MiniMenu}>
       <ul>
@@ -29,6 +29,6 @@ function MiniMenu() {
       <Outlet />
     </div>
   );
-}
+};
 
 export default MiniMenu;

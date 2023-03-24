@@ -5,11 +5,11 @@ import styles from "./MainPage.module.css";
 import Playlists from "./Playlists/Playlists";
 import Favorite from "./Favorite/Favorite";
 
-function AppProps(props) {
+const AppProps = (props) => {
   return <div className={props.style}></div>;
-}
+};
 
-function MainPage(props) {
+const MainPage = (props) => {
   return (
     <div className={styles.App}>
       <AppProps style={styles.Header}></AppProps>
@@ -36,6 +36,6 @@ function MainPage(props) {
       <AppProps style={styles.Footer}></AppProps>
     </div>
   );
-}
+};
 
 export default MainPage;

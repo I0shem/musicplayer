@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styles from "./Library.module.css";
-import { ReactComponent as Sprite } from "../../../Icons/bin.svg";
+import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";
-import addNewimage from "../../../Images/add-new.jpg";
+import addNewImage from "../../Images/add-new.jpg";
 import Modal from "./Modal/Modal";
 
 const LibrariesProps = (props) => {
-  const [visibleList, setvisibleList] = React.useState(true);
+  const [visibleList, setVisibleList] = React.useState(true);
   const remove = () => {
-    setvisibleList((visible) => !visible);
+    setVisibleList((visible) => !visible);
   };
   return (
     <>
@@ -34,7 +34,7 @@ const LibrariesProps = (props) => {
   );
 };
 
-function Library(props) {
+const Library = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   let newLibraryElementName = React.createRef();
   let newLibraryElementImg = React.createRef();
@@ -58,7 +58,7 @@ function Library(props) {
         {Library}
         <li className={styles.Library} onClick={() => setIsOpen(true)}>
           <div className={styles.addNewPlaylist}>
-            <img alt="" className={styles.AddNewIcon} src={addNewimage} />
+            <img alt="" className={styles.AddNewIcon} src={addNewImage} />
             <p>Add New Playlist</p>
           </div>
         </li>
@@ -87,6 +87,5 @@ function Library(props) {
       )}
     </div>
   );
-}
-
+};
 export default Library;

@@ -3,20 +3,20 @@ import axios from "axios";
 import s from "./SearchWindow.module.css";
 import clr from "../Icons/cross.svg";
 import Pagination from "@mui/material/Pagination";
+const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
-function SearchWindow() {
+const SearchWindow = () => {
   const [musicDB, setMusicDB] = useState([]);
   const [value, setValue] = useState("");
-  const API_KEY = "OTMxMmMxMGEtNzllYi00Yjg4LWE5NmItNWI2MTdkOWMyNmMz";
 
   const Clear = () => {
     setValue("");
     setMusicDB([]);
   };
-
   const getMusicDB = useCallback(
     (options) => {
       if (value) {
+        console.log(SEARCH_KEY);
         // check if value exists or not
         axios(options)
           .then((response) => {
@@ -33,14 +33,14 @@ function SearchWindow() {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: `https://api.napster.com/v2.2/search/verbose?apikey=${API_KEY}&query=${value}`,
+      url: `https://api.napster.com/v2.2/search/verbose?apikey=${SEARCH_KEY}&query=${value}`,
     };
     const timer = setTimeout(() => {
       getMusicDB(options);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [value, getMusicDB]);
+  }, [value, SEARCH_KEY, getMusicDB]);
 
   const onChangeValue = (value) => {
     setValue(value.target.value);
@@ -127,6 +127,6 @@ function SearchWindow() {
       </div>
     </>
   );
-}
+};
 
 export default SearchWindow;

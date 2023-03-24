@@ -10,7 +10,7 @@ import { ReactComponent as CrossIcon } from "./Components/Icons/cross.svg";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "./ThemeContext";
 
-function App(props) {
+const App = (props) => {
   const [MyTheme, setMyTheme] = useState("dark");
   const [buttonText, setButtonText] = useState("Dark mode");
   const toggleTheme = () => {
@@ -188,6 +188,6 @@ function App(props) {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

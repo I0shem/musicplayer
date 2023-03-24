@@ -4,7 +4,7 @@ import TrackImage from "../LeftWindow/TrackImage/TrackImage.jsx";
 import Player from "../LeftWindow/Player/Player.jsx";
 import style from "./LeftWindow.module.css";
 
-function RightWindow() {
+const LeftWindow = () => {
   return (
     <div className={style.LeftWindow}>
       <MiniMenu id="MiniMe" />
@@ -12,6 +12,6 @@ function RightWindow() {
       <Player />
     </div>
   );
-}
+};
 
-export default RightWindow;
+export default LeftWindow;
