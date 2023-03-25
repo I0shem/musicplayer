@@ -16,7 +16,6 @@ const SearchWindow = () => {
   const getMusicDB = useCallback(
     (options) => {
       if (value) {
-        console.log(SEARCH_KEY);
         // check if value exists or not
         axios(options)
           .then((response) => {
