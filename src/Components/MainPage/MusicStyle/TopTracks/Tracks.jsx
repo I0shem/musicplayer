@@ -1,15 +1,18 @@
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
-import s from "./SearchWindow.module.css";
-import clr from "../Icons/cross.svg";
+import s from "./Tracks.module.css";
 import Pagination from "@mui/material/Pagination";
 import { useDispatch } from "react-redux";
-import { PlaySong } from "./../../redux/Actions";
+import { PlaySong } from "./../../../../redux/Actions";
+import LeftWindow from "./../../../LeftWindow/LeftWindow/LeftWindow";
+import { useLocation } from "react-router-dom";
+import { CiPlay1 } from "react-icons/ci";
+import { IconContext } from "react-icons";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
-const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
+const KEY = process.env.REACT_APP_SEARCH_KEY;
 
-const SearchWindow = () => {
+const Tracks = () => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -18,62 +21,40 @@ const SearchWindow = () => {
     },
   });
 
-  const [musicDB, setMusicDB] = useState([]);
-  const [value, setValue] = useState("");
-
-  const Clear = () => {
-    setValue("");
-    setMusicDB([]);
-  };
-  const getMusicDB = useCallback(
-    (options) => {
-      if (value) {
-        // check if value exists or not
-        axios(options)
-          .then((response) => {
-            setMusicDB(response.data.search.data.tracks);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
-    },
-    [value]
-  );
-
-  useEffect(() => {
-    const options = {
+  const location = useLocation();
+  const getMusicDB = useCallback(() => {
+    axios({
       method: "GET",
-      url: `https://api.napster.com/v2.2/search/verbose?apikey=${SEARCH_KEY}&query=${value}`,
-    };
-    const timer = setTimeout(() => {
-      getMusicDB(options);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [value, getMusicDB]);
-
-  const onChangeValue = (value) => {
-    setValue(value.target.value);
-  };
-
-  //Console update
+      url: `https://api.napster.com/v2.2/genres/${location.state.ms.id}/tracks/top?apikey=${KEY}`,
+    })
+      .then((response) => {
+        return setMusicDB(response.data.tracks);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   useEffect(() => {
-    console.log(musicDB);
-  }, [musicDB]);
+    getMusicDB();
+  }, []);
 
-  //Pagination MUI
+  const [genreTracks, setMusicDB] = useState([]);
+
   const [page, setPage] = useState(1);
   const [countElement] = useState(8);
   const lastMusicIndex = page * countElement;
-  const firstImageIndex = lastMusicIndex - countElement;
-  const currentMusic = musicDB.slice(firstImageIndex, lastMusicIndex);
-  const pagesCount = Math.ceil(musicDB.length / countElement);
+  const firstMusicIndex = lastMusicIndex - countElement;
+  const currentMusic = genreTracks.slice(firstMusicIndex, lastMusicIndex);
+  const pagesCount = Math.ceil(genreTracks.length / countElement);
 
   const dispatch = useDispatch();
   const handleChange = (event, value) => {
     setPage(value);
   };
+
+  useEffect(() => {
+    console.log(genreTracks);
+  }, [genreTracks]);
 
   const HandlePlayClick = (m) => {
     const img =
@@ -92,30 +73,20 @@ const SearchWindow = () => {
 
   return (
     <>
+      <LeftWindow />
       <div className={s.RightWindow}>
-        <h3 className={s.Text}>Search</h3>
+        <h3 className={s.Text}>{location.state.ms.name} - Top tracks</h3>
         <div>
-          <div className={s.SearchBar}>
-            <form action="">
-              <input
-                className={s.Search}
-                type="text"
-                placeholder="Songs, Artists, Podcasts..."
-                value={value}
-                onChange={(e) => onChangeValue(e)}
-              />
-              <img src={clr} alt="" className={s.searchIcon} onClick={Clear} />
-            </form>
-          </div>
-
           <div className={s.MusicData}>
             {currentMusic.map((m) => {
-              const audioId = `audio-${m.id}`;
-
               return (
                 <div key={m.id} className={s.TrackBox}>
                   <div className={s.PlayButton}>
-                    <button onClick={() => HandlePlayClick(m)}>PLAY</button>
+                    <IconContext.Provider
+                      value={{ size: "100px", className: s.playBtn }}
+                    >
+                      <CiPlay1 onClick={() => HandlePlayClick(m)} />
+                    </IconContext.Provider>
                   </div>
                   <img
                     className={s.AlbumImage}
@@ -129,12 +100,7 @@ const SearchWindow = () => {
                   <div className={s.ImageOverlay}>
                     <h5>"{m.name}"</h5>
                     <h6> by {m.artistName}</h6>
-                    <p>Album: {m.albumName}</p>
-                  </div>
-                  <div className={s.audioPlayer}>
-                    {!!m.previewURL && (
-                      <audio id={audioId} src={m.previewURL} controls></audio>
-                    )}
+                    <h6>Album: {m.albumName}</h6>
                   </div>
                 </div>
               );
@@ -161,4 +127,4 @@ const SearchWindow = () => {
   );
 };
 
-export default SearchWindow;
+export default Tracks;

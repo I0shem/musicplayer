@@ -15,8 +15,9 @@ import image11 from "./Components/Images/80sPop.png";
 import Image1 from "./Components/Images/heart.png";
 import Image2 from "./Components/Images/records.jpg";
 import Image3 from "./Components/Images/cassets.jpg";
+import { configureStore } from "@reduxjs/toolkit";
 
-let store = {
+const store = configureStore({
   _state: {
     favbandsData: [
       { id: 1, Img: image },
@@ -40,54 +41,6 @@ let store = {
       { id: 1, Img: Image1, text: "Liked" },
       { id: 2, Img: Image2, text: "MyPlaylist#1" },
       { id: 3, Img: Image3, text: "MyPlaylist#2" },
-    ],
-    playList: [
-      {
-        name: "music - 1",
-        writer: "react-modern-audio-player",
-        img: "https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg",
-        src: "https://cdn.pixabay.com/audio/2022/08/23/audio_d16737dc28.mp3",
-        id: 1,
-      },
-      {
-        name: "music - 2",
-        writer: "react-modern-audio-player",
-        img: "https://cdn.pixabay.com/photo/2021/09/06/16/45/nature-6602056__340.jpg",
-        src: "https://cdn.pixabay.com/audio/2022/08/04/audio_2dde668d05.mp3",
-        id: 2,
-      },
-      {
-        name: "music - 3",
-        writer: "react-modern-audio-player",
-        img: "https://cdn.pixabay.com/photo/2022/08/29/08/47/sky-7418364__340.jpg",
-        src: "https://cdn.pixabay.com/audio/2022/08/03/audio_54ca0ffa52.mp3",
-        id: 3,
-      },
-      {
-        name: "music - 4",
-        writer: "react-modern-audio-player",
-        img: "https://cdn.pixabay.com/photo/2015/09/22/01/30/lights-951000__340.jpg",
-        src: "https://cdn.pixabay.com/audio/2022/07/25/audio_3266b47d61.mp3",
-        id: 4,
-      },
-      {
-        name: "music - 5",
-        writer: "react-modern-audio-player",
-        img: "https://cdn.pixabay.com/photo/2022/08/28/18/03/dog-7417233__340.jpg",
-        src: "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3",
-        id: 5,
-      },
-    ],
-    playerList: [
-      {
-        name: "",
-        artistName: "",
-        albumName: "",
-        id: "",
-        previewURL:
-          "https://cdn.pixabay.com/audio/2022/08/23/audio_d16737dc28.mp3",
-        imageSrc: "",
-      },
     ],
   },
   getState() {
@@ -151,6 +104,5 @@ let store = {
       }
     }
   },
-};
-
+});
 export default store;

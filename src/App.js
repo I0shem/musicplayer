@@ -9,6 +9,7 @@ import { ReactComponent as BurgerIcon } from "./Components/Icons/menu-burger.svg
 import { ReactComponent as CrossIcon } from "./Components/Icons/cross.svg";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "./ThemeContext";
+import Tracks from "./Components/MainPage/MusicStyle/TopTracks/Tracks";
 
 const App = (props) => {
   const [MyTheme, setMyTheme] = useState("dark");
@@ -55,11 +56,8 @@ const App = (props) => {
       >
         <div className="Container">
           <ThemeContext.Provider value={{ toggleTheme }}>
-            {" "}
             <div id={MyTheme}>
-              {" "}
               <Routes>
-                {" "}
                 <Route
                   path="/m"
                   element={
@@ -68,6 +66,7 @@ const App = (props) => {
                       Data={props.Data}
                       Data1={props.Data1}
                       Data2={props.Data2}
+                      Data4={props.Data4}
                     />
                   }
                 />
@@ -80,7 +79,8 @@ const App = (props) => {
                       Data3={props.Data3}
                     />
                   }
-                />
+                />{" "}
+                <Route path="/m/Tracks" element={<Tracks />} />
               </Routes>
             </div>
           </ThemeContext.Provider>
@@ -115,9 +115,22 @@ const App = (props) => {
               <div className={style.Settings}>
                 <ul>
                   <li>
-                    <h1 style={{ color: "white" }}>
-                      Choose custom background and text color
-                    </h1>
+                    <div
+                      style={{
+                        textAlign: "center",
+                        width: "24vw",
+                      }}
+                    >
+                      <h1
+                        style={{
+                          color: "white",
+                          fontSize: "15px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Choose custom background and text color
+                      </h1>
+                    </div>
                   </li>
                   <li>
                     <div className={style.ColorInput}>

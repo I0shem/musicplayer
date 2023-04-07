@@ -1,96 +1,111 @@
-h1 {
-  width: auto;
-  font-size: 1.3vw;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: center;
-}
-span {
-  display: block;
-  font-size: 1.8vw;
-  font-weight: bold;
-  text-align: center;
-}
-
 .Controls {
   display: inline-flex;
   vertical-align: top;
   align-items: center;
-  margin-top: -1%;
+  margin-left: -15px;
 }
 
-.Controls li:first-child {
-  margin-left: 0.3vw;
+.Title {
+  width: 70%;
+  display: inline-block;
+  font-size: 25px;
 }
 
-.Icon4,
-.Icon5 {
-  border-radius: var(--br-sm) var(--br-sm) 0 0;
-  width: 5vw;
-  height: 9vh;
+.component {
+  background-color: transparent;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.musicCover {
+  border-radius: 10%;
+  height: 300px;
+  width: 300px;
   object-fit: cover;
 }
-.Icon6 {
-  border-radius: var(--br-sm);
-  width: 7vw;
-  height: 15vh;
-}
 
-.Progress {
-  margin-top: -3.5%;
-  background-color: white;
-  border-radius: 17px;
-  height: 1.4vh;
-  width: 5%;
-  margin-left: 5%;
-  margin-right: auto;
-  z-index: 1;
+.playButton,
+.pauseButton,
+.skipButton,
+.skipPreviousButton {
+  background: none;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
 }
-.ProgressBar {
-  margin-top: 4%;
-  background-color: black;
-  border-radius: 17px;
-  border: 1px white solid;
-  height: 1.4vh;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 0;
+.skipButton,
+.skipPreviousButton {
+  margin-top: 2%;
 }
-
-.Icon4:hover,
-.Icon5:hover,
-.Icon6:hover {
+.playButton:hover,
+.pauseButton:hover,
+.skipButton:hover,
+.skipPreviousButton:hover {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
   stroke-width: 2;
-  filter: drop-shadow(1px 1px 8px rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(1px 1px 8px #ffffffcc);
   cursor: pointer;
   transform: scale(1.06);
 }
 
-.ScrollText {
-  position: relative;
-  width: 100vw;
-  max-width: 100%;
-  overflow-x: hidden;
-  z-index: 1;
-  white-space: nowrap;
+.subTitle {
+  font-size: 15px;
+  margin-top: -1em;
+  color: #313131;
 }
-.Title {
-  width: 70%;
-  margin: auto;
-  margin-left: 10%;
-  animation: marquee 15s linear infinite;
-  will-change: transform;
+.subTitleAlbum {
+  font-size: 15px;
+  margin-top: 1em;
+  color: #313131;
+}
+
+.time {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  color: #828282;
+  font-size: smaller;
+}
+
+.timeline {
+  padding: 0;
+  width: 80%;
+  margin-bottom: 40px;
+  background-color: #f6f7f6;
+}
+
+.scrollingBox {
+  margin-left: 15%;
+  max-width: 70%;
+  overflow: hidden;
+}
+.scrollingText {
+  white-space: nowrap;
+  overflow: hidden;
   display: inline-block;
+  animation: marquee 10s linear infinite;
+}
+
+.scrollingText p {
+  display: inline-block;
+  font-size: 20px;
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(160%);
+  0% {
+    transform: translate3d(0, 0, 0);
   }
-  to {
-    transform: translateX(-300%);
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
+}
+
+.AudioVisualizerBox {
+  position: absolute;
+  top: 350px;
+  width: 300px;
+  margin-left: 30px;
 }

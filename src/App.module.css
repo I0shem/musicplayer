@@ -35,6 +35,7 @@ ul li::before {
 }
 
 .ColorInput input {
+  margin-left: -50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -90,10 +91,10 @@ ul li::before {
 
 .IconQuit {
   position: relative;
-  width: 2.4vw;
+  width: 1.5vw;
   height: auto;
   display: block;
-  margin: 10px 0px 0px 90%;
+  margin: 20px 0px 0px 74%;
 }
 .containerIcon {
   width: 29vw;
@@ -112,7 +113,7 @@ ul li::before {
 
 .settingsSidebar {
   position: fixed;
-  width: 29vw;
+  width: 24vw;
   height: 100vh;
   background-image: linear-gradient(
     0deg,
@@ -128,7 +129,9 @@ ul li::before {
   display: inline-flex;
   position: relative;
 }
-
+h1 {
+  text-align: center;
+}
 .BackgroundColorButton {
   margin-top: 25px;
   width: 150px;

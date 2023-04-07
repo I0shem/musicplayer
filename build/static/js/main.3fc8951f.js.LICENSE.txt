@@ -120,6 +120,16 @@
 
 /**
  * @license React
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
  * react-jsx-runtime.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -149,7 +159,27 @@
  */
 
 /**
- * @mui/styled-engine v5.11.11
+ * @license React
+ * use-sync-external-store-shim.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @mui/styled-engine v5.11.16
  *
  * @license MIT
  * This source code is licensed under the MIT license found in the
@@ -157,7 +187,7 @@
  */
 
 /**
- * @remix-run/router v1.3.3
+ * @remix-run/router v1.5.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -168,7 +198,7 @@
  */
 
 /**
- * React Router DOM v6.8.2
+ * React Router DOM v6.10.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -179,7 +209,7 @@
  */
 
 /**
- * React Router v6.8.2
+ * React Router v6.10.0
  *
  * Copyright (c) Remix Software Inc.
  *

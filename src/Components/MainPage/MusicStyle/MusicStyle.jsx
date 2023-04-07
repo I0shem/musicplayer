@@ -7,8 +7,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const MUSIC_STYLE_KEY = process.env.REACT_APP_MUSIC_STYLE_KEY;
 
-const MusicStyle = (props) => {
+const MusicStyle = () => {
   const [musicStylesDB, setMusicStylesDB] = useState([]);
+
   const getGenres = async () => {
     try {
       const response = await axios.get(
@@ -16,18 +17,13 @@ const MusicStyle = (props) => {
       );
       setMusicStylesDB(response.data.genres);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   useEffect(() => {
     getGenres();
   }, []);
-
-  // Props based Styles from state
-  // let MusicStyles = props.Data1.map((ms1) => (
-  //   <MusicStylePropBox key={ms1.id} icon={ms1.Img} name={ms1.Name} />
-  // ));
 
   return (
     <div className={styles.MusicDBContainer}>
@@ -45,6 +41,7 @@ const MusicStyle = (props) => {
             key={ms.id}
             icon={`https://api.napster.com/imageserver/images/${ms.id}/240x160.jpg`}
             name={ms.name}
+            ms={ms}
           />
         ))}
       </Slider>
