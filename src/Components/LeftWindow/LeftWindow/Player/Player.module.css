@@ -3,6 +3,7 @@
   vertical-align: top;
   align-items: center;
   margin-left: -15px;
+  margin-top: -10px;
 }
 
 .Title {
@@ -77,6 +78,17 @@
   background-color: #f6f7f6;
 }
 
+.audioline {
+  margin-top: -15px;
+}
+.audioline input[type="range"] {
+  padding: 0;
+  width: 70%;
+  height: 7px;
+  border-radius: 22px;
+  background: #ff4500;
+}
+
 .scrollingBox {
   margin-left: 15%;
   max-width: 70%;
@@ -108,4 +120,10 @@
   top: 350px;
   width: 300px;
   margin-left: 30px;
+}
+.audiolineBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }

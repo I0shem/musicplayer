@@ -49,8 +49,9 @@
 }
 
 .PlaylistNew span {
-  margin-left: 2vw;
-  margin-top: -25.6vh;
+  position: absolute;
+  margin-left: -11vw;
+  margin-top: 1vh;
   font-weight: bold;
   font-size: 1.1em;
   width: 4vw;

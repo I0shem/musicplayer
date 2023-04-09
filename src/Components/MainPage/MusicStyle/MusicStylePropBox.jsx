@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MusicStyle.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const MusicStylePropBox = (props) => {
   const navigate = useNavigate();
 

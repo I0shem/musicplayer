@@ -7,9 +7,11 @@ import { PlaySong } from "./../../../../redux/Actions";
 import LeftWindow from "./../../../LeftWindow/LeftWindow/LeftWindow";
 import { useLocation } from "react-router-dom";
 import { CiPlay1 } from "react-icons/ci";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 const KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const Tracks = () => {
@@ -71,10 +73,22 @@ const Tracks = () => {
     dispatch(PlaySong(NewSong));
   };
 
+  const navigate = useNavigate();
+  const returnToMain = () => {
+    navigate("/m");
+  };
   return (
     <>
       <LeftWindow />
       <div className={s.RightWindow}>
+        <IconContext.Provider
+          value={{
+            size: "70px",
+            className: s.backBtn,
+          }}
+        >
+          <IoIosArrowRoundBack onClick={returnToMain} />
+        </IconContext.Provider>
         <h3 className={s.Text}>{location.state.ms.name} - Top tracks</h3>
         <div>
           <div className={s.MusicData}>
