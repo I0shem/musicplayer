@@ -5,6 +5,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./Components/MainPage/MainPage";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import LibraryPage from "./Components/LibraryPage/LibraryPage";
+import Library from "./Components/LibraryPage/Libraries/Library";
 import { ReactComponent as BurgerIcon } from "./Components/Icons/menu-burger.svg";
 import { ReactComponent as CrossIcon } from "./Components/Icons/cross.svg";
 import { Link } from "react-router-dom";
@@ -81,6 +82,7 @@ const App = (props) => {
                   }
                 />{" "}
                 <Route path="/m/Tracks" element={<Tracks />} />
+                <Route path="/m/LibraryPage/Library" element={<Library />} />
               </Routes>
             </div>
           </ThemeContext.Provider>

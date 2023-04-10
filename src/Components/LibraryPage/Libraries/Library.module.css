@@ -1,33 +1,39 @@
-.Libraries {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  cursor: pointer;
+.RightWindow {
+  width: 80%;
+  color: inherit;
+  display: block;
+  margin-left: 20vw;
 }
 
-.Image img {
-  height: 12vw;
+.Text {
+  margin-top: 0;
+  padding-top: 1vh;
+  padding-left: 1vw;
+  margin-bottom: 0;
+  font-size: 3vh;
+}
+
+.rectangle {
+  position: fixed;
+  height: 40px;
+  width: 15px;
+  background-color: rgb(255, 255, 255);
+  margin-left: -20.05vw;
+  margin-top: 12.9vh;
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+}
+
+.AlbumImage {
+  width: 300px;
+  height: 300px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   outline: 1px solid white;
   border-radius: 0.9vw;
-  outline-offset: -2px;
-  display: block;
-  width: 100%;
-}
-
-.Libraries li {
-  margin-left: 3vw;
-  width: 12vw;
-  height: auto;
-  position: relative;
-}
-.Libraries p {
-  position: static;
-  top: -10vh;
-  margin-top: 8vh;
-  font-weight: bold;
-  font-size: 1em;
-  text-shadow: 10px rgb(0, 0, 0, 1);
-  text-align: center;
+  outline-offset: -3px;
+  margin-left: 0px;
 }
 
 .ImageOverlay {
@@ -40,94 +46,94 @@
   border-radius: 0.9vw;
 }
 
-.Library:hover,
-.addNew:hover {
-  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
-}
-
-.link {
-  position: absolute;
-  box-shadow: 30px white;
-  fill: white;
-  stroke: white;
-  height: 30px;
-  width: 30px;
-  left: 80%;
-  margin-top: -5vh;
-}
-.AddNewIcon {
-  position: absolute;
-  transform: scale(15%);
-  margin-top: 12vh;
-  margin-left: -7.5vw;
-}
-
-.addNewPlaylist {
-  position: relative;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em;
-  font-weight: 600;
-  text-align: center;
-  height: 12vw;
-  outline: 1px solid white;
-  border-radius: 0.9vw;
-  outline-offset: -2px;
-  width: 12vw;
-  position: relative;
-  cursor: pointer;
-}
-
-.addNewPlaylist p {
-  margin-top: -4vh;
-}
-
-.addNewPlaylist img {
-  position: absolute;
+.MusicData {
+  margin-top: 10vh;
+  margin-left: 3.9vw;
+  width: 76vw;
   display: flex;
-}
-
-.ModalWindow {
-  background-color: rgba(0, 0, 0, 1);
-  color: white;
-  height: 300px;
-  width: auto;
-  font-size: 1.3em;
-  position: relative;
-  border-radius: 24px;
-}
-
-.ButtonClose {
-  color: white;
-  background-color: black;
-  font-size: 30px;
-  margin: 0;
+  flex-wrap: wrap;
   position: absolute;
-  top: 80%;
-  -ms-transform: translateX(50%);
-  transform: translateX(50%);
-  -webkit-border-radius: 24px;
-  -moz-border-radius: 24px;
-  border-radius: 24px;
-  width: 200px;
-}
-.Inputs li,
-.Inputs ul {
-  position: relative;
-  margin-top: 60px;
-  margin: 0;
-  margin-bottom: 20px;
 }
 
-input {
-  width: 90%;
-  font-size: 1.5em;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+.TrackBox {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  position: relative;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  background-color: transparent;
+  text-align: center;
+  margin-right: 3.3vw;
 }
-.Library,
-.addNew {
-  margin-top: 20px;
+
+p,
+span {
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 10px rgb(0, 0, 0, 1);
+}
+
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.PaginationBox {
+  position: fixed;
+  left: 60%;
+  transform: translateX(-50%);
+  bottom: 20px;
+}
+
+.Pagination-textPrimary {
+  color: rgb(129, 127, 127);
+}
+.PlayButton {
+  visibility: visible;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  z-index: 1;
+}
+
+.PlayButton:hover {
+  text-shadow: rgb(0, 0, 0) 3px 0 10px;
+  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
+  transform: scale(1.06);
+}
+
+.TrackBox:hover,
+.TrackBox.h5:hover,
+.TrackBox.h6:hover,
+.TrackBox.p:hover {
+  filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.8));
+  transform: scale(1.06);
+  font-size: 105%;
+  color: white;
+}
+
+.TrackBox,
+h5,
+h6,
+p {
+  color: rgb(160, 160, 160);
+}
+.Text {
+  padding-top: 2.5vh;
+  margin-left: 6vw;
+}
+.backBtn {
+  position: absolute;
+  top: 0.5vh;
+  margin-left: 3vw;
+}
+
+.backBtn:hover {
+  text-shadow: rgb(0, 0, 0) 3px 0 10px;
+  stroke-width: 2;
+  filter: drop-shadow(1px 1px 8px #ffffffcc);
+  cursor: pointer;
+  transform: scale(1.06);
 }

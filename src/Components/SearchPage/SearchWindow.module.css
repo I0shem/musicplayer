@@ -10,14 +10,6 @@
   margin-left: 20vw;
 }
 
-.Text {
-  margin-top: 0;
-  padding-top: 1vh;
-  padding-left: 1vw;
-  margin-bottom: 0;
-  font-size: 3vh;
-}
-
 .searchIcon {
   width: 32px;
   height: 32px;
@@ -53,7 +45,7 @@
   width: 15px;
   background-color: rgb(255, 255, 255);
   margin-left: -20vw;
-  margin-top: 7.8vh;
+  margin-top: 6.7vh;
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
 }
 
@@ -79,7 +71,9 @@
   width: 100%;
   border-radius: 0.9vw;
 }
-
+.ImageOverlay h5 {
+  margin-top: 20px;
+}
 .MusicData {
   margin-top: 10vh;
   margin-left: 3.9vw;
@@ -137,8 +131,37 @@ h6 {
   color: rgb(252, 252, 252);
 }
 .PlayButton {
+  visibility: visible;
   position: absolute;
-  top: 200px;
-  left: 130px;
+  top: 35%;
+  left: 35%;
   z-index: 1;
+}
+.PlayButton:hover {
+  text-shadow: rgb(0, 0, 0) 3px 0 10px;
+  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
+  transform: scale(1.06);
+}
+
+.Text {
+  padding-top: 2.5vh;
+  margin-left: 4vw;
+  margin-top: 0;
+  padding-top: 2.5vh;
+  padding-left: 1vw;
+  margin-bottom: 0;
+  font-size: 3vh;
+}
+.backBtn {
+  position: absolute;
+  top: 0.5vh;
+  margin-left: 1vw;
+}
+
+.backBtn:hover {
+  text-shadow: rgb(0, 0, 0) 3px 0 10px;
+  stroke-width: 2;
+  filter: drop-shadow(1px 1px 8px #ffffffcc);
+  cursor: pointer;
+  transform: scale(1.06);
 }

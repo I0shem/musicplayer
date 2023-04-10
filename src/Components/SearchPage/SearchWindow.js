@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 import { PlaySong } from "./../../redux/Actions";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
+import { CiPlay1 } from "react-icons/ci";
+import { IconContext } from "react-icons";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const SearchWindow = () => {
@@ -70,11 +74,10 @@ const SearchWindow = () => {
   const currentMusic = musicDB.slice(firstImageIndex, lastMusicIndex);
   const pagesCount = Math.ceil(musicDB.length / countElement);
 
-  const dispatch = useDispatch();
   const handleChange = (event, value) => {
     setPage(value);
   };
-
+  const dispatch = useDispatch();
   const HandlePlayClick = (m) => {
     const img =
       "https://api.napster.com/imageserver/v2/albums/" +
@@ -88,11 +91,25 @@ const SearchWindow = () => {
       imageSrc: img,
     };
     dispatch(PlaySong(NewSong));
+    var visualAudio = document.getElementById("Visualizer");
+    visualAudio.style.display = "none";
   };
 
+  const navigate = useNavigate();
+  const returnToMain = () => {
+    navigate("/m");
+  };
   return (
     <>
       <div className={s.RightWindow}>
+        <IconContext.Provider
+          value={{
+            size: "70px",
+            className: s.backBtn,
+          }}
+        >
+          <IoIosArrowRoundBack onClick={returnToMain} />
+        </IconContext.Provider>
         <h3 className={s.Text}>Search</h3>
         <div>
           <div className={s.SearchBar}>
@@ -110,12 +127,14 @@ const SearchWindow = () => {
 
           <div className={s.MusicData}>
             {currentMusic.map((m) => {
-              const audioId = `audio-${m.id}`;
-
               return (
                 <div key={m.id} className={s.TrackBox}>
                   <div className={s.PlayButton}>
-                    <button onClick={() => HandlePlayClick(m)}>PLAY</button>
+                    <IconContext.Provider
+                      value={{ size: "100px", className: s.playBtn }}
+                    >
+                      <CiPlay1 onClick={() => HandlePlayClick(m)} />
+                    </IconContext.Provider>
                   </div>
                   <img
                     className={s.AlbumImage}
@@ -129,12 +148,7 @@ const SearchWindow = () => {
                   <div className={s.ImageOverlay}>
                     <h5>"{m.name}"</h5>
                     <h6> by {m.artistName}</h6>
-                    <p>Album: {m.albumName}</p>
-                  </div>
-                  <div className={s.audioPlayer}>
-                    {!!m.previewURL && (
-                      <audio id={audioId} src={m.previewURL} controls></audio>
-                    )}
+                    <h6>Album: {m.albumName}</h6>
                   </div>
                 </div>
               );

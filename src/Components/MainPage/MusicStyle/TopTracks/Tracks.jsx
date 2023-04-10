@@ -71,6 +71,8 @@ const Tracks = () => {
       imageSrc: img,
     };
     dispatch(PlaySong(NewSong));
+    var visualAudio = document.getElementById("Visualizer");
+    visualAudio.style.display = "none";
   };
 
   const navigate = useNavigate();

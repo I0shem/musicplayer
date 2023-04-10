@@ -18,10 +18,10 @@ const CreateNewPlaylist = (newLibrary) => {
   };
 };
 
-const DeletePlaylist = (delLibrary) => {
+const DeletePlaylist = (index) => {
   return {
     type: DELETE_PLAYLIST,
-    delLibrary,
+    delLibrary: index,
   };
 };
 

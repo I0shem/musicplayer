@@ -1,91 +1,114 @@
 import React, { useState } from "react";
-import styles from "./Library.module.css";
-import { ReactComponent as Sprite } from "../../Icons/bin.svg";
-import { Link } from "react-router-dom";
-import addNewImage from "../../Images/add-new.jpg";
-import Modal from "./Modal/Modal";
+import s from "./Library.module.css";
+import Pagination from "@mui/material/Pagination";
+import { useDispatch } from "react-redux";
+import { PlaySong } from "./../../../redux/Actions";
+import LeftWindow from "./../../LeftWindow/LeftWindow/LeftWindow";
+import { useLocation } from "react-router-dom";
+import { CiPlay1 } from "react-icons/ci";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { IconContext } from "react-icons";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
-const LibrariesProps = (props) => {
-  const [visibleList, setVisibleList] = React.useState(true);
-  const remove = () => {
-    setVisibleList((visible) => !visible);
+const Library = () => {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: purple[800],
+      },
+    },
+  });
+  const location = useLocation();
+  const library = location.state.lib;
+  console.log(library);
+  const tracks = library.tracks;
+
+  const [page, setPage] = useState(1);
+  const [countElement] = useState(8);
+  const lastMusicIndex = page * countElement;
+  const firstMusicIndex = lastMusicIndex - countElement;
+  const currentMusic = tracks.slice(firstMusicIndex, lastMusicIndex);
+  const pagesCount = Math.ceil(tracks.length / countElement);
+
+  const dispatch = useDispatch();
+  const handleChange = (event, value) => {
+    setPage(value);
   };
+
+  const HandlePlayClick = (m) => {
+    let NewSong = {
+      name: m.name,
+      artistName: m.artistName,
+      albumName: m.albumName,
+      previewURL: m.previewURL,
+      imageSrc: m.imageSrc,
+    };
+    dispatch(PlaySong(NewSong));
+    var visualAudio = document.getElementById("Visualizer");
+    visualAudio.style.display = "none";
+  };
+
+  const navigate = useNavigate();
+  const returnToLibraries = () => {
+    navigate("/m/LibraryPage");
+  };
+
   return (
     <>
-      {visibleList && (
-        <li className={styles.Library}>
-          <div className={styles.Image}>
-            <img id={props.id} className={styles.Icon} alt="" src={props.Img} />
-            <div className={styles.ImageOverlay}>
-              <p>{props.text}</p>
+      <LeftWindow />
+      <div className={s.RightWindow}>
+        <IconContext.Provider
+          value={{
+            size: "70px",
+            className: s.backBtn,
+          }}
+        >
+          <IoIosArrowRoundBack onClick={returnToLibraries} />
+        </IconContext.Provider>
+        <h3 className={s.Text}>Library: {location.state.lib.name} - Tracks</h3>
+        <div>
+          <div className={s.MusicData}>
+            {currentMusic.map((m) => {
+              return (
+                <div key={m.id} className={s.TrackBox}>
+                  <div className={s.PlayButton}>
+                    <IconContext.Provider
+                      value={{ size: "100px", className: s.playBtn }}
+                    >
+                      <CiPlay1 onClick={() => HandlePlayClick(m)} />
+                    </IconContext.Provider>
+                  </div>
+                  <img className={s.AlbumImage} src={m.imageSrc} alt="" />
+                  <div className={s.ImageOverlay}>
+                    <h5>"{m.name}"</h5>
+                    <h6> by {m.artistName}</h6>
+                    <h6>Album: {m.albumName}</h6>
+                  </div>
+                </div>
+              );
+            })}
+            <div className={s.PaginationBox}>
+              <ThemeProvider theme={theme}>
+                <Pagination
+                  count={pagesCount}
+                  page={page}
+                  showFirstButton
+                  showLastButton
+                  color="primary"
+                  sx={{ button: { color: "#ffffff" } }}
+                  onChange={handleChange}
+                  className={s.Pagination}
+                />
+              </ThemeProvider>
             </div>
           </div>
-          <Link href="" className={styles.link}>
-            <Sprite
-              onClick={remove}
-              fill="white"
-              stroke="white"
-              className={styles.Remove}
-            />
-          </Link>
-        </li>
-      )}
+        </div>
+        <div className={s.rectangle}></div>
+      </div>
     </>
   );
 };
 
-const Library = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  let newLibraryElementName = React.createRef();
-  let newLibraryElementImg = React.createRef();
-
-  let createPlaylist = () => {
-    let newLibraryName = newLibraryElementName.current.value;
-    let newLibraryImg = newLibraryElementImg.current.value;
-    props.dispatch({
-      type: "CREATE-NEW-PLAYLIST",
-      newLibraryName,
-      newLibraryImg,
-    });
-    setIsOpen(false);
-  };
-  let Library = props.Data3.map((lib) => (
-    <LibrariesProps key={lib.id} Img={lib.Img} text={lib.text} />
-  ));
-  return (
-    <div>
-      <div className={styles.Libraries}>
-        {Library}
-        <li className={styles.Library} onClick={() => setIsOpen(true)}>
-          <div className={styles.addNewPlaylist}>
-            <img alt="" className={styles.AddNewIcon} src={addNewImage} />
-            <p>Add New Playlist</p>
-          </div>
-        </li>
-      </div>
-      {isOpen && (
-        <Modal
-          newLibraryElementName={
-            <input
-              ref={newLibraryElementName}
-              maxLength={14}
-              type="text"
-              placeholder="Name"
-            ></input>
-          }
-          newLibraryElementImg={
-            <input
-              ref={newLibraryElementImg}
-              maxLength={100}
-              type="text"
-              placeholder="Image URL"
-            ></input>
-          }
-          CreateBtn={<button onClick={createPlaylist}>Save</button>}
-          setIsOpen={setIsOpen}
-        />
-      )}
-    </div>
-  );
-};
 export default Library;

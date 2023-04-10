@@ -12,6 +12,7 @@ import {
 } from "react-icons/bi";
 
 const AudioPlayer = ({ list, index, setIndex, listLength }) => {
+  var visualAudio = document.getElementById("Visualizer");
   const SkipForward = () => {
     if (listLength === index) {
       setIndex(0);
@@ -19,6 +20,7 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       const i = index + 1;
       setIndex(i);
     }
+    visualAudio.style.display = "none";
   };
   const SkipPrevious = () => {
     if (0 === index) {
@@ -27,6 +29,7 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       const i = index - 1;
       setIndex(i);
     }
+    visualAudio.style.display = "none";
   };
 
   const btnMute = () => {
@@ -39,7 +42,7 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       setVol(vol + 0.05);
     }
   };
-  const { togglePlayPause, playing, volume } = useAudioPlayer({
+  const { togglePlayPause, playing, volume, loading } = useAudioPlayer({
     src: list[index],
     format: "mp3",
     autoplay: false,
@@ -53,8 +56,48 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
     volume(vol);
   }, [vol]);
 
+  const PlayPauseBtn = () => {
+    if (!loading) {
+      togglePlayPause();
+      if (playing) {
+        visualAudio.style.display = "none";
+      } else {
+        visualAudio.style.display = "block";
+      }
+    } else if (loading) {
+      setTimeout(() => {
+        PlayPauseBtn();
+      }, "2000");
+    }
+  };
+
   return (
     <div>
+      <div id="Visualizer" className={s.AudioVisualizerBox}>
+        <div className={s.icon}>
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
       <div className={s.Controls}>
         <button className={s.skipPreviousButton}>
           <IconContext.Provider value={{ size: "5em", color: "#ffffffcc" }}>
@@ -62,13 +105,13 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
           </IconContext.Provider>
         </button>
         {!playing ? (
-          <button className={s.playButton} onClick={togglePlayPause}>
+          <button className={s.playButton} onClick={PlayPauseBtn}>
             <IconContext.Provider value={{ size: "6em", color: "#ffffffcc" }}>
               <CiPlay1 />
             </IconContext.Provider>
           </button>
         ) : (
-          <button className={s.pauseButton} onClick={togglePlayPause}>
+          <button className={s.pauseButton} onClick={PlayPauseBtn}>
             <IconContext.Provider value={{ size: "6em", color: "#ffffffcc" }}>
               <CiPause1 />
             </IconContext.Provider>

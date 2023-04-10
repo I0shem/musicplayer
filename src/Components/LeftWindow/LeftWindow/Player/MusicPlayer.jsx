@@ -19,33 +19,10 @@ const MusicPlayer = () => {
     setIndex(list.length - 1);
   }, [listLength]);
 
-  window.onload = function () {
-    var ctx = new AudioContext();
-    var audio = document.getElementById("myAudio");
-    var audioSrc = ctx.createMediaElementSource(audio);
-    var analyser = ctx.createAnalyser();
-    audioSrc.connect(analyser);
-    var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-    function renderFrame() {
-      requestAnimationFrame(renderFrame);
-      analyser.getByteFrequencyData(frequencyData);
-      console.log(frequencyData);
-    }
-    audio.start();
-    renderFrame();
-  };
   return (
     <AudioPlayerProvider>
       <div className={s.component}>
-        <audio
-          className={s.audioAnimation}
-          id="myAudio"
-          src={currentSong}
-        ></audio>
         <img className={s.musicCover} src={previewImg} alt="" />
-
-        <div className={s.AudioVisualizerBox}></div>
-
         <div>
           <div className={s.scrollingBox}>
             <div className={s.scrollingText}>
