@@ -2,6 +2,7 @@ import {
   ADD_NEW_SONG,
   CREATE_NEW_PLAYLIST,
   DELETE_PLAYLIST,
+  ADD_FAVORITE,
 } from "./ActionTypes";
 
 const PlaySong = (NewSong) => {
@@ -25,4 +26,11 @@ const DeletePlaylist = (index) => {
   };
 };
 
-export { PlaySong, CreateNewPlaylist, DeletePlaylist };
+const AddFavorite = (newFav) => {
+  return {
+    type: ADD_FAVORITE,
+    newFav: newFav,
+  };
+};
+
+export { PlaySong, CreateNewPlaylist, DeletePlaylist, AddFavorite };

@@ -14,7 +14,6 @@ const MainPage = (props) => {
     <div className={styles.App}>
       <AppProps style={styles.Header}></AppProps>
       <div className={styles.MainPage}>
-        <LeftWindow Data4={props.Data4} />
         <div className={styles.MainWindow}>
           <div className={styles.rectangle}></div>
           <div className={styles.Text}>Good Morning!</div>

@@ -3,6 +3,19 @@
 }
 .Band {
   margin-left: 2.5vw;
+  margin-right: 0.5vw;
+  position: relative;
+  width: 12vw;
+  height: 26vh;
+  margin-top: 1vh;
+}
+.Band p {
+  margin-left: 1vw;
+  margin-top: 1.6vh;
+  font-weight: bold;
+  font-size: 1.1em;
+  width: 4vw;
+  text-shadow: 1px 1px 3vw black;
 }
 .Bands {
   display: inline-flex;
@@ -27,12 +40,16 @@
 }
 
 .NewFavorite {
-  height: 26vh;
+  margin-left: 2.5vw;
+  margin-right: 0.5vw;
+  position: relative;
   width: 12vw;
+  height: 24.5vh;
+  margin-top: 1vh;
+
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -3px;
-  margin-left: 3.2vw;
   position: relative;
 }
 .NewFavorite .AddNewImage {
@@ -58,12 +75,29 @@
 
 .link,
 .Remove {
-  box-shadow: 30px white;
+  position: absolute;
+  bottom: 10px;
+  left: 70%;
   fill: white;
   stroke: white;
-  height: 3vh;
-  width: 3vw;
-  position: relative;
-  top: -1vh;
-  margin-left: -1.3vw;
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+}
+.ImageOverlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 95%;
+  width: 100%;
+  border-radius: 0.9vw;
+}
+.Image img {
+  height: 12vw;
+  outline: 1px solid white;
+  border-radius: 0.9vw;
+  outline-offset: -2px;
+  display: block;
+  width: 100%;
 }

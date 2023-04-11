@@ -20,6 +20,7 @@
 }
 
 .musicCover {
+  border: 1px white solid;
   border-radius: 10%;
   height: 300px;
   width: 300px;
@@ -130,7 +131,7 @@
   display: none;
   position: absolute;
   left: 1.7vw;
-  top: 49.9vh;
+  top: 50vh;
   width: 270px;
   height: 220px;
   border-radius: 25%;

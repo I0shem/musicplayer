@@ -57,7 +57,6 @@ const Library = () => {
 
   return (
     <>
-      <LeftWindow />
       <div className={s.RightWindow}>
         <IconContext.Provider
           value={{

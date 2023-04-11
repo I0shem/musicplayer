@@ -11,6 +11,7 @@ import { ReactComponent as CrossIcon } from "./Components/Icons/cross.svg";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "./ThemeContext";
 import Tracks from "./Components/MainPage/MusicStyle/TopTracks/Tracks";
+import LeftWindow from "./Components/LeftWindow/LeftWindow/LeftWindow";
 
 const App = (props) => {
   const [MyTheme, setMyTheme] = useState("dark");
@@ -57,6 +58,7 @@ const App = (props) => {
       >
         <div className="Container">
           <ThemeContext.Provider value={{ toggleTheme }}>
+            <LeftWindow />
             <div id={MyTheme}>
               <Routes>
                 <Route
@@ -72,15 +74,7 @@ const App = (props) => {
                   }
                 />
                 <Route path="/m/SearchPage" element={<SearchPage />} />
-                <Route
-                  path="/m/LibraryPage"
-                  element={
-                    <LibraryPage
-                      dispatch={props.dispatch}
-                      Data3={props.Data3}
-                    />
-                  }
-                />{" "}
+                <Route path="/m/LibraryPage" element={<LibraryPage />} />{" "}
                 <Route path="/m/Tracks" element={<Tracks />} />
                 <Route path="/m/LibraryPage/Library" element={<Library />} />
               </Routes>
@@ -93,7 +87,7 @@ const App = (props) => {
           </Link>
         </div>
         {active && (
-          //*TODO: Варто доопрацювати теми: кастомна тема має мати інші кольори.
+          //*TODO: Варто доопрацювати теми: кастомна тема має мати інші базові кольори.
           //*TODO: Додати зміну мови, перенести методи входу. Додати субменю.
           <div className={style.SettingsMenu} onClick={() => IsActive(false)}>
             <div

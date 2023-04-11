@@ -4,22 +4,29 @@ import newimage from "../../Images/add-new.jpg";
 import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";
 import Modal from "./Modal/Modal";
+import { useSelector, useDispatch } from "react-redux";
 
 const FavoriteProps = (props) => {
   const [visibleList, setvisibleList] = React.useState(true);
   const remove = () => {
     setvisibleList((visible) => !visible);
   };
+
   return (
     <>
       {visibleList && (
         <li className={styles.Band}>
-          <img
-            id="object-position"
-            className={styles.Icon}
-            alt=""
-            src={props.Img}
-          />
+          <div className={styles.Image}>
+            <img
+              id="object-position"
+              className={styles.Icon}
+              alt=""
+              src={props.Img}
+            />
+            <div className={styles.ImageOverlay}>
+              <p>{props.name}</p>
+            </div>
+          </div>
           <Link href="" className={styles.link}>
             <Sprite
               onClick={remove}
@@ -35,6 +42,9 @@ const FavoriteProps = (props) => {
 };
 
 const Favorite = (props) => {
+  const list = useSelector((state) => state.Favorites).initialFavorites;
+  console.log(list);
+
   const [isOpen, setIsOpen] = useState(false);
   let newFavoriteBandImageURL = React.createRef();
 
@@ -44,8 +54,8 @@ const Favorite = (props) => {
     setIsOpen(false);
   };
 
-  let Favbands = props.Data.map((fav) => (
-    <FavoriteProps key={fav.id} Img={fav.Img} />
+  let Favbands = list.map((fav) => (
+    <FavoriteProps key={fav.id} Img={fav.ImgURL} name={fav.name} />
   ));
   return (
     <div className={styles.Favorite}>

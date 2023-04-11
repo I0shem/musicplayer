@@ -13,12 +13,40 @@ import {
 
 const AudioPlayer = ({ list, index, setIndex, listLength }) => {
   var visualAudio = document.getElementById("Visualizer");
+
+  const [vol, setVol] = useState(0.01);
+  const btnMute = () => {
+    setVol(0);
+  };
+  const btnVolUp = () => {
+    if (vol > 0.45) {
+      setVol(0.5);
+    } else {
+      setVol(vol + 0.05);
+    }
+  };
+  const { togglePlayPause, playing, volume, loading, load } = useAudioPlayer({
+    src: list[index],
+    format: "mp3",
+    autoplay: true,
+    volume: vol,
+    onend: () => SkipForward(),
+  });
+
   const SkipForward = () => {
     if (listLength === index) {
       setIndex(0);
+      load({
+        src: list[index],
+        autoplay: true,
+      });
     } else {
       const i = index + 1;
       setIndex(i);
+      load({
+        src: list[index],
+        autoplay: true,
+      });
     }
     visualAudio.style.display = "none";
   };
@@ -31,26 +59,6 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
     }
     visualAudio.style.display = "none";
   };
-
-  const btnMute = () => {
-    setVol(0);
-  };
-  const btnVolUp = () => {
-    if (vol > 0.45) {
-      setVol(0.5);
-    } else {
-      setVol(vol + 0.05);
-    }
-  };
-  const { togglePlayPause, playing, volume, loading } = useAudioPlayer({
-    src: list[index],
-    format: "mp3",
-    autoplay: false,
-    volume: 0.01,
-    onend: () => SkipForward(),
-  });
-  const [vol, setVol] = useState(0.01);
-  volume(vol);
 
   useEffect(() => {
     volume(vol);

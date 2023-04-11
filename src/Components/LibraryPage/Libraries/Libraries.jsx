@@ -9,7 +9,7 @@ import { CreateNewPlaylist, DeletePlaylist } from "../../../redux/Actions";
 import { IconContext } from "react-icons";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { SlMagnifier } from "react-icons/sl";
+
 const Libraries = () => {
   const list = useSelector((state) => state.Playlist).playlists;
   console.log(list);

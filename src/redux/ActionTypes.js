@@ -1,3 +1,4 @@
 export const ADD_NEW_SONG = "ADD_NEW_SONG";
 export const CREATE_NEW_PLAYLIST = "CREATE_NEW_PLAYLIST";
 export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
+export const ADD_FAVORITE = "ADD_FAVORITE";

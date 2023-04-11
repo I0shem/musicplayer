@@ -13,12 +13,14 @@
 
 .MiniMenu li:hover {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
-  filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
+
   font-size: 105%;
 }
 .MiniMenuText {
   font-size: 20px;
+  color: white;
 }
 
 .Link {
@@ -29,4 +31,10 @@
 }
 .Auth {
   margin-bottom: 10px;
+}
+p,
+span {
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 10px rgb(0, 0, 0, 1);
 }
