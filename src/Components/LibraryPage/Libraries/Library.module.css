@@ -72,12 +72,14 @@ span {
   font-weight: bold;
   font-size: 14px;
   text-shadow: 10px rgb(0, 0, 0, 1);
+  color: inherit;
 }
 
 h5,
 h6 {
   margin-top: 0;
   margin-bottom: 0;
+  color: inherit;
 }
 
 .PaginationBox {

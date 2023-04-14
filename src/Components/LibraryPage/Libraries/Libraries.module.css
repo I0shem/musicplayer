@@ -28,6 +28,7 @@
   font-size: 1em;
   text-shadow: 10px rgb(0, 0, 0, 1);
   text-align: center;
+  color: inherit;
 }
 
 .ImageOverlay {
@@ -81,6 +82,7 @@
 
 .addNewPlaylist p {
   margin-top: -4vh;
+  color: inherit;
 }
 
 .addNewPlaylist img {

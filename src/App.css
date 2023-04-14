@@ -45,6 +45,7 @@ body {
 }
 
 #custom {
+  background: transparent;
   background-image: linear-gradient(to bottom, inherit, inherit, inherit);
   height: 100vh;
   width: 100%;

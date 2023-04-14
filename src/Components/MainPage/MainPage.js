@@ -1,4 +1,3 @@
-import LeftWindow from "../LeftWindow/LeftWindow/LeftWindow.jsx";
 import React from "react";
 import MusicStyle from "./MusicStyle/MusicStyle";
 import styles from "./MainPage.module.css";
@@ -18,7 +17,7 @@ const MainPage = (props) => {
           <div className={styles.rectangle}></div>
           <div className={styles.Text}>Good Morning!</div>
           <MusicStyle Data1={props.Data1} />
-          <div className={styles.Text}>Playlists</div>
+          <div className={styles.Text}>Featured Playlists</div>
           <Playlists
             dispatch={props.dispatch}
             createNewRecommended={props.createNewRecommended}

@@ -9,14 +9,14 @@ const State = {
         "https://api.napster.com/imageserver/v2/artists/art.4085/images/633x422.jpg",
     },
     {
-      id: "art.47530404",
+      id: "art.40812",
       name: "Gorillaz",
       ImgURL:
         "https://api.napster.com/imageserver/v2/artists/art.40812/images/633x422.jpg",
     },
 
     {
-      id: "art.4085",
+      id: "art.9203143",
       name: "Arctic Monkeys",
       ImgURL:
         "https://api.napster.com/imageserver/v2/artists/art.9203143/images/633x422.jpg",

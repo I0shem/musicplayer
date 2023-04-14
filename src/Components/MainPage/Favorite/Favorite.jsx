@@ -4,18 +4,22 @@ import newimage from "../../Images/add-new.jpg";
 import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";
 import Modal from "./Modal/Modal";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const FavoriteProps = (props) => {
   const [visibleList, setvisibleList] = React.useState(true);
   const remove = () => {
     setvisibleList((visible) => !visible);
   };
-
+  const navigate = useNavigate();
+  const toArtistTracks = () => {
+    navigate("/m/ArtistTracks", { state: { fav: props.fav } });
+  };
   return (
     <>
       {visibleList && (
-        <li className={styles.Band}>
+        <li className={styles.Band} onClick={toArtistTracks}>
           <div className={styles.Image}>
             <img
               id="object-position"
@@ -55,7 +59,7 @@ const Favorite = (props) => {
   };
 
   let Favbands = list.map((fav) => (
-    <FavoriteProps key={fav.id} Img={fav.ImgURL} name={fav.name} />
+    <FavoriteProps key={fav.id} Img={fav.ImgURL} name={fav.name} fav={fav} />
   ));
   return (
     <div className={styles.Favorite}>

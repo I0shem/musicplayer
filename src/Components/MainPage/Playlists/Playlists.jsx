@@ -1,88 +1,68 @@
-import React, { useState } from "react";
-import styles from "./Playlists.module.css";
-import newimage from "../../Images/add-new.jpg";
-import { ReactComponent as Sprite } from "../../Icons/bin.svg";
-import { Link } from "react-router-dom";
-import Modal from "./Modal/Modal";
+import React, { useState, useEffect } from "react";
+import styles from "./FP.module.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Slider from "react-slick";
+const KEY = process.env.REACT_APP_MUSIC_STYLE_KEY;
 
-const RecommendedProps = (props) => {
-  const [visibleList, setvisibleList] = React.useState(true);
-  const remove = () => {
-    setvisibleList((visible) => !visible);
+const PlaylistsProps = (props) => {
+  const navigate = useNavigate();
+  const toFeaturedPlaylists = () => {
+    navigate("/m/FeaturedPlaylist", { state: { fp: props.fp } });
   };
   return (
     <>
-      {visibleList && (
-        <li className={styles.Playlist}>
-          <img className={styles.Icon} alt="" src={props.image} />
-          <p>{props.text}</p>
-          <Link href="" className={styles.link}>
-            <Sprite
-              onClick={remove}
-              fill="white"
-              stroke="white"
-              className={styles.Remove}
-            />
-          </Link>
+      <ul onClick={toFeaturedPlaylists} className={styles.FPs}>
+        <li className={styles.FP}>
+          <div className={styles.Image}>
+            <img className={styles.Icon} alt="" src={props.icon} />
+            <div className={styles.ImageFilter}>
+              <p>{props.name}</p>
+            </div>
+          </div>
         </li>
-      )}
+      </ul>
     </>
   );
 };
 
-function Recommended(props) {
-  const [isOpen, setIsOpen] = useState(false);
-  let newRecommendedNameText = React.createRef();
-  let newRecommendedImageURL = React.createRef();
-
-  let createRecommended = () => {
-    let newRecommendedName = newRecommendedNameText.current.value;
-    let newRecommendedImage = newRecommendedImageURL.current.value;
-    props.dispatch({
-      type: "CREATE-NEW-RECOMMENDED",
-      newRecommendedName,
-      newRecommendedImage,
-    });
-    setIsOpen(false);
+function Recommended() {
+  const [featuredPlaylistsDB, setFeaturedPlaylistsDB] = useState([]);
+  const getPlaylists = async () => {
+    try {
+      const response = await axios.get(
+        `https://napi-v2-2-cloud-run-b3gtd5nmxq-uw.a.run.app/v2.2/playlists/featured?apikey=${KEY}`
+      );
+      setFeaturedPlaylistsDB(response.data.playlists);
+      console.log(featuredPlaylistsDB);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  let Recommended = props.Data2.map((rec) => (
-    <RecommendedProps key={rec.id} image={rec.image} text={rec.text} />
-  ));
+  useEffect(() => {
+    getPlaylists();
+  }, []);
 
   return (
-    <div className={styles.Recommended}>
-      <ul className={styles.Playlists}>
-        {Recommended}
-        <div className={styles.PlaylistNew} onClick={() => setIsOpen(true)}>
-          <li>
-            <img className={styles.AddNewImage} alt="" src={newimage} />
-            <span>Add New</span>
-          </li>
-        </div>
-      </ul>
-      {isOpen && (
-        <Modal
-          newRecommendedNameText={
-            <input
-              ref={newRecommendedNameText}
-              maxLength={14}
-              type="text"
-              placeholder="Name"
-            ></input>
-          }
-          newRecommendedImageURL={
-            <input
-              ref={newRecommendedImageURL}
-              maxLength={200}
-              type="text"
-              placeholder="Image URL"
-            ></input>
-          }
-          CreateBtn={<button onClick={createRecommended}>Save</button>}
-          setIsOpen={setIsOpen}
-        />
-      )}
+    <div className={styles.featuredPlaylistsDB}>
+      <Slider
+        dots={true}
+        infinite={true}
+        slidesToShow={5}
+        speed={500}
+        autoplay={true}
+        autoplaySpeed={5000}
+        slidesToScroll={1}
+      >
+        {featuredPlaylistsDB.map((fp) => (
+          <PlaylistsProps
+            key={fp.id}
+            icon={`http://direct.napster.com/imageserver/v2/playlists/${fp.id}/artists/images/1200x400.jpg`}
+            name={fp.name}
+            fp={fp}
+          />
+        ))}
+      </Slider>
     </div>
   );
 }

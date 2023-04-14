@@ -12,26 +12,31 @@ import {
 } from "react-icons/bi";
 
 const AudioPlayer = ({ list, index, setIndex, listLength }) => {
-  var visualAudio = document.getElementById("Visualizer");
-
-  const [vol, setVol] = useState(0.01);
+  const [vol, setVol] = useState(0.2);
   const btnMute = () => {
     setVol(0);
   };
+
   const btnVolUp = () => {
-    if (vol > 0.45) {
-      setVol(0.5);
+    if (vol > 0.95) {
+      setVol(1);
     } else {
       setVol(vol + 0.05);
     }
   };
-  const { togglePlayPause, playing, volume, loading, load } = useAudioPlayer({
+  const { togglePlayPause, playing, volume, load } = useAudioPlayer({
     src: list[index],
     format: "mp3",
     autoplay: true,
     volume: vol,
     onend: () => SkipForward(),
   });
+
+  const visual = () => {
+    return playing
+      ? (visualAudio.style.display = "none")
+      : (visualAudio.style.display = "block");
+  };
 
   const SkipForward = () => {
     if (listLength === index) {
@@ -47,8 +52,8 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
         src: list[index],
         autoplay: true,
       });
+      visual();
     }
-    visualAudio.style.display = "none";
   };
   const SkipPrevious = () => {
     if (0 === index) {
@@ -57,7 +62,11 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       const i = index - 1;
       setIndex(i);
     }
-    visualAudio.style.display = "none";
+    load({
+      src: list[index],
+      autoplay: true,
+    });
+    visual();
   };
 
   useEffect(() => {
@@ -65,19 +74,14 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
   }, [vol]);
 
   const PlayPauseBtn = () => {
-    if (!loading) {
-      togglePlayPause();
-      if (playing) {
-        visualAudio.style.display = "none";
-      } else {
-        visualAudio.style.display = "block";
-      }
-    } else if (loading) {
-      setTimeout(() => {
-        PlayPauseBtn();
-      }, "2000");
-    }
+    load({
+      src: list[index],
+      autoplay: true,
+    });
+    togglePlayPause();
+    visual();
   };
+  var visualAudio = document.getElementById("Visualizer");
 
   return (
     <div>
@@ -140,7 +144,7 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
             type="range"
             step="0.01"
             min="0"
-            max="0.5"
+            max="1"
             value={vol}
             onChange={(e) => setVol(e.target.value)}
           />

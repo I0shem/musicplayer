@@ -14,12 +14,8 @@ root.render(
       <App
         AppState={store.getState()}
         dispatch={store.dispatch.bind(store)}
-        Data={store._state.favbandsData}
-        Data1={store._state.musicStyles1}
-        Data2={store._state.recommended}
         Data3={store._state.libraries}
-        Data4={store._state.playList}
       />
-    </ThemeProvider>{" "}
+    </ThemeProvider>
   </Provider>
 );

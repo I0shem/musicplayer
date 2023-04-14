@@ -8,6 +8,7 @@
   width: 12vw;
   height: 26vh;
   margin-top: 1vh;
+  color: inherit;
 }
 .Band p {
   margin-left: 1vw;
@@ -16,6 +17,7 @@
   font-size: 1.1em;
   width: 4vw;
   text-shadow: 1px 1px 3vw black;
+  color: inherit;
 }
 .Bands {
   display: inline-flex;
@@ -46,7 +48,6 @@
   width: 12vw;
   height: 24.5vh;
   margin-top: 1vh;
-
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -3px;
@@ -71,6 +72,7 @@
   font-size: 1.1em;
   width: 4vw;
   text-shadow: 1px 1px 3vw black;
+  color: inherit;
 }
 
 .link,

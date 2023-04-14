@@ -1,5 +1,4 @@
 import { v4 as uuid } from "uuid";
-
 import image from "./Components/Images/ACDC.jpg";
 import image1 from "./Components/Images/Gorillaz.jpg";
 import image2 from "./Components/Images/ArcticMonkeys.jpg";

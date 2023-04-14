@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "./ThemeContext";
 import Tracks from "./Components/MainPage/MusicStyle/TopTracks/Tracks";
 import LeftWindow from "./Components/LeftWindow/LeftWindow/LeftWindow";
+import ArtistTracks from "./Components/MainPage/Favorite/ArtistTracks/ArtistTracks";
+import FeaturedPlaylist from "./Components/MainPage/Playlists/FeaturedPlaylistTracks/FeaturedTracks";
 
 const App = (props) => {
   const [MyTheme, setMyTheme] = useState("dark");
@@ -64,19 +66,18 @@ const App = (props) => {
                 <Route
                   path="/m"
                   element={
-                    <HomePage
-                      dispatch={props.dispatch}
-                      Data={props.Data}
-                      Data1={props.Data1}
-                      Data2={props.Data2}
-                      Data4={props.Data4}
-                    />
+                    <HomePage dispatch={props.dispatch} Data4={props.Data4} />
                   }
                 />
                 <Route path="/m/SearchPage" element={<SearchPage />} />
                 <Route path="/m/LibraryPage" element={<LibraryPage />} />{" "}
                 <Route path="/m/Tracks" element={<Tracks />} />
                 <Route path="/m/LibraryPage/Library" element={<Library />} />
+                <Route path="/m/ArtistTracks" element={<ArtistTracks />} />
+                <Route
+                  path="/m/FeaturedPlaylist"
+                  element={<FeaturedPlaylist />}
+                />
               </Routes>
             </div>
           </ThemeContext.Provider>

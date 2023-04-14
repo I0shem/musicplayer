@@ -1,39 +1,40 @@
-.Styles {
+.FPs {
   display: inline-flex;
   height: auto;
   color: inherit;
 }
-.Styles:hover,
+.FPs:hover p,
 .newMusicStyle:hover {
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
   cursor: pointer;
 }
 
-.Styles {
+.FPs {
   list-style-type: none;
   margin-top: -1vh;
   margin-bottom: -1vh;
 }
-.Styles li {
+.FPs li {
   position: relative;
   filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.8));
 }
 
-.Style p {
+.FP p {
   position: absolute;
-  top: 4vh;
+  top: 5vh;
   text-align: center;
   font-weight: bold;
   font-size: 1.2vw;
-  width: 240px;
+  width: 200px;
   text-shadow: 10px rgb(0, 0, 0, 1);
   vertical-align: middle;
   color: inherit;
+  margin-left: 20px;
 }
 
-.Styles img {
-  height: 160px;
+.FPs img {
+  height: 200px;
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -2px;
@@ -50,10 +51,10 @@
   width: 100%;
   border-radius: 0.9vw;
 }
-.MusicDBContainer {
+.featuredPlaylistsDB {
   width: 95%;
   margin-left: 2vw;
 }
-.Styles:first-child {
+.FPs:first-child {
   margin-left: 0px;
 }

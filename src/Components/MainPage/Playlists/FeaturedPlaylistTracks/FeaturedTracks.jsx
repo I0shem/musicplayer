@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
-import s from "./Tracks.module.css";
+import s from "./FeaturedTracks.module.css";
 import Pagination from "@mui/material/Pagination";
 import { useDispatch } from "react-redux";
-import { PlaySong } from "./../../../../redux/Actions";
+import { PlaySong } from "../../../../redux/Actions";
 import { useLocation } from "react-router-dom";
 import { CiPlay1 } from "react-icons/ci";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -13,7 +13,7 @@ import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 const KEY = process.env.REACT_APP_SEARCH_KEY;
 
-const Tracks = () => {
+const FeaturedTracks = () => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -23,10 +23,11 @@ const Tracks = () => {
   });
 
   const location = useLocation();
+  console.log(location.state.fp);
   const getMusicDB = useCallback(() => {
     axios({
       method: "GET",
-      url: `https://api.napster.com/v2.2/genres/${location.state.ms.id}/tracks/top?apikey=${KEY}`,
+      url: `https://api.napster.com/v2.2/playlists/${location.state.fp.id}/tracks?apikey=${KEY}&limit=25&offset=25`,
     })
       .then((response) => {
         return setMusicDB(response.data.tracks);
@@ -39,14 +40,14 @@ const Tracks = () => {
     getMusicDB();
   }, []);
 
-  const [genreTracks, setMusicDB] = useState([]);
+  const [featuredTracks, setMusicDB] = useState([]);
 
   const [page, setPage] = useState(1);
   const [countElement] = useState(8);
   const lastMusicIndex = page * countElement;
   const firstMusicIndex = lastMusicIndex - countElement;
-  const currentMusic = genreTracks.slice(firstMusicIndex, lastMusicIndex);
-  const pagesCount = Math.ceil(genreTracks.length / countElement);
+  const currentMusic = featuredTracks.slice(firstMusicIndex, lastMusicIndex);
+  const pagesCount = Math.ceil(featuredTracks.length / countElement);
 
   const dispatch = useDispatch();
   const handleChange = (event, value) => {
@@ -54,8 +55,8 @@ const Tracks = () => {
   };
 
   useEffect(() => {
-    console.log(genreTracks);
-  }, [genreTracks]);
+    console.log(featuredTracks);
+  }, [featuredTracks]);
 
   const HandlePlayClick = (m) => {
     const img =
@@ -89,7 +90,7 @@ const Tracks = () => {
         >
           <IoIosArrowRoundBack onClick={returnToMain} />
         </IconContext.Provider>
-        <h3 className={s.Text}>{location.state.ms.name} - Top tracks</h3>
+        <h3 className={s.Text}>{location.state.fp.name} - Tracks</h3>
         <div>
           <div className={s.MusicData}>
             {currentMusic.map((m) => {
@@ -141,4 +142,4 @@ const Tracks = () => {
   );
 };
 
-export default Tracks;
+export default FeaturedTracks;
