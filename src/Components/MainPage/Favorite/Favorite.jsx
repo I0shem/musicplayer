@@ -39,8 +39,6 @@ const FavoriteProps = (props) => {
 
 const Favorite = (props) => {
   const list = useSelector((state) => state.Favorites).initialFavorites;
-  console.log(list);
-
   const [isOpen, setIsOpen] = useState(false);
 
   let Favbands = list.map((fav) => (

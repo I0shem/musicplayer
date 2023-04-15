@@ -12,13 +12,10 @@ import { useNavigate } from "react-router-dom";
 
 const Libraries = () => {
   const list = useSelector((state) => state.Playlist).playlists;
-  console.log(list);
   const [isOpen, setIsOpen] = useState(false);
   let newLibraryElementName = createRef();
   let newLibraryElementImg = createRef();
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   let createPlaylist = () => {
     let newLibraryName = newLibraryElementName.current.value;
@@ -38,8 +35,10 @@ const Libraries = () => {
     dispatch(CreateNewPlaylist(NewPlaylist));
     setIsOpen(false);
   };
-  const returnToMain = () => {
-    navigate("/m");
+
+  const navigate = useNavigate();
+  const returnTo = () => {
+    navigate(-1);
   };
   const viewLibrary = (lib) => {
     navigate("/m/LibraryPage/Library", { state: { lib } });
@@ -52,7 +51,7 @@ const Libraries = () => {
           className: s.backBtn,
         }}
       >
-        <IoIosArrowRoundBack onClick={returnToMain} />
+        <IoIosArrowRoundBack onClick={returnTo} />
       </IconContext.Provider>
       <h3 className={s.Text}>Your Library</h3>
       <div className={s.Libraries}>

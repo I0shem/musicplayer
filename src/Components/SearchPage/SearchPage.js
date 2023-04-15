@@ -61,11 +61,6 @@ const SearchPage = () => {
     setValue(value.target.value);
   };
 
-  //Console update
-  useEffect(() => {
-    console.log(musicDB);
-  }, [musicDB]);
-
   //Pagination MUI
   const [page, setPage] = useState(1);
   const [countElement] = useState(8);

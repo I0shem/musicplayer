@@ -53,10 +53,6 @@ const ArtistTracks = () => {
     setPage(value);
   };
 
-  useEffect(() => {
-    console.log(artistTracks);
-  }, [artistTracks]);
-
   const HandlePlayClick = (m) => {
     const img =
       "https://api.napster.com/imageserver/v2/albums/" +

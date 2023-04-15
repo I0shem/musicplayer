@@ -34,7 +34,6 @@ function Recommended() {
         `https://napi-v2-2-cloud-run-b3gtd5nmxq-uw.a.run.app/v2.2/playlists/featured?apikey=${KEY}`
       );
       setFeaturedPlaylistsDB(response.data.playlists);
-      console.log(featuredPlaylistsDB);
     } catch (error) {
       console.log(error);
     }
