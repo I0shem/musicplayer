@@ -88,7 +88,6 @@ const App = (props) => {
           </Link>
         </div>
         {active && (
-          //*TODO: Варто доопрацювати теми: кастомна тема має мати інші базові кольори.
           //*TODO: Додати зміну мови, перенести методи входу. Додати субменю.
           <div className={style.SettingsMenu} onClick={() => IsActive(false)}>
             <div

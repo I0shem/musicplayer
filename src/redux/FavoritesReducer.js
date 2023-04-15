@@ -1,4 +1,4 @@
-import { ADD_FAVORITE } from "./ActionTypes";
+import { ADD_FAVORITE, DELETE_FAVORITE } from "./ActionTypes";
 
 const State = {
   initialFavorites: [
@@ -30,6 +30,14 @@ export const FavoritesReducer = (state = State, action) => {
       return {
         ...state,
         initialFavorites: [...state.initialFavorites, action.newFav],
+      };
+    }
+    case DELETE_FAVORITE: {
+      return {
+        ...state,
+        initialFavorites: state.initialFavorites.filter(
+          (Favorite) => Favorite !== action.delFav
+        ),
       };
     }
     default:

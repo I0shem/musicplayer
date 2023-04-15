@@ -3,6 +3,7 @@ import {
   CREATE_NEW_PLAYLIST,
   DELETE_PLAYLIST,
   ADD_FAVORITE,
+  DELETE_FAVORITE,
 } from "./ActionTypes";
 
 const PlaySong = (NewSong) => {
@@ -19,10 +20,10 @@ const CreateNewPlaylist = (newLibrary) => {
   };
 };
 
-const DeletePlaylist = (index) => {
+const DeletePlaylist = (delLibrary) => {
   return {
     type: DELETE_PLAYLIST,
-    delLibrary: index,
+    delLibrary: delLibrary,
   };
 };
 
@@ -32,5 +33,17 @@ const AddFavorite = (newFav) => {
     newFav: newFav,
   };
 };
+const DeleteFavorite = (delFav) => {
+  return {
+    type: DELETE_FAVORITE,
+    delFav: delFav,
+  };
+};
 
-export { PlaySong, CreateNewPlaylist, DeletePlaylist, AddFavorite };
+export {
+  PlaySong,
+  CreateNewPlaylist,
+  DeletePlaylist,
+  AddFavorite,
+  DeleteFavorite,
+};

@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState, createRef } from "react";
 import style from "./Modal.module.css";
+import { useDispatch } from "react-redux";
+import { AddFavorite } from "../../../../redux/Actions";
 
-const Modal = ({ setIsOpen, CreateBtn, newFavoriteBandImageURL }) => {
+const Modal = ({ setIsOpen }) => {
+  let newFavoriteBandImageURL = createRef();
+  const dispatch = useDispatch();
+  let createFavBand = () => {
+    let newFBName = "New Favorite Band";
+    let newFBImg = newFavoriteBandImageURL.current.value;
+    if (newFBImg === "") {
+      newFBImg =
+        "https://cdn10.phillymag.com/wp-content/uploads/sites/3/2020/09/monthly-playlist.jpg";
+    }
+
+    let NewFavorite = {
+      id: newFBName,
+      name: newFBName,
+      imageURL: newFBImg,
+    };
+    dispatch(AddFavorite(NewFavorite));
+    setIsOpen(false);
+  };
   return (
     <div className={style.ModalWindow} onClick={() => setIsOpen(false)}>
       <div
@@ -12,9 +32,16 @@ const Modal = ({ setIsOpen, CreateBtn, newFavoriteBandImageURL }) => {
           <text>X</text>
         </div>
         <div className={style.Header}>Create New Favorite</div>
-        <div className={style.Inputs}>{newFavoriteBandImageURL}</div>
+        <div className={style.Inputs}>
+          <input
+            ref={newFavoriteBandImageURL}
+            maxLength={200}
+            type="text"
+            placeholder="Image URL"
+          ></input>
+        </div>
         <button onClick={() => setIsOpen(false)}>Close</button>
-        {CreateBtn}
+        <button onClick={createFavBand}>Save</button>
       </div>
     </div>
   );

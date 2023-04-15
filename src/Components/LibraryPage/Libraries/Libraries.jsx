@@ -57,8 +57,8 @@ const Libraries = () => {
       <h3 className={s.Text}>Your Library</h3>
       <div className={s.Libraries}>
         {list.map((lib, i) => (
-          <li key={i} className={s.Library} onClick={() => viewLibrary(lib)}>
-            <div className={s.Image}>
+          <li key={i} className={s.Library}>
+            <div className={s.Image} onClick={() => viewLibrary(lib)}>
               <img id={lib.name} className={s.Icon} alt="" src={lib.imageURL} />
               <div className={s.ImageOverlay}>
                 <p>{lib.name}</p>
