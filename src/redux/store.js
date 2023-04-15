@@ -3,7 +3,7 @@ import { PlayerPlaylistReducer } from "./PlayerPlaylistReducer";
 import { PlaylistsReducer } from "./PlaylistsReducer";
 import { FavoritesReducer } from "./FavoritesReducer";
 
-export const sstore = configureStore({
+export const store = configureStore({
   reducer: {
     PlayerPlaylist: PlayerPlaylistReducer,
     Playlist: PlaylistsReducer,

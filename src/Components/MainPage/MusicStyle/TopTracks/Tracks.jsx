@@ -75,8 +75,8 @@ const Tracks = () => {
   };
 
   const navigate = useNavigate();
-  const returnToMain = () => {
-    navigate("/m");
+  const returnTo = () => {
+    navigate(-1);
   };
   return (
     <>
@@ -87,7 +87,7 @@ const Tracks = () => {
             className: s.backBtn,
           }}
         >
-          <IoIosArrowRoundBack onClick={returnToMain} />
+          <IoIosArrowRoundBack onClick={returnTo} />
         </IconContext.Provider>
         <h3 className={s.Text}>{location.state.ms.name} - Top tracks</h3>
         <div>

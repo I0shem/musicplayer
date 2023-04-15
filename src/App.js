@@ -15,7 +15,7 @@ import LeftWindow from "./Components/LeftWindow/LeftWindow/LeftWindow";
 import ArtistTracks from "./Components/MainPage/Favorite/ArtistTracks/ArtistTracks";
 import FeaturedPlaylist from "./Components/MainPage/Playlists/FeaturedPlaylistTracks/FeaturedTracks";
 
-const App = (props) => {
+const App = () => {
   const [MyTheme, setMyTheme] = useState("dark");
   const [buttonText, setButtonText] = useState("Dark mode");
   const toggleTheme = () => {
@@ -60,15 +60,10 @@ const App = (props) => {
       >
         <div className="Container">
           <ThemeContext.Provider value={{ toggleTheme }}>
-            <LeftWindow />
             <div id={MyTheme}>
+              <LeftWindow />
               <Routes>
-                <Route
-                  path="/m"
-                  element={
-                    <HomePage dispatch={props.dispatch} Data4={props.Data4} />
-                  }
-                />
+                <Route path="/m" element={<HomePage />} />
                 <Route path="/m/SearchPage" element={<SearchPage />} />
                 <Route path="/m/LibraryPage" element={<LibraryPage />} />{" "}
                 <Route path="/m/Tracks" element={<Tracks />} />
@@ -80,12 +75,12 @@ const App = (props) => {
                 />
               </Routes>
             </div>
+            <div className={style.SideBar} onClick={() => IsActive(true)}>
+              <Link className="Link">
+                <BurgerIcon className={style.IconSettings} alt=""></BurgerIcon>
+              </Link>
+            </div>
           </ThemeContext.Provider>
-        </div>
-        <div className={style.SideBar} onClick={() => IsActive(true)}>
-          <Link className="Link">
-            <BurgerIcon className={style.IconSettings} alt=""></BurgerIcon>
-          </Link>
         </div>
         {active && (
           //*TODO: Додати зміну мови, перенести методи входу. Додати субменю.

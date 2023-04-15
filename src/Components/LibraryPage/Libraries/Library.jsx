@@ -21,7 +21,6 @@ const Library = () => {
   });
   const location = useLocation();
   const library = location.state.lib;
-  console.log(library);
   const tracks = library.tracks;
 
   const [page, setPage] = useState(1);
@@ -50,8 +49,8 @@ const Library = () => {
   };
 
   const navigate = useNavigate();
-  const returnToLibraries = () => {
-    navigate("/m/LibraryPage");
+  const returnTo = () => {
+    navigate(-1);
   };
 
   return (
@@ -63,7 +62,7 @@ const Library = () => {
             className: s.backBtn,
           }}
         >
-          <IoIosArrowRoundBack onClick={returnToLibraries} />
+          <IoIosArrowRoundBack onClick={returnTo} />
         </IconContext.Provider>
         <h3 className={s.Text}>Library: {location.state.lib.name} - Tracks</h3>
         <div>

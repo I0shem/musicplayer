@@ -76,8 +76,8 @@ const FeaturedTracks = () => {
   };
 
   const navigate = useNavigate();
-  const returnToMain = () => {
-    navigate("/m");
+  const returnTo = () => {
+    navigate(-1);
   };
   return (
     <>
@@ -88,7 +88,7 @@ const FeaturedTracks = () => {
             className: s.backBtn,
           }}
         >
-          <IoIosArrowRoundBack onClick={returnToMain} />
+          <IoIosArrowRoundBack onClick={returnTo} />
         </IconContext.Provider>
         <h3 className={s.Text}>{location.state.fp.name} - Tracks</h3>
         <div>

@@ -96,7 +96,7 @@ const SearchPage = () => {
   };
 
   const navigate = useNavigate();
-  const returnToMain = () => {
+  const returnTo = () => {
     navigate(-1);
   };
   return (
@@ -108,7 +108,7 @@ const SearchPage = () => {
             className: s.backBtn,
           }}
         >
-          <IoIosArrowRoundBack onClick={returnToMain} />
+          <IoIosArrowRoundBack onClick={returnTo} />
         </IconContext.Provider>
         <h3 className={s.Text}>Search</h3>
         <div>
