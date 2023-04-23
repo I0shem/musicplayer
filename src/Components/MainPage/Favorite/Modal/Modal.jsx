@@ -19,7 +19,7 @@ const Modal = ({ setIsOpen }) => {
       },
     },
   });
-  const chosenFavorites = [];
+
   let newFavoriteBandImageURL = createRef();
   const dispatch = useDispatch();
 
@@ -149,20 +149,20 @@ const Modal = ({ setIsOpen }) => {
               </div>
             );
           })}
-          <div className={s.PaginationBox}>
-            <ThemeProvider theme={theme}>
-              <Pagination
-                count={pagesCount}
-                page={page}
-                showFirstButton
-                showLastButton
-                color="primary"
-                sx={{ button: { color: "#ffffff" } }}
-                onChange={handleChange}
-                className={s.Pagination}
-              />
-            </ThemeProvider>
-          </div>
+        </div>
+        <div className={s.PaginationBox}>
+          <ThemeProvider theme={theme}>
+            <Pagination
+              count={pagesCount}
+              page={page}
+              showFirstButton
+              showLastButton
+              color="primary"
+              sx={{ button: { color: "#ffffff" } }}
+              onChange={handleChange}
+              className={s.Pagination}
+            />
+          </ThemeProvider>
         </div>
         <div className={s.Btns}>
           <button className={s.Btn} onClick={() => setIsOpen(false)}>
