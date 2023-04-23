@@ -35,12 +35,15 @@
   object-fit: fill;
 }
 
-.Band:hover,
-.NewFavorite:hover {
-  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+.Band:hover {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
   cursor: pointer;
 }
-
+.NewFavorite:hover,
+.AddNewImageOverlay:hover {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+  cursor: pointer;
+}
 .NewFavorite {
   margin-left: 2.5vw;
   margin-right: 0.5vw;
@@ -53,23 +56,19 @@
   outline-offset: -3px;
   position: relative;
 }
-.NewFavorite .AddNewImage {
-  object-fit: scale-down;
-  transform: scale(0.3);
-  outline: none;
-  border-radius: none;
-  outline-offset: none;
-}
 
-.AddNewImage {
-  margin-left: 1vw;
+.AddNewBtn {
+  margin-left: 4.4vw;
+  margin-top: 6.5vh;
+  color: white;
 }
 
 .NewFavorite p {
-  margin-left: 2vw;
-  margin-top: -25.6vh;
+  position: absolute;
+  margin-left: 9.5vw;
+  margin-top: 0vh;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 0.8em;
   width: 4vw;
   text-shadow: 1px 1px 3vw black;
   color: inherit;
@@ -85,7 +84,7 @@
   height: 30px;
   width: 30px;
   margin-top: 20px;
-  z-index: 99;
+  z-index: 9;
 }
 .ImageOverlay {
   background: rgba(0, 0, 0, 0.5);
@@ -96,6 +95,16 @@
   width: 100%;
   border-radius: 0.9vw;
 }
+
+.AddNewImageOverlay {
+  background: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 0vh;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.9vw;
+}
 .Image img {
   height: 12vw;
   outline: 1px solid white;
@@ -103,4 +112,21 @@
   outline-offset: -2px;
   display: block;
   width: 100%;
+}
+.PaginationBox {
+  position: fixed;
+  left: 60%;
+  transform: translateX(-50%);
+  bottom: 15px;
+}
+.Pagination {
+  background-color: transparent;
+  border-radius: 40px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  padding-top: 2px;
+  padding-right: 4px;
+}
+.Pagination-textPrimary {
+  color: rgb(252, 252, 252);
 }

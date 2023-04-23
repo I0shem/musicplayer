@@ -142,7 +142,18 @@ h6 {
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
 }
-
+.LikeButton {
+  visibility: visible;
+  position: absolute;
+  top: 80%;
+  left: 40%;
+  z-index: 1;
+}
+.LikeButton:hover {
+  text-shadow: rgb(0, 0, 0) 3px 0 10px;
+  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
+  transform: scale(1.06);
+}
 .Text {
   padding-top: 2.5vh;
   margin-left: 4vw;

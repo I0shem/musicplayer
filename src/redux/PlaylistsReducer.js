@@ -1,4 +1,8 @@
-import { CREATE_NEW_PLAYLIST, DELETE_PLAYLIST } from "./ActionTypes";
+import {
+  CREATE_NEW_PLAYLIST,
+  DELETE_PLAYLIST,
+  ADD_LIKED_SONG,
+} from "./ActionTypes";
 import HeartImg from "../Components/Images/heart.png";
 import RecordsImg from "../Components/Images/records.jpg";
 import CassetsImg from "../Components/Images/cassets.jpg";
@@ -160,6 +164,21 @@ export const PlaylistsReducer = (state = initialState, action) => {
         playlists: state.playlists.filter(
           (playlist) => playlist !== action.delLibrary
         ),
+      };
+    }
+    case ADD_LIKED_SONG: {
+      console.log(action.LikedSong);
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist, index) => {
+          if (index === 0) {
+            return {
+              ...playlist,
+              tracks: [...playlist.tracks, action.LikedSong],
+            };
+          }
+          return playlist;
+        }),
       };
     }
     default: {

@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import styles from "./Favorite.module.css";
-import newimage from "../../Images/add-new.jpg";
+import s from "./Favorite.module.css";
+import { purple } from "@mui/material/colors";
 import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";
 import Modal from "./Modal/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { DeleteFavorite } from "../../../redux/Actions";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { IconContext } from "react-icons";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Pagination from "@mui/material/Pagination";
+
 const FavoriteProps = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,21 +20,16 @@ const FavoriteProps = (props) => {
   };
   return (
     <>
-      <li className={styles.Band}>
-        <div className={styles.Image} onClick={toArtistTracks}>
-          <img
-            id="object-position"
-            className={styles.Icon}
-            alt=""
-            src={props.Img}
-          />
-          <div className={styles.ImageOverlay}>
+      <li className={s.Band}>
+        <div className={s.Image} onClick={toArtistTracks}>
+          <img id="object-position" className={s.Icon} alt="" src={props.Img} />
+          <div className={s.ImageOverlay}>
             <p>{props.name}</p>
           </div>
         </div>
         <div onClick={() => dispatch(DeleteFavorite(props.fav))}>
-          <Link href="" className={styles.link}>
-            <Sprite fill="white" stroke="white" className={styles.Remove} />
+          <Link href="" className={s.link}>
+            <Sprite fill="white" stroke="white" className={s.Remove} />
           </Link>
         </div>
       </li>
@@ -37,25 +37,63 @@ const FavoriteProps = (props) => {
   );
 };
 
-const Favorite = (props) => {
+const Favorite = () => {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: purple[800],
+      },
+    },
+  });
+
   const list = useSelector((state) => state.Favorites).initialFavorites;
   const [isOpen, setIsOpen] = useState(false);
 
-  let Favbands = list.map((fav) => (
+  const [page, setPage] = useState(1);
+  const [countElement] = useState(4);
+  const lastFavIndex = page * countElement;
+  const firstFavIndex = lastFavIndex - countElement;
+  const currentFav = list.slice(firstFavIndex, lastFavIndex);
+  const pagesCount = Math.ceil(list.length / countElement);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
+  let Favbands = currentFav.map((fav) => (
     <FavoriteProps key={fav.id} Img={fav.ImgURL} name={fav.name} fav={fav} />
   ));
   return (
-    <div className={styles.Favorite}>
-      <ul className={styles.Bands}>
+    <div className={s.Favorite}>
+      <ul className={s.Bands}>
         {Favbands}
-        <div className={styles.NewFavorite} onClick={() => setIsOpen(true)}>
+        <div className={s.NewFavorite} onClick={() => setIsOpen(true)}>
           <li>
-            <img className={styles.AddNewImage} alt="" src={newimage} />
+            <IconContext.Provider
+              value={{ size: "100px", className: s.AddNewBtn }}
+            >
+              <AiOutlinePlusCircle />
+            </IconContext.Provider>
             <p>Add New</p>
+            <div className={s.AddNewImageOverlay}></div>
           </li>
         </div>
       </ul>
       {isOpen && <Modal setIsOpen={setIsOpen} />}
+      <div className={s.PaginationBox}>
+        <ThemeProvider theme={theme}>
+          <Pagination
+            count={pagesCount}
+            page={page}
+            showFirstButton
+            showLastButton
+            color="primary"
+            sx={{ button: { color: "#ffffff" } }}
+            onChange={handleChange}
+            className={s.Pagination}
+          />
+        </ThemeProvider>
+      </div>
     </div>
   );
 };

@@ -15,12 +15,7 @@ body {
 
 #light {
   height: 100vh;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(252, 145, 145) 0%,
-    rgb(223, 138, 223) 30%,
-    rgb(133, 50, 133) 100%
-  );
+  background-image: linear-gradient(to bottom, #004ff9 20%, #fff94c 100%);
   height: 100vh;
   width: 100%;
   color: white;
@@ -67,4 +62,304 @@ label {
 
 #light .ThemeButton {
   background-color: #ffffff8f;
+}
+
+.wrapper {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+}
+
+#hide-checkbox {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.toggle {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background: #211042;
+  border-radius: 50px;
+  transition: 500ms;
+  overflow: hidden;
+}
+
+.toggle-button {
+  position: absolute;
+  display: inline-block;
+  top: 3px;
+  left: 3px;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #faeaf1;
+  overflow: hidden;
+  box-shadow: 0 0 35px 4px rgba(255, 255, 255);
+  transition: all 500ms ease-out;
+}
+
+.crater {
+  position: absolute;
+  display: inline-block;
+  background: #faeaf1;
+  border-radius: 50%;
+  transition: 500ms;
+}
+
+.crater-1 {
+  background: #fffff9;
+  width: 43px;
+  height: 43px;
+  left: 5px;
+  bottom: 5px;
+}
+
+.crater-2 {
+  width: 10px;
+  height: 10px;
+  top: -3px;
+  left: 22px;
+}
+
+.crater-3 {
+  width: 8px;
+  height: 8px;
+  top: 10px;
+  right: -2px;
+}
+
+.crater-4 {
+  width: 5px;
+  height: 5px;
+  top: 12px;
+  left: 15px;
+}
+
+.crater-5 {
+  width: 6px;
+  height: 6px;
+  top: 20px;
+  left: 24px;
+}
+
+.crater-6 {
+  width: 5px;
+  height: 5px;
+  top: 24px;
+  left: 10px;
+}
+
+.crater-7 {
+  width: 6px;
+  height: 6px;
+  bottom: 2px;
+  left: 18px;
+}
+
+.star {
+  position: absolute;
+  display: inline-block;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 1px 0 2px 2px rgba(255, 255, 255);
+}
+
+.star-1 {
+  width: 3px;
+  height: 3px;
+  right: 45px;
+  bottom: 20px;
+}
+
+.star-2 {
+  width: 4px;
+  height: 4px;
+  right: 35px;
+  top: 5px;
+}
+
+.star-3 {
+  width: 2px;
+  height: 2px;
+  right: 30px;
+  bottom: 7px;
+}
+
+.star-4 {
+  width: 2px;
+  height: 2px;
+  right: 20px;
+  bottom: 25px;
+}
+
+.star-5 {
+  width: 1px;
+  height: 1px;
+  right: 5px;
+  bottom: 18px;
+}
+
+.star-6,
+.star-7,
+.star-8 {
+  width: 5px;
+  height: 1px;
+  border-radius: 1px;
+  transform: rotate(-45deg);
+  box-shadow: 2px 0px 1px 1px #fff;
+  animation-name: travel;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+.star-6 {
+  right: 15px;
+  bottom: 15px;
+  animation-delay: -2s;
+}
+
+.star-7 {
+  right: 25px;
+  bottom: 30px;
+}
+
+.star-8 {
+  right: 45px;
+  top: 5px;
+  animation-delay: -4s;
+}
+
+@keyframes travel {
+  0% {
+    transform: rotate(-25deg) translateX(35px);
+  }
+
+  50% {
+    transform: rotate(-25deg) translateX(-10px);
+    box-shadow: 5px 0px 6px 1px #fff;
+  }
+
+  100% {
+    transform: rotate(-25deg) translateX(-15px);
+    width: 2px;
+    height: 2px;
+    opacity: 0;
+    box-shadow: none;
+  }
+}
+
+#hide-checkbox:checked + .toggle {
+  background: #24d7f7;
+}
+
+#hide-checkbox:checked + .toggle .toggle-button {
+  background: #f7ffff;
+  transform: translateX(51px);
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255);
+}
+
+#hide-checkbox:checked + .toggle .toggle-button .crater {
+  transform: rotate(-45deg) translateX(35px);
+}
+
+#hide-checkbox:checked + .toggle .star {
+  animation: move 2s infinite;
+  transform: none;
+  box-shadow: none;
+}
+
+#hide-checkbox:checked + .toggle .star-1 {
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
+  background: #fff;
+  left: 10px;
+  top: 12px;
+  box-shadow: none;
+}
+
+#hide-checkbox:checked + .toggle .star-2 {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  left: 13px;
+  top: 11px;
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-3 {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  left: 18px;
+  top: 9px;
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-4 {
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  left: 23px;
+  top: 10px;
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-5 {
+  width: 30px;
+  height: 7px;
+  border-radius: 7px;
+  background: #fff;
+  left: 15px;
+  bottom: 10px;
+  box-shadow: none;
+}
+
+#hide-checkbox:checked + .toggle .star-6 {
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  border-radius: 50%;
+  left: 19px;
+  bottom: 10px;
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-7 {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  left: 26px;
+  bottom: 10px;
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-8 {
+  width: 11px;
+  height: 11px;
+  background: #fff;
+  border-radius: 50%;
+  left: 35px;
+  top: 29px;
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+@keyframes move {
+  0% {
+    transform: none;
+  }
+
+  25% {
+    transform: translateX(2px);
+  }
+
+  100% {
+    transform: translateX(-2px);
+  }
 }

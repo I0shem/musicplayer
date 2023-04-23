@@ -3,13 +3,14 @@ import axios from "axios";
 import s from "./SearchPage.module.css";
 import clr from "../Icons/cross.svg";
 import Pagination from "@mui/material/Pagination";
-import { useDispatch } from "react-redux";
-import { PlaySong } from "./../../redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import { PlaySong, AddLikedSong } from "./../../redux/Actions";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { CiPlay1 } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
@@ -21,6 +22,10 @@ const SearchPage = () => {
       },
     },
   });
+
+  const LikedList = useSelector((state) => state.Playlist).playlists[0].tracks;
+
+  let urlsLikedList = LikedList.map((a) => a.previewURL);
 
   const [musicDB, setMusicDB] = useState([]);
   const [value, setValue] = useState("");
@@ -52,7 +57,7 @@ const SearchPage = () => {
     };
     const timer = setTimeout(() => {
       getMusicDB(options);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [value, getMusicDB]);
@@ -90,6 +95,41 @@ const SearchPage = () => {
     visualAudio.style.display = "none";
   };
 
+  const HandleLike = (m) => {
+    const img =
+      "https://api.napster.com/imageserver/v2/albums/" +
+      m.albumId +
+      "/images/500x500.jpg";
+    let LikedSong = {
+      id: m.id,
+      name: m.name,
+      artistName: m.artistName,
+      albumName: m.albumName,
+      previewURL: m.previewURL,
+      imageSrc: img,
+    };
+    dispatch(AddLikedSong(LikedSong));
+  };
+
+  const CheckLiked = (m) => {
+    if (urlsLikedList.includes(m.previewURL)) {
+      return (
+        <div className={s.LikeButton}>
+          <IconContext.Provider value={{ size: "50px" }}>
+            <AiFillHeart />
+          </IconContext.Provider>
+        </div>
+      );
+    } else {
+      return (
+        <div className={s.LikeButton}>
+          <IconContext.Provider value={{ size: "50px" }}>
+            <AiOutlineHeart onClick={() => HandleLike(m)} />
+          </IconContext.Provider>
+        </div>
+      );
+    }
+  };
   const navigate = useNavigate();
   const returnTo = () => {
     navigate(-1);
@@ -108,7 +148,7 @@ const SearchPage = () => {
         <h3 className={s.Text}>Search</h3>
         <div>
           <div className={s.SearchBar}>
-            <form action="">
+            <form action="" onSubmit={(e) => e.preventDefault()}>
               <input
                 className={s.Search}
                 type="text"
@@ -131,6 +171,7 @@ const SearchPage = () => {
                       <CiPlay1 onClick={() => HandlePlayClick(m)} />
                     </IconContext.Provider>
                   </div>
+                  {CheckLiked(m)}
                   <img
                     className={s.AlbumImage}
                     src={

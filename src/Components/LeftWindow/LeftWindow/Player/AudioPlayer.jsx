@@ -3,7 +3,6 @@ import s from "./Player.module.css";
 import { useAudioPlayer } from "react-use-audio-player";
 import { CiPlay1, CiPause1 } from "react-icons/ci";
 import { IconContext } from "react-icons";
-
 import {
   BiSkipNext,
   BiSkipPrevious,
@@ -11,7 +10,14 @@ import {
   BiVolumeMute,
 } from "react-icons/bi";
 
-const AudioPlayer = ({ list, index, setIndex, listLength }) => {
+const AudioPlayer = ({
+  list,
+  index,
+  setIndex,
+  listLength,
+  autoPlay,
+  setAutoPlay,
+}) => {
   const [vol, setVol] = useState(0.2);
   const btnMute = () => {
     setVol(0);
@@ -24,36 +30,35 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       setVol(vol + 0.05);
     }
   };
+
   const { togglePlayPause, playing, volume, load } = useAudioPlayer({
     src: list[index],
     format: "mp3",
-    autoplay: true,
+    autoplay: autoPlay,
     volume: vol,
     onend: () => SkipForward(),
   });
-
-  const visual = () => {
-    return playing
-      ? (visualAudio.style.display = "none")
-      : (visualAudio.style.display = "block");
-  };
+  useEffect(() => {
+    var visualAudio = document.getElementById("Visualizer");
+    if (playing) {
+      visualAudio.style.display = "block";
+    } else {
+      visualAudio.style.display = "none";
+    }
+  }, [playing]);
 
   const SkipForward = () => {
     if (listLength === index) {
       setIndex(0);
-      load({
-        src: list[index],
-        autoplay: true,
-      });
     } else {
       const i = index + 1;
       setIndex(i);
-      load({
-        src: list[index],
-        autoplay: true,
-      });
-      visual();
     }
+    load({
+      src: list[index],
+      autoplay: true,
+    });
+    setAutoPlay(true);
   };
   const SkipPrevious = () => {
     if (0 === index) {
@@ -66,7 +71,7 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       src: list[index],
       autoplay: true,
     });
-    visual();
+    setAutoPlay(true);
   };
 
   useEffect(() => {
@@ -79,9 +84,7 @@ const AudioPlayer = ({ list, index, setIndex, listLength }) => {
       autoplay: true,
     });
     togglePlayPause();
-    visual();
   };
-  var visualAudio = document.getElementById("Visualizer");
 
   return (
     <div>

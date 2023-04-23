@@ -43,6 +43,7 @@ const Libraries = () => {
   const viewLibrary = (lib) => {
     navigate("/m/LibraryPage/Library", { state: { lib } });
   };
+  console.log(list);
   return (
     <div>
       <IconContext.Provider
@@ -55,8 +56,8 @@ const Libraries = () => {
       </IconContext.Provider>
       <h3 className={s.Text}>Your Library</h3>
       <div className={s.Libraries}>
-        {list.map((lib, i) => (
-          <li key={i} className={s.Library}>
+        {list.map((lib) => (
+          <li key={lib.name} className={s.Library}>
             <div className={s.Image} onClick={() => viewLibrary(lib)}>
               <img id={lib.name} className={s.Icon} alt="" src={lib.imageURL} />
               <div className={s.ImageOverlay}>

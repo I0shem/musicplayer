@@ -15,7 +15,7 @@ const MainPage = (props) => {
       <div className={styles.MainPage}>
         <div className={styles.MainWindow}>
           <div className={styles.rectangle}></div>
-          <div className={styles.Text}>Good Morning!</div>
+          <div className={styles.Text}>Music Styles</div>
           <MusicStyle Data1={props.Data1} />
           <div className={styles.Text}>Featured Playlists</div>
           <Playlists
@@ -23,7 +23,7 @@ const MainPage = (props) => {
             createNewRecommended={props.createNewRecommended}
             Data2={props.Data2}
           />
-          <div className={styles.Text}>Favorite Bands</div>
+          <div className={styles.Text}>Favorite Artists</div>
           <Favorite
             dispatch={props.dispatch}
             createNewFavorite={props.createNewFavorite}

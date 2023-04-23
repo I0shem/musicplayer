@@ -4,12 +4,20 @@ import {
   DELETE_PLAYLIST,
   ADD_FAVORITE,
   DELETE_FAVORITE,
+  ADD_LIKED_SONG,
 } from "./ActionTypes";
 
 const PlaySong = (NewSong) => {
   return {
     type: ADD_NEW_SONG,
     NewSong: NewSong,
+  };
+};
+
+const AddLikedSong = (LikedSong) => {
+  return {
+    type: ADD_LIKED_SONG,
+    LikedSong,
   };
 };
 
@@ -46,4 +54,5 @@ export {
   DeletePlaylist,
   AddFavorite,
   DeleteFavorite,
+  AddLikedSong,
 };

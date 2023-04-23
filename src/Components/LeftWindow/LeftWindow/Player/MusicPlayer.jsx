@@ -15,8 +15,10 @@ const MusicPlayer = () => {
   const audioList = list.map((l) => {
     return l.previewURL;
   });
+  const [autoPlay, setAutoPlay] = useState(false);
   useEffect(() => {
     setIndex(list.length - 1);
+    setAutoPlay(true);
   }, [listLength]);
 
   return (
@@ -47,6 +49,8 @@ const MusicPlayer = () => {
             index={index}
             setIndex={setIndex}
             listLength={listLength}
+            autoPlay={autoPlay}
+            setAutoPlay={setAutoPlay}
           />
         </div>
       </div>

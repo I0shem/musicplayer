@@ -6,12 +6,6 @@
   margin-top: -10px;
 }
 
-.Title {
-  width: 70%;
-  display: inline-block;
-  font-size: 25px;
-}
-
 .component {
   background-color: transparent;
   width: 90%;
@@ -55,12 +49,12 @@
 .subTitle {
   font-size: 15px;
   margin-top: -1em;
-  color: #313131;
+  color: #6d6d6d;
 }
 .subTitleAlbum {
   font-size: 15px;
   margin-top: 1em;
-  color: #313131;
+  color: #6d6d6d;
 }
 
 .time {
@@ -104,6 +98,7 @@
 .scrollingText p {
   display: inline-block;
   font-size: 20px;
+  color: white;
 }
 
 @keyframes marquee {

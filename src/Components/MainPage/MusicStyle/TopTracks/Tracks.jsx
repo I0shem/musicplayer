@@ -2,8 +2,8 @@ import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import s from "./Tracks.module.css";
 import Pagination from "@mui/material/Pagination";
-import { useDispatch } from "react-redux";
-import { PlaySong } from "./../../../../redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import { PlaySong, AddLikedSong } from "./../../../../redux/Actions";
 import { useLocation } from "react-router-dom";
 import { CiPlay1 } from "react-icons/ci";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -11,6 +11,7 @@ import { IconContext } from "react-icons";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const Tracks = () => {
@@ -37,7 +38,7 @@ const Tracks = () => {
   }, []);
   useEffect(() => {
     getMusicDB();
-  }, []);
+  }, [location.state.ms.id]);
 
   const [genreTracks, setMusicDB] = useState([]);
 
@@ -74,6 +75,44 @@ const Tracks = () => {
     visualAudio.style.display = "none";
   };
 
+  const HandleLike = (m) => {
+    const img =
+      "https://api.napster.com/imageserver/v2/albums/" +
+      m.albumId +
+      "/images/500x500.jpg";
+    let LikedSong = {
+      id: m.id,
+      name: m.name,
+      artistName: m.artistName,
+      albumName: m.albumName,
+      previewURL: m.previewURL,
+      imageSrc: img,
+    };
+    dispatch(AddLikedSong(LikedSong));
+  };
+
+  const LikedList = useSelector((state) => state.Playlist).playlists[0].tracks;
+
+  let urlsLikedList = LikedList.map((a) => a.previewURL);
+  const CheckLiked = (m) => {
+    if (urlsLikedList.includes(m.previewURL)) {
+      return (
+        <div className={s.LikeButton}>
+          <IconContext.Provider value={{ size: "50px", className: s.playBtn }}>
+            <AiFillHeart />
+          </IconContext.Provider>
+        </div>
+      );
+    } else {
+      return (
+        <div className={s.LikeButton}>
+          <IconContext.Provider value={{ size: "50px", className: s.playBtn }}>
+            <AiOutlineHeart onClick={() => HandleLike(m)} />
+          </IconContext.Provider>
+        </div>
+      );
+    }
+  };
   const navigate = useNavigate();
   const returnTo = () => {
     navigate(-1);
@@ -102,6 +141,7 @@ const Tracks = () => {
                       <CiPlay1 onClick={() => HandlePlayClick(m)} />
                     </IconContext.Provider>
                   </div>
+                  {CheckLiked(m)}
                   <img
                     className={s.AlbumImage}
                     src={
