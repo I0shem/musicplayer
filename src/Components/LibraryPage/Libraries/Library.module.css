@@ -45,7 +45,9 @@
   width: 100%;
   border-radius: 0.9vw;
 }
-
+.ImageOverlay:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
 .MusicData {
   margin-top: 10vh;
   margin-left: 3.9vw;
@@ -77,9 +79,8 @@ span {
 
 h5,
 h6 {
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 0;
-  color: inherit;
 }
 
 .PaginationBox {
@@ -90,13 +91,13 @@ h6 {
 }
 
 .Pagination-textPrimary {
-  color: rgb(129, 127, 127);
+  color: inherit;
 }
 .PlayButton {
   visibility: visible;
   position: absolute;
-  top: 35%;
-  left: 35%;
+  bottom: 1%;
+  right: 5%;
   z-index: 1;
 }
 
@@ -104,6 +105,7 @@ h6 {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
+  cursor: pointer;
 }
 
 .TrackBox:hover,

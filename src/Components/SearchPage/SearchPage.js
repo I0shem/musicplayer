@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { PlaySong, AddLikedSong } from "./../../redux/Actions";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
-import { CiPlay1 } from "react-icons/ci";
+import { IoPlayOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { BiAddToQueue } from "react-icons/bi";
 const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const SearchPage = () => {
@@ -166,12 +167,19 @@ const SearchPage = () => {
                 <div key={m.id} className={s.TrackBox}>
                   <div className={s.PlayButton}>
                     <IconContext.Provider
-                      value={{ size: "100px", className: s.playBtn }}
+                      value={{ size: "50px", className: s.playBtn }}
                     >
-                      <CiPlay1 onClick={() => HandlePlayClick(m)} />
+                      <IoPlayOutline onClick={() => HandlePlayClick(m)} />
                     </IconContext.Provider>
                   </div>
                   {CheckLiked(m)}
+                  <div className={s.AddButton}>
+                    <IconContext.Provider
+                      value={{ size: "50px", className: s.playBtn }}
+                    >
+                      <BiAddToQueue onClick="" />
+                    </IconContext.Provider>
+                  </div>
                   <img
                     className={s.AlbumImage}
                     src={

@@ -104,7 +104,7 @@ span {
 
 h5,
 h6 {
-  margin-top: 0;
+  margin-top: 10зч;
   margin-bottom: 0;
 }
 
@@ -133,15 +133,19 @@ h6 {
 .PlayButton {
   visibility: visible;
   position: absolute;
-  top: 35%;
-  left: 35%;
+  bottom: 1%;
+  right: 5%;
   z-index: 1;
 }
-.PlayButton:hover {
-  text-shadow: rgb(0, 0, 0) 3px 0 10px;
-  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
-  transform: scale(1.06);
+
+.AddButton {
+  visibility: visible;
+  position: absolute;
+  bottom: 1%;
+  left: 5%;
+  z-index: 1;
 }
+
 .LikeButton {
   visibility: visible;
   position: absolute;
@@ -149,10 +153,13 @@ h6 {
   left: 40%;
   z-index: 1;
 }
-.LikeButton:hover {
+.LikeButton:hover,
+.AddButton:hover,
+.PlayButton:hover {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
+  cursor: pointer;
 }
 .Text {
   padding-top: 2.5vh;

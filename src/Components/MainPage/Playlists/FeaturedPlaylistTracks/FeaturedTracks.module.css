@@ -59,7 +59,9 @@
   width: 100%;
   border-radius: 0.9vw;
 }
-
+.ImageOverlay:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
 .MusicData {
   margin-top: 10vh;
   margin-left: 3.9vw;
@@ -90,7 +92,7 @@ span {
 
 h5,
 h6 {
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 0;
 }
 
@@ -107,15 +109,17 @@ h6 {
 .PlayButton {
   visibility: visible;
   position: absolute;
-  top: 35%;
-  left: 35%;
+  bottom: 1%;
+  right: 5%;
   z-index: 1;
 }
 
-.PlayButton:hover {
-  text-shadow: rgb(0, 0, 0) 3px 0 10px;
-  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
-  transform: scale(1.06);
+.AddButton {
+  visibility: visible;
+  position: absolute;
+  bottom: 1%;
+  left: 5%;
+  z-index: 1;
 }
 
 .TrackBox:hover,
@@ -132,7 +136,8 @@ h6 {
 h5,
 h6,
 p {
-  color: rgb(160, 160, 160);
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.1));
 }
 .Text {
   padding-top: 2.5vh;
@@ -158,8 +163,12 @@ p {
   left: 40%;
   z-index: 1;
 }
-.LikeButton:hover {
+
+.LikeButton:hover,
+.AddButton:hover,
+.PlayButton:hover {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
+  cursor: pointer;
 }

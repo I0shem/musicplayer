@@ -3,16 +3,6 @@ import { ADD_NEW_SONG } from "./ActionTypes";
 const State = {
   initialPlayerPlaylist: [
     {
-      id: "31c2730e64",
-      name: "Password Infinity",
-      artistName: "Evgeny_Bardyuzha",
-      albumName: "Infinity",
-      previewURL:
-        "https://cdn.pixabay.com/audio/2022/10/18/audio_31c2730e64.mp3",
-      imageSrc:
-        "https://img.freepik.com/free-photo/front-view-password-with-binary-code_23-2148578086.jpg?w=1380&t=st=1680288649~exp=1680289249~hmac=1b39faf37026f1c0f92dd0a829ab07b025dbdfb995b1e0859e12a9ad0f3e8cb7",
-    },
-    {
       id: "5d7788ef2d",
       name: "Modern Vlog",
       artistName: "penguinmusic",

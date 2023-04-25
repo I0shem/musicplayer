@@ -4,7 +4,7 @@ import Pagination from "@mui/material/Pagination";
 import { useDispatch } from "react-redux";
 import { PlaySong } from "./../../../redux/Actions";
 import { useLocation } from "react-router-dom";
-import { CiPlay1 } from "react-icons/ci";
+import { IoPlayOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -72,9 +72,9 @@ const Library = () => {
                 <div key={m.id} className={s.TrackBox}>
                   <div className={s.PlayButton}>
                     <IconContext.Provider
-                      value={{ size: "100px", className: s.playBtn }}
+                      value={{ size: "50px", className: s.playBtn }}
                     >
-                      <CiPlay1 onClick={() => HandlePlayClick(m)} />
+                      <IoPlayOutline onClick={() => HandlePlayClick(m)} />
                     </IconContext.Provider>
                   </div>
                   <img className={s.AlbumImage} src={m.imageSrc} alt="" />
