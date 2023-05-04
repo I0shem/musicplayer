@@ -38,6 +38,7 @@ const AudioPlayer = ({
     volume: vol,
     onend: () => SkipForward(),
   });
+
   useEffect(() => {
     var visualAudio = document.getElementById("Visualizer");
     if (playing) {

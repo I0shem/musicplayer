@@ -3,7 +3,11 @@ import axios from "axios";
 import s from "./ArtistTracks.module.css";
 import Pagination from "@mui/material/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { PlaySong, AddLikedSong } from "../../../../redux/Actions";
+import {
+  PlaySong,
+  AddLikedSong,
+  DeleteLikedSong,
+} from "../../../../redux/Actions";
 import { useLocation } from "react-router-dom";
 import { IoPlayOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -13,6 +17,7 @@ import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
+import AddToList from "../../../ModalAddToList/AddToList";
 const KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const ArtistTracks = () => {
@@ -95,13 +100,15 @@ const ArtistTracks = () => {
     };
     dispatch(AddLikedSong(LikedSong));
   };
-
+  const HandleDislike = (m) => {
+    dispatch(DeleteLikedSong(m.id));
+  };
   const CheckLiked = (m) => {
     if (urlsLikedList.includes(m.previewURL)) {
       return (
         <div className={s.LikeButton}>
           <IconContext.Provider value={{ size: "50px", className: s.playBtn }}>
-            <AiFillHeart />
+            <AiFillHeart onClick={() => HandleDislike(m)} />
           </IconContext.Provider>
         </div>
       );
@@ -115,7 +122,12 @@ const ArtistTracks = () => {
       );
     }
   };
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [track, setTrack] = useState();
+  const addTrackToList = (m) => {
+    setTrack(m);
+    setIsOpen(true);
+  };
   return (
     <>
       <div className={s.RightWindow}>
@@ -130,7 +142,7 @@ const ArtistTracks = () => {
         <h3 className={s.Text}>{location.state.fav.name} - Top tracks</h3>
         <div>
           <div className={s.MusicData}>
-            {currentMusic.map((m) => {
+            {currentMusic.map((m, index) => {
               return (
                 <div key={m.id} className={s.TrackBox}>
                   <div className={s.PlayButton}>
@@ -145,7 +157,7 @@ const ArtistTracks = () => {
                     <IconContext.Provider
                       value={{ size: "50px", className: s.playBtn }}
                     >
-                      <BiAddToQueue onClick="" />
+                      <BiAddToQueue onClick={() => addTrackToList(m)} />
                     </IconContext.Provider>
                   </div>
                   <img
@@ -181,7 +193,12 @@ const ArtistTracks = () => {
             </div>
           </div>
         </div>
-        <div className={s.rectangle}></div>
+        <div className={s.rectangle}></div>{" "}
+        {isOpen && (
+          <>
+            <AddToList setIsOpen={setIsOpen} song={track} />
+          </>
+        )}
       </div>
     </>
   );

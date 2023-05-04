@@ -5,6 +5,8 @@ import {
   ADD_FAVORITE,
   DELETE_FAVORITE,
   ADD_LIKED_SONG,
+  ADD_TO_LIST,
+  DELETE_LIKED_SONG,
 } from "./ActionTypes";
 
 const PlaySong = (NewSong) => {
@@ -18,6 +20,20 @@ const AddLikedSong = (LikedSong) => {
   return {
     type: ADD_LIKED_SONG,
     LikedSong,
+  };
+};
+const DeleteLikedSong = (LikedSongID) => {
+  return {
+    type: DELETE_LIKED_SONG,
+    LikedSongID,
+  };
+};
+
+const AddToPlaylist = (newSong, index) => {
+  return {
+    type: ADD_TO_LIST,
+    newSong: newSong,
+    index: index,
   };
 };
 
@@ -55,4 +71,6 @@ export {
   AddFavorite,
   DeleteFavorite,
   AddLikedSong,
+  AddToPlaylist,
+  DeleteLikedSong,
 };
