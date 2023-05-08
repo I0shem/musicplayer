@@ -1,9 +1,9 @@
 .Controls {
   display: inline-flex;
+  position: relative;
   vertical-align: top;
   align-items: center;
-  margin-left: -15px;
-  margin-top: -10px;
+  height: 6.25vw;
 }
 
 .component {
@@ -16,8 +16,8 @@
 .musicCover {
   border: 1px white solid;
   border-radius: 10%;
-  height: 300px;
-  width: 300px;
+  height: 15.625vw;
+  width: 15.625vw;
   object-fit: cover;
 }
 
@@ -29,12 +29,9 @@
   border: none;
   align-items: center;
   justify-content: center;
-  margin-left: 15px;
+  margin-left: 0.78125vw;
 }
-.skipButton,
-.skipPreviousButton {
-  margin-top: 2%;
-}
+
 .playButton:hover,
 .pauseButton:hover,
 .skipButton:hover,
@@ -47,12 +44,12 @@
 }
 
 .subTitle {
-  font-size: 15px;
+  font-size: 0.78125vw;
   margin-top: -1em;
   color: #6d6d6d;
 }
 .subTitleAlbum {
-  font-size: 15px;
+  font-size: 0.78125vw;
   margin-top: 1em;
   color: #6d6d6d;
 }
@@ -63,9 +60,10 @@
   display: flex;
   justify-content: space-between;
   color: #828282;
-  font-size: smaller;
 }
-
+.time p {
+  font-size: 0.78125vw;
+}
 .timeline {
   padding: 0;
   width: 80%;
@@ -74,12 +72,14 @@
 }
 
 .audioline {
-  margin-top: -15px;
+  margin-top: -0.78125vw;
+  margin-left: 0.78125vw;
+  margin-right: 0.78125vw;
 }
 .audioline input[type="range"] {
   padding: 0;
-  width: 70%;
-  height: 7px;
+  width: 8vw;
+  height: 0.364583vw;
   border-radius: 22px;
 }
 
@@ -97,7 +97,7 @@
 
 .scrollingText p {
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.0416vw;
   color: white;
 }
 
@@ -112,32 +112,32 @@
 
 .AudioVisualizerBox {
   position: absolute;
-  top: 350px;
-  width: 300px;
-  margin-left: 30px;
+  top: 18.2291vw;
+  width: 20vw;
+  margin-left: 1.5625vw;
 }
 .audiolineBox {
   display: flex;
+  bottom: 0.2vw;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
 }
 .AudioVisualizerBox {
   display: none;
-  position: absolute;
+  position: fixed;
   left: 1.7vw;
-  top: 50vh;
-  width: 270px;
-  height: 220px;
+  top: 24.498vw;
+  width: 14.0625vw;
+  height: 11.458vw;
   border-radius: 25%;
 }
 
 .icon {
-  position: relative;
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  width: 260px;
-  height: 100px;
+  width: 13.541vw;
+  height: 5.208vw;
 }
 @keyframes bounce {
   10% {
@@ -240,4 +240,26 @@
 }
 .icon span:nth-of-type(21) {
   animation-delay: 0.2s;
+}
+.Visualizer {
+  display: fixed;
+  height: 10vw;
+}
+.pauseBtn,
+.playBtn {
+  width: 5vw;
+  height: 5vw;
+  color: white;
+}
+.skipBtn,
+.prevBtn {
+  width: 3vw;
+  height: 3vw;
+  color: white;
+}
+.muteBtn,
+.volUpBtn {
+  width: 1.5vw;
+  height: 2.5vw;
+  color: white;
 }

@@ -1,8 +1,9 @@
 .MainWindow {
-  width: 80%;
+  width: 80vw;
   color: inherit;
   display: block;
-  margin-left: 20%;
+  margin-left: 20vw;
+  max-height: 100vh;
 }
 .Text {
   margin-left: 1vw;
@@ -34,8 +35,8 @@ ul li::before {
 
 .rectangle {
   position: fixed;
-  height: 40px;
-  width: 15px;
+  height: 2.083vw;
+  width: 0.781vw;
   background-color: rgb(255, 255, 255);
   margin-left: -20vw;
   margin-top: 6.2vh;

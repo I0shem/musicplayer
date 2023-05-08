@@ -14,7 +14,7 @@
   margin-left: 1vw;
   margin-top: 1.6vh;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.5625vw;
   width: 4vw;
   text-shadow: 1px 1px 3vw black;
   color: inherit;
@@ -22,12 +22,12 @@
 .Bands {
   display: inline-flex;
   flex-wrap: wrap;
-  margin-top: -0.2vw;
+  margin-top: -1.7vw;
   position: relative;
 }
 
 .Bands img {
-  height: 26vh;
+  height: 25vh;
   width: 12vw;
   outline: 1px solid white;
   border-radius: 0.9vw;
@@ -49,7 +49,7 @@
   margin-right: 0.5vw;
   position: relative;
   width: 12vw;
-  height: 24.5vh;
+  height: 25vh;
   margin-top: 1vh;
   outline: 1px solid white;
   border-radius: 0.9vw;
@@ -60,13 +60,16 @@
 .AddNewBtn {
   margin-left: 4.4vw;
   margin-top: 6.5vh;
+  height: 5.2083vw;
+  width: 5.2083vw;
   color: white;
 }
 
 .NewFavorite p {
   position: absolute;
-  margin-left: 9.5vw;
-  margin-top: 0vh;
+  right: 0;
+  bottom: 0;
+
   font-weight: bold;
   font-size: 0.8em;
   width: 4vw;
@@ -78,52 +81,55 @@
 .Remove {
   position: absolute;
   bottom: 10px;
-  left: 70%;
+  right: 0.5vw;
   fill: white;
   stroke: white;
-  height: 30px;
+  height: 1.5625vw;
   width: 30px;
   margin-top: 20px;
   z-index: 9;
+}
+.Band {
+  position: relative;
+  height: 25vh;
+  width: 12vw;
 }
 .ImageOverlay {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
-  left: 0;
-  height: 95%;
-  width: 100%;
+  height: 25vh;
+  width: 12vw;
   border-radius: 0.9vw;
 }
 
 .AddNewImageOverlay {
   background: rgba(0, 0, 0, 0.05);
   position: absolute;
-  top: 0vh;
+  top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 25vh;
+  width: 12vw;
   border-radius: 0.9vw;
 }
 .Image img {
-  height: 12vw;
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -2px;
   display: block;
-  width: 100%;
+  height: 25vh;
+  width: 12vw;
 }
 .PaginationBox {
   position: fixed;
   left: 60%;
   transform: translateX(-50%);
-  bottom: 15px;
+  bottom: 1vw;
 }
 .Pagination {
   background-color: transparent;
   border-radius: 40px;
   padding-left: 20px;
-  padding-bottom: 5px;
   padding-top: 2px;
   padding-right: 4px;
 }

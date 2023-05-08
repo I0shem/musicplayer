@@ -88,7 +88,7 @@ const AudioPlayer = ({
   };
 
   return (
-    <div>
+    <div className={s.Visualizer}>
       <div id="Visualizer" className={s.AudioVisualizerBox}>
         <div className={s.icon}>
           <span />
@@ -116,31 +116,31 @@ const AudioPlayer = ({
       </div>
       <div className={s.Controls}>
         <button className={s.skipPreviousButton}>
-          <IconContext.Provider value={{ size: "5em", color: "#ffffffcc" }}>
+          <IconContext.Provider value={{ className: s.prevBtn }}>
             <BiSkipPrevious onClick={SkipPrevious} />
           </IconContext.Provider>
         </button>
         {!playing ? (
           <button className={s.playButton} onClick={PlayPauseBtn}>
-            <IconContext.Provider value={{ size: "6em", color: "#ffffffcc" }}>
+            <IconContext.Provider value={{ className: s.playBtn }}>
               <CiPlay1 />
             </IconContext.Provider>
           </button>
         ) : (
           <button className={s.pauseButton} onClick={PlayPauseBtn}>
-            <IconContext.Provider value={{ size: "6em", color: "#ffffffcc" }}>
+            <IconContext.Provider value={{ className: s.pauseBtn }}>
               <CiPause1 />
             </IconContext.Provider>
           </button>
         )}
         <button className={s.skipButton}>
-          <IconContext.Provider value={{ size: "5em", color: "#ffffffcc" }}>
+          <IconContext.Provider value={{ className: s.skipBtn }}>
             <BiSkipNext onClick={SkipForward} />
           </IconContext.Provider>
         </button>
       </div>
       <div className={s.audiolineBox}>
-        <IconContext.Provider value={{ size: "0.8em", color: "#ffffffcc" }}>
+        <IconContext.Provider value={{ className: s.muteBtn }}>
           <BiVolumeMute onClick={btnMute} />
         </IconContext.Provider>
         <div className={s.audioline}>
@@ -153,7 +153,7 @@ const AudioPlayer = ({
             onChange={(e) => setVol(e.target.value)}
           />
         </div>
-        <IconContext.Provider value={{ size: "0.8em", color: "#ffffffcc" }}>
+        <IconContext.Provider value={{ className: s.volUpBtn }}>
           <BiVolumeFull onClick={btnVolUp} />
         </IconContext.Provider>
       </div>

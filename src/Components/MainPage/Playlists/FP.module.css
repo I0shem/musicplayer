@@ -22,19 +22,18 @@
 
 .FP p {
   position: absolute;
-  top: 5vh;
+  top: 7vh;
   text-align: center;
   font-weight: bold;
   font-size: 1.2vw;
-  width: 200px;
+  width: 12vw;
   text-shadow: 10px rgb(0, 0, 0, 1);
   vertical-align: middle;
   color: inherit;
-  margin-left: 20px;
 }
 
 .FPs img {
-  height: 200px;
+  height: 25vh;
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -2px;

@@ -69,9 +69,7 @@ const Favorite = () => {
         {Favbands}
         <div className={s.NewFavorite} onClick={() => setIsOpen(true)}>
           <li>
-            <IconContext.Provider
-              value={{ size: "100px", className: s.AddNewBtn }}
-            >
+            <IconContext.Provider value={{ className: s.AddNewBtn }}>
               <AiOutlinePlusCircle />
             </IconContext.Provider>
             <p>Add New</p>

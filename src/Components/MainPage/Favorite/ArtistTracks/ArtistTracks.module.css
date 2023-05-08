@@ -1,13 +1,15 @@
-.SearchPage {
+.ArtistPage {
   width: 100%;
-  min-height: 100vh;
+
+  height: 100%;
 }
 
 .RightWindow {
-  width: 80%;
+  width: 80vw;
   color: inherit;
   display: block;
   margin-left: 20vw;
+  height: 100vh;
 }
 
 .Text {
@@ -38,8 +40,8 @@
 }
 
 .AlbumImage {
-  width: 300px;
-  height: 300px;
+  width: 15.625vw;
+  height: 15.625vw;
   display: block;
   position: absolute;
   top: 0;
@@ -55,8 +57,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 15.625vw;
+  width: 15.625vw;
   border-radius: 0.9vw;
 }
 .ImageOverlay:hover {
@@ -76,36 +78,38 @@
   margin-bottom: 1vh;
   position: relative;
   display: flex;
-  width: 300px;
-  height: 300px;
+  width: 15.625vw;
+  height: 15.625vw;
   background-color: transparent;
   text-align: center;
   margin-right: 3.3vw;
 }
 
-p,
+.TrackBox p,
 span {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1rem;
   text-shadow: 10px rgb(0, 0, 0, 1);
 }
 
 h5,
 h6 {
-  margin-top: 10px;
+  text-shadow: 10px rgb(0, 0, 0, 1);
+  margin-top: 3px;
   margin-bottom: 0;
+  font-size: 1.1vw;
 }
-
+h6 {
+  color: rgb(179, 179, 179);
+}
 .PaginationBox {
   position: fixed;
   left: 60%;
   transform: translateX(-50%);
-  bottom: 20px;
+  bottom: 10px;
+  font-size: 1.1vw;
 }
 
-.Pagination-textPrimary {
-  color: rgb(129, 127, 127);
-}
 .PlayButton {
   visibility: visible;
   position: absolute;
@@ -135,7 +139,6 @@ h6 {
 h5,
 h6,
 p {
-  color: rgb(255, 255, 255);
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.1));
 }
 .Text {
@@ -169,4 +172,25 @@ p {
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
   cursor: pointer;
+}
+.addToListBtn {
+  width: 3vw;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  left: 5px;
+}
+.likeBtn {
+  width: 3vw;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  left: 40%;
+}
+.playBtn {
+  width: 3vw;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }

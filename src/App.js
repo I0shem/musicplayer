@@ -21,50 +21,52 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div title="Music Player" className={style.App}>
-        <div class="wrapper">
-          <input type="checkbox" id="hide-checkbox" onClick={changeTheme} />
-          <label for="hide-checkbox" class="toggle">
-            <span class="toggle-button">
-              <span class="crater crater-1"></span>
-              <span class="crater crater-2"></span>
-              <span class="crater crater-3"></span>
-              <span class="crater crater-4"></span>
-              <span class="crater crater-5"></span>
-              <span class="crater crater-6"></span>
-              <span class="crater crater-7"></span>
-            </span>
-            <span class="star star-1"></span>
-            <span class="star star-2"></span>
-            <span class="star star-3"></span>
-            <span class="star star-4"></span>
-            <span class="star star-5"></span>
-            <span class="star star-6"></span>
-            <span class="star star-7"></span>
-            <span class="star star-8"></span>
-          </label>
-        </div>
+      <main>
+        <div title="Music Player" className={style.App}>
+          <div class="wrapper">
+            <input type="checkbox" id="hide-checkbox" onClick={changeTheme} />
+            <label for="hide-checkbox" class="toggle">
+              <span class="toggle-button">
+                <span class="crater crater-1"></span>
+                <span class="crater crater-2"></span>
+                <span class="crater crater-3"></span>
+                <span class="crater crater-4"></span>
+                <span class="crater crater-5"></span>
+                <span class="crater crater-6"></span>
+                <span class="crater crater-7"></span>
+              </span>
+              <span class="star star-1"></span>
+              <span class="star star-2"></span>
+              <span class="star star-3"></span>
+              <span class="star star-4"></span>
+              <span class="star star-5"></span>
+              <span class="star star-6"></span>
+              <span class="star star-7"></span>
+              <span class="star star-8"></span>
+            </label>
+          </div>
 
-        <div className="Container">
-          <ThemeContext.Provider value={{ changeTheme }}>
-            <div id={MyTheme}>
-              <LeftWindow />
-              <Routes>
-                <Route path="/m" element={<HomePage />} />
-                <Route path="/m/SearchPage" element={<SearchPage />} />
-                <Route path="/m/LibraryPage" element={<LibraryPage />} />{" "}
-                <Route path="/m/Tracks" element={<Tracks />} />
-                <Route path="/m/LibraryPage/Library" element={<Library />} />
-                <Route path="/m/ArtistTracks" element={<ArtistTracks />} />
-                <Route
-                  path="/m/FeaturedPlaylist"
-                  element={<FeaturedPlaylist />}
-                />
-              </Routes>
-            </div>
-          </ThemeContext.Provider>
+          <div className="Container">
+            <ThemeContext.Provider value={{ changeTheme }}>
+              <div id={MyTheme}>
+                <LeftWindow />
+                <Routes>
+                  <Route path="/m" element={<HomePage />} />
+                  <Route path="/m/SearchPage" element={<SearchPage />} />
+                  <Route path="/m/LibraryPage" element={<LibraryPage />} />{" "}
+                  <Route path="/m/Tracks" element={<Tracks />} />
+                  <Route path="/m/LibraryPage/Library" element={<Library />} />
+                  <Route path="/m/ArtistTracks" element={<ArtistTracks />} />
+                  <Route
+                    path="/m/FeaturedPlaylist"
+                    element={<FeaturedPlaylist />}
+                  />
+                </Routes>
+              </div>
+            </ThemeContext.Provider>
+          </div>
         </div>
-      </div>
+      </main>
     </BrowserRouter>
   );
 };

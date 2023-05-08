@@ -22,18 +22,18 @@
 
 .Style p {
   position: absolute;
-  top: 4vh;
+  top: 1.952vw;
   text-align: center;
   font-weight: bold;
   font-size: 1.2vw;
-  width: 240px;
+  width: 12vw;
   text-shadow: 10px rgb(0, 0, 0, 1);
   vertical-align: middle;
   color: inherit;
 }
 
 .Styles img {
-  height: 160px;
+  height: 8.33vw;
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -2px;
@@ -47,7 +47,8 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  max-width: 100%;
+
   border-radius: 0.9vw;
 }
 .MusicDBContainer {

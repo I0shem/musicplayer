@@ -107,7 +107,7 @@ const ArtistTracks = () => {
     if (urlsLikedList.includes(m.previewURL)) {
       return (
         <div className={s.LikeButton}>
-          <IconContext.Provider value={{ size: "50px", className: s.playBtn }}>
+          <IconContext.Provider value={{ className: s.likeBtn }}>
             <AiFillHeart onClick={() => HandleDislike(m)} />
           </IconContext.Provider>
         </div>
@@ -115,7 +115,7 @@ const ArtistTracks = () => {
     } else {
       return (
         <div className={s.LikeButton}>
-          <IconContext.Provider value={{ size: "50px", className: s.playBtn }}>
+          <IconContext.Provider value={{ className: s.likeBtn }}>
             <AiOutlineHeart onClick={() => HandleLike(m)} />
           </IconContext.Provider>
         </div>
@@ -129,7 +129,7 @@ const ArtistTracks = () => {
     setIsOpen(true);
   };
   return (
-    <>
+    <div className={s.ArtistPage}>
       <div className={s.RightWindow}>
         <IconContext.Provider
           value={{
@@ -146,17 +146,13 @@ const ArtistTracks = () => {
               return (
                 <div key={m.id} className={s.TrackBox}>
                   <div className={s.PlayButton}>
-                    <IconContext.Provider
-                      value={{ size: "50px", className: s.playBtn }}
-                    >
+                    <IconContext.Provider value={{ className: s.playBtn }}>
                       <IoPlayOutline onClick={() => HandlePlayClick(m)} />
                     </IconContext.Provider>
                   </div>
                   {CheckLiked(m)}
                   <div className={s.AddButton}>
-                    <IconContext.Provider
-                      value={{ size: "50px", className: s.playBtn }}
-                    >
+                    <IconContext.Provider value={{ className: s.addToListBtn }}>
                       <BiAddToQueue onClick={() => addTrackToList(m)} />
                     </IconContext.Provider>
                   </div>
@@ -200,7 +196,7 @@ const ArtistTracks = () => {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
