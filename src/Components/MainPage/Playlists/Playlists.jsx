@@ -3,6 +3,7 @@ import styles from "./FP.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
+import ReactLoading from "react-loading";
 const KEY = process.env.REACT_APP_MUSIC_STYLE_KEY;
 
 const PlaylistsProps = (props) => {
@@ -28,6 +29,7 @@ const PlaylistsProps = (props) => {
 
 function Recommended() {
   const [featuredPlaylistsDB, setFeaturedPlaylistsDB] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const getPlaylists = async () => {
     try {
       const response = await axios.get(
@@ -40,6 +42,7 @@ function Recommended() {
   };
   useEffect(() => {
     getPlaylists();
+    setLoaded(true);
   }, []);
 
   return (
@@ -61,7 +64,17 @@ function Recommended() {
             fp={fp}
           />
         ))}
-      </Slider>
+      </Slider>{" "}
+      {!loaded && (
+        <div id="loading" className={styles.loading}>
+          <ReactLoading
+            type={"bars"}
+            color={"white"}
+            height={"5%"}
+            width={"5%"}
+          />
+        </div>
+      )}
     </div>
   );
 }

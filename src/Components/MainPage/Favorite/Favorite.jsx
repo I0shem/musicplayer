@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import s from "./Favorite.module.css";
-import { purple } from "@mui/material/colors";
 import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";
 import Modal from "./Modal/Modal";
@@ -9,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { DeleteFavorite } from "../../../redux/Actions";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import Pagination from "@mui/material/Pagination";
 
 const FavoriteProps = (props) => {
@@ -38,14 +37,6 @@ const FavoriteProps = (props) => {
 };
 
 const Favorite = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: purple[800],
-      },
-    },
-  });
-
   const list = useSelector((state) => state.Favorites).initialFavorites;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -63,6 +54,7 @@ const Favorite = () => {
   let Favbands = currentFav.map((fav) => (
     <FavoriteProps key={fav.id} Img={fav.ImgURL} name={fav.name} fav={fav} />
   ));
+
   return (
     <div className={s.Favorite}>
       <ul className={s.Bands}>
@@ -79,18 +71,22 @@ const Favorite = () => {
       </ul>
       {isOpen && <Modal setIsOpen={setIsOpen} />}
       <div className={s.PaginationBox}>
-        <ThemeProvider theme={theme}>
-          <Pagination
-            count={pagesCount}
-            page={page}
-            showFirstButton
-            showLastButton
-            color="primary"
-            sx={{ button: { color: "#ffffff" } }}
-            onChange={handleChange}
-            className={s.Pagination}
-          />
-        </ThemeProvider>
+        <Pagination
+          selected
+          count={pagesCount}
+          page={page}
+          showFirstButton
+          showLastButton
+          onChange={handleChange}
+          className={s.Pagination}
+          classes={{ selected: s.selected }}
+          sx={{
+            ".Mui-selected": {
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              color: "white",
+            },
+          }}
+        />
       </div>
     </div>
   );

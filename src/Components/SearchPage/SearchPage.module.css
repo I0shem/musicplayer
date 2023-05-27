@@ -1,35 +1,35 @@
 .SearchPage {
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .RightWindow {
-  width: 80%;
   color: inherit;
   display: block;
-  margin-left: 20vw;
+  margin-left: 20%;
 }
 
-.searchIcon {
-  width: 32px;
-  height: 32px;
+.clearIcon {
+  width: 2.5vw;
+  height: 2.5vw;
   background-color: transparent;
-  position: relative;
-  top: -50px;
+  position: absolute;
+  margin-top: 0.52vw;
   left: 74vw;
 }
 
 .SearchBar {
   position: absolute;
-  margin-top: 2vh;
+  margin-top: 1vw;
   margin-left: 1vw;
-  width: 78.5vw;
+  margin-bottom: 2vw;
+  width: 78vw;
   color: white;
 }
 
 .Search {
-  font-size: 30px;
-  height: 50px;
+  font-size: 1.5625vw;
+  height: 2.604vw;
   width: 99%;
   border-radius: 0%;
   padding: 12px 24px;
@@ -47,11 +47,12 @@
   margin-left: -20vw;
   margin-top: 6.7vh;
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+  z-index: 10;
 }
 
 .AlbumImage {
-  width: 300px;
-  height: 300px;
+  width: 15.625vw;
+  height: 15.625vw;
   display: block;
   position: absolute;
   top: 0;
@@ -67,8 +68,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 15.625vw;
+  width: 15.625vw;
   border-radius: 0.9vw;
 }
 .ImageOverlay h5 {
@@ -88,8 +89,8 @@
   margin-bottom: 1vh;
   position: relative;
   display: flex;
-  width: 300px;
-  height: 300px;
+  width: 15.625vw;
+  height: 15.625vw;
   background-color: transparent;
   text-align: center;
   margin-right: 3.3vw;
@@ -101,17 +102,24 @@ span {
   font-size: 14px;
   text-shadow: 10px rgb(0, 0, 0, 1);
 }
-
+h3 {
+  text-shadow: 10px rgb(0, 0, 0, 1);
+  margin-top: 1vw;
+  margin-bottom: 0;
+  font-size: 1.5vw;
+}
 h5,
 h6 {
-  margin-top: 10зч;
+  text-shadow: 10px rgb(0, 0, 0, 1);
+  margin-top: 3px;
   margin-bottom: 0;
+  font-size: 1.1vw;
 }
-
-.audioPlayer {
-  position: absolute;
-  bottom: -9px;
-  background-color: transparent;
+h6 {
+  color: rgb(179, 179, 179);
+}
+.Pagination-textPrimary {
+  color: rgb(252, 252, 252);
 }
 .PaginationBox {
   position: fixed;
@@ -119,67 +127,76 @@ h6 {
   transform: translateX(-50%);
   bottom: 20px;
 }
-.Pagination {
-  background-color: transparent;
-  border-radius: 40px;
-  padding-left: 20px;
-  padding-bottom: 5px;
-  padding-top: 2px;
-  padding-right: 4px;
+.Pagination svg {
+  width: 1vw;
+  height: 1vw;
 }
-.Pagination-textPrimary {
-  color: rgb(252, 252, 252);
+
+.Pagination li {
+  width: 1vw;
+  height: 2vw;
+  margin-left: 20px;
 }
+.Pagination button {
+  height: 1.5vw;
+  color: grey;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.LikeButton,
+.AddButton,
 .PlayButton {
-  visibility: visible;
-  position: absolute;
-  bottom: 1%;
-  right: 5%;
   z-index: 1;
 }
-
-.AddButton {
-  visibility: visible;
-  position: absolute;
-  bottom: 1%;
-  left: 5%;
-  z-index: 1;
-}
-
-.LikeButton {
-  visibility: visible;
-  position: absolute;
-  top: 80%;
-  left: 40%;
-  z-index: 1;
-}
-.LikeButton:hover,
-.AddButton:hover,
-.PlayButton:hover {
-  text-shadow: rgb(0, 0, 0) 3px 0 10px;
-  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
-  transform: scale(1.06);
-  cursor: pointer;
-}
-.Text {
-  padding-top: 2.5vh;
-  margin-left: 4vw;
-  margin-top: 0;
-  padding-top: 2.5vh;
-  padding-left: 1vw;
-  margin-bottom: 0;
-  font-size: 3vh;
-}
-.backBtn {
-  position: absolute;
-  top: 0.5vh;
-  margin-left: 1vw;
-}
-
+.playBtn:hover,
+.likeBtn:hover,
+.addToListBtn:hover,
 .backBtn:hover {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
-  stroke-width: 2;
   filter: drop-shadow(1px 1px 8px #ffffffcc);
   cursor: pointer;
   transform: scale(1.06);
+}
+.TrackBox,
+h5,
+h6,
+p {
+  filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.1));
+}
+.Text {
+  margin-left: 4vw;
+}
+
+.backBox {
+  position: relative;
+  display: flex;
+  line-height: 34px;
+}
+
+.backBtn {
+  position: absolute;
+
+  width: 4vw;
+  height: 4vw;
+}
+.addToListBtn {
+  width: 3vw;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  left: 5px;
+}
+.likeBtn {
+  width: 3vw;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  left: 40%;
+}
+.playBtn {
+  width: 3vw;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }

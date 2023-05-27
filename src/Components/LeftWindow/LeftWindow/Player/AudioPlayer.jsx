@@ -9,6 +9,7 @@ import {
   BiVolumeFull,
   BiVolumeMute,
 } from "react-icons/bi";
+import ReactLoading from "react-loading";
 
 const AudioPlayer = ({
   list,
@@ -24,20 +25,21 @@ const AudioPlayer = ({
   };
 
   const btnVolUp = () => {
-    if (vol > 0.95) {
+    if (vol > 0.9) {
       setVol(1);
     } else {
-      setVol(vol + 0.05);
+      setVol(vol + 0.1);
     }
   };
 
-  const { togglePlayPause, playing, volume, load } = useAudioPlayer({
-    src: list[index],
-    format: "mp3",
-    autoplay: autoPlay,
-    volume: vol,
-    onend: () => SkipForward(),
-  });
+  const { togglePlayPause, playing, volume, load, loading, stop } =
+    useAudioPlayer({
+      src: list[index],
+      format: "mp3",
+      autoplay: autoPlay,
+      volume: vol,
+      onend: () => SkipForward(),
+    });
 
   useEffect(() => {
     var visualAudio = document.getElementById("Visualizer");
@@ -48,6 +50,15 @@ const AudioPlayer = ({
     }
   }, [playing]);
 
+  useEffect(() => {
+    var loadingAudio = document.getElementById("loading");
+    if (loading === true) {
+      loadingAudio.style.display = "block";
+    } else {
+      loadingAudio.style.display = "none";
+    }
+  }, [loading]);
+
   const SkipForward = () => {
     if (listLength === index) {
       setIndex(0);
@@ -57,7 +68,6 @@ const AudioPlayer = ({
     }
     load({
       src: list[index],
-      autoplay: true,
     });
     setAutoPlay(true);
   };
@@ -70,9 +80,7 @@ const AudioPlayer = ({
     }
     load({
       src: list[index],
-      autoplay: true,
     });
-    setAutoPlay(true);
   };
 
   useEffect(() => {
@@ -80,38 +88,51 @@ const AudioPlayer = ({
   }, [vol]);
 
   const PlayPauseBtn = () => {
-    load({
-      src: list[index],
-      autoplay: true,
-    });
     togglePlayPause();
   };
-
+  useEffect(() => {
+    setIndex(list.length - 1);
+    if (listLength > 2) {
+      setAutoPlay(true);
+      stop();
+    }
+  }, [listLength]);
   return (
-    <div className={s.Visualizer}>
-      <div id="Visualizer" className={s.AudioVisualizerBox}>
-        <div className={s.icon}>
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
+    <div className={s.component}>
+      <div id="Visual" className={s.Visual}>
+        <div id="Visualizer" className={s.AudioVisualizerBox}>
+          <div className={s.icon}>
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+        <div id="loading" className={s.loading}>
+          <ReactLoading
+            className={s.loadingSvgContainer}
+            type={"bars"}
+            color={"white"}
+            height={"20%"}
+            width={"20%"}
+          />
         </div>
       </div>
       <div className={s.Controls}>

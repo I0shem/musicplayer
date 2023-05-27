@@ -1,5 +1,6 @@
 .Favorite {
   margin-left: 3vw;
+  z-index: 10;
 }
 .Band {
   margin-left: 2.5vw;
@@ -49,7 +50,7 @@
   margin-right: 0.5vw;
   position: relative;
   width: 12vw;
-  height: 25vh;
+  height: 12vw;
   margin-top: 1vh;
   outline: 1px solid white;
   border-radius: 0.9vw;
@@ -69,7 +70,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-
   font-weight: bold;
   font-size: 0.8em;
   width: 4vw;
@@ -91,14 +91,14 @@
 }
 .Band {
   position: relative;
-  height: 25vh;
+  height: 12vw;
   width: 12vw;
 }
 .ImageOverlay {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
-  height: 25vh;
+  height: 12vw;
   width: 12vw;
   border-radius: 0.9vw;
 }
@@ -108,7 +108,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 25vh;
+  height: 12vw;
   width: 12vw;
   border-radius: 0.9vw;
 }
@@ -117,7 +117,7 @@
   border-radius: 0.9vw;
   outline-offset: -2px;
   display: block;
-  height: 25vh;
+  height: 12vw;
   width: 12vw;
 }
 .PaginationBox {
@@ -126,13 +126,19 @@
   transform: translateX(-50%);
   bottom: 1vw;
 }
-.Pagination {
-  background-color: transparent;
-  border-radius: 40px;
-  padding-left: 20px;
-  padding-top: 2px;
-  padding-right: 4px;
+
+.Pagination svg {
+  width: 1vw;
+  height: 1vw;
 }
-.Pagination-textPrimary {
-  color: rgb(252, 252, 252);
+
+.Pagination li {
+  width: 1vw;
+  height: 2vw;
+  margin-left: 20px;
+}
+.Pagination button {
+  height: 1.5vw;
+  color: grey;
+  background-color: rgba(0, 0, 0, 0.4);
 }

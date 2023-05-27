@@ -3,7 +3,9 @@
   position: relative;
   vertical-align: top;
   align-items: center;
-  height: 6.25vw;
+  width: 20vw;
+  top: 0;
+  height: auto;
 }
 
 .component {
@@ -67,7 +69,6 @@
 .timeline {
   padding: 0;
   width: 80%;
-  margin-bottom: 40px;
   background-color: #f6f7f6;
 }
 
@@ -119,19 +120,41 @@
 .audiolineBox {
   display: flex;
   bottom: 0.2vw;
+  width: 90%;
+  left: 5%;
   align-items: center;
   justify-content: center;
 }
-.AudioVisualizerBox {
-  display: none;
+
+.Visual {
+  background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
-  left: 1.7vw;
-  top: 24.498vw;
-  width: 14.0625vw;
-  height: 11.458vw;
-  border-radius: 25%;
+  left: 2.2vw;
+  top: 14vw;
+
+  border-radius: 10%;
+  height: 15.625vw;
+  width: 15.625vw;
 }
 
+.AudioVisualizerBox {
+  position: relative;
+  width: 100%;
+  top: 67%;
+  left: -3.3%;
+  border-radius: 25%;
+}
+.loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 40%;
+}
+.loadingSvgContainer {
+  position: relative;
+  left: 40%;
+}
 .icon {
   position: fixed;
   display: flex;

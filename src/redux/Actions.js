@@ -7,6 +7,9 @@ import {
   ADD_LIKED_SONG,
   ADD_TO_LIST,
   DELETE_LIKED_SONG,
+  DELETE_FROM_LIST,
+  LOGIN,
+  LOGOUT,
 } from "./ActionTypes";
 
 const PlaySong = (NewSong) => {
@@ -37,6 +40,14 @@ const AddToPlaylist = (newSong, index) => {
   };
 };
 
+const DeleteFromPlaylist = (songID, playlistID) => {
+  return {
+    type: DELETE_FROM_LIST,
+    songID,
+    playlistID,
+  };
+};
+
 const CreateNewPlaylist = (newLibrary) => {
   return {
     type: CREATE_NEW_PLAYLIST,
@@ -64,6 +75,19 @@ const DeleteFavorite = (delFav) => {
   };
 };
 
+const NewUser = (userInfo) => {
+  return {
+    type: LOGIN,
+    userInfo: userInfo,
+  };
+};
+
+const SignOut = () => {
+  return {
+    type: LOGOUT,
+  };
+};
+
 export {
   PlaySong,
   CreateNewPlaylist,
@@ -73,4 +97,7 @@ export {
   AddLikedSong,
   AddToPlaylist,
   DeleteLikedSong,
+  DeleteFromPlaylist,
+  NewUser,
+  SignOut,
 };

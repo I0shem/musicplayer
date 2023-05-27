@@ -3,7 +3,7 @@
   height: auto;
   color: inherit;
 }
-.FPs:hover p,
+.FPs:hover,
 .newMusicStyle:hover {
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
@@ -33,7 +33,7 @@
 }
 
 .FPs img {
-  height: 25vh;
+  height: 12vw;
   outline: 1px solid white;
   border-radius: 0.9vw;
   outline-offset: -2px;
@@ -53,7 +53,22 @@
 .featuredPlaylistsDB {
   width: 95%;
   margin-left: 2vw;
+  position: relative;
 }
 .FPs:first-child {
   margin-left: 0px;
+}
+.loading {
+  align-items: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 13vw;
+  width: 75vw;
+  top: 0vw;
+  border-radius: 25px;
+}
+.loading svg {
+  position: relative;
+  top: 4vw;
+  left: 36vw;
 }

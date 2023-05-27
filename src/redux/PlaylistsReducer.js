@@ -4,6 +4,7 @@ import {
   ADD_LIKED_SONG,
   ADD_TO_LIST,
   DELETE_LIKED_SONG,
+  DELETE_FROM_LIST,
 } from "./ActionTypes";
 import HeartImg from "../Components/Images/heart.png";
 import RecordsImg from "../Components/Images/records.jpg";
@@ -197,7 +198,6 @@ export const PlaylistsReducer = (state = initialState, action) => {
       };
     }
     case DELETE_LIKED_SONG: {
-      console.log(action.LikedSongID);
       return {
         ...state,
         playlists: state.playlists.map((playlist, i) => {
@@ -206,6 +206,22 @@ export const PlaylistsReducer = (state = initialState, action) => {
               ...playlist,
               tracks: playlist.tracks.filter(
                 (track, index) => track.id !== action.LikedSongID
+              ),
+            };
+          }
+          return playlist;
+        }),
+      };
+    }
+    case DELETE_FROM_LIST: {
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist, i) => {
+          if (i === action.playlistID) {
+            return {
+              ...playlist,
+              tracks: playlist.tracks.filter(
+                (track, index) => track.id !== action.songID
               ),
             };
           }

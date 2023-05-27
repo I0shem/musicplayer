@@ -12,8 +12,7 @@ import { useLocation } from "react-router-dom";
 import { IoPlayOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IconContext } from "react-icons";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
+
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
@@ -21,16 +20,7 @@ import AddToList from "../../../ModalAddToList/AddToList";
 const KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const FeaturedTracks = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: purple[800],
-      },
-    },
-  });
-
   const location = useLocation();
-  console.log(location.state.fp);
   const getMusicDB = useCallback(() => {
     axios({
       method: "GET",
@@ -60,10 +50,6 @@ const FeaturedTracks = () => {
   const handleChange = (event, value) => {
     setPage(value);
   };
-
-  useEffect(() => {
-    console.log(featuredTracks);
-  }, [featuredTracks]);
 
   const HandlePlayClick = (m) => {
     const img =
@@ -183,18 +169,20 @@ const FeaturedTracks = () => {
               );
             })}
             <div className={s.PaginationBox}>
-              <ThemeProvider theme={theme}>
-                <Pagination
-                  count={pagesCount}
-                  page={page}
-                  showFirstButton
-                  showLastButton
-                  color="primary"
-                  sx={{ button: { color: "#ffffff" } }}
-                  onChange={handleChange}
-                  className={s.Pagination}
-                />
-              </ThemeProvider>
+              <Pagination
+                count={pagesCount}
+                page={page}
+                showFirstButton
+                showLastButton
+                onChange={handleChange}
+                className={s.Pagination}
+                sx={{
+                  ".Mui-selected": {
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
+                    color: "white",
+                  },
+                }}
+              />
             </div>
           </div>
         </div>

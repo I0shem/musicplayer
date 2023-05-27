@@ -3,26 +3,19 @@ import s from "./Modal.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { AddFavorite } from "../../../../redux/Actions";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
 import Pagination from "@mui/material/Pagination";
 import { IconContext } from "react-icons";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { BsCircle } from "react-icons/bs";
+import useSound from "use-sound";
 const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const Modal = ({ setIsOpen }) => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: purple[800],
-      },
-    },
-  });
-
   let newFavoriteBandImageURL = createRef();
   const dispatch = useDispatch();
-
+  const [play] = useSound(
+    "https://cdn.pixabay.com/audio/2022/03/10/audio_9beb587572.mp3"
+  );
   const [value, setValue] = useState("");
   const [artistsDB, setArtistsDB] = useState([]);
 
@@ -49,7 +42,6 @@ const Modal = ({ setIsOpen }) => {
     const timer = setTimeout(() => {
       getArtistsDB(options);
     }, 1000);
-    console.log(artistsDB);
     return () => clearTimeout(timer);
   }, [value, getArtistsDB]);
 
@@ -75,6 +67,7 @@ const Modal = ({ setIsOpen }) => {
   };
 
   const addFavorite = (a) => {
+    play();
     let NewFavorite = {
       id: a.id,
       name: a.name,
@@ -94,7 +87,7 @@ const Modal = ({ setIsOpen }) => {
     if (idsArtistsList.includes(a.id)) {
       return (
         <div className={s.FavBtn}>
-          <IconContext.Provider value={{ size: "50px", className: s.FavBtn }}>
+          <IconContext.Provider value={{ className: s.FavBtn }}>
             <IoIosCheckmarkCircle />
           </IconContext.Provider>
         </div>
@@ -102,7 +95,7 @@ const Modal = ({ setIsOpen }) => {
     } else {
       return (
         <div className={s.FavBtn}>
-          <IconContext.Provider value={{ size: "50px", className: s.FavBtn }}>
+          <IconContext.Provider value={{ className: s.FavBtn }}>
             <BsCircle onClick={() => addFavorite(a)} />
           </IconContext.Provider>
         </div>
@@ -151,18 +144,22 @@ const Modal = ({ setIsOpen }) => {
           })}
         </div>
         <div className={s.PaginationBox}>
-          <ThemeProvider theme={theme}>
-            <Pagination
-              count={pagesCount}
-              page={page}
-              showFirstButton
-              showLastButton
-              color="primary"
-              sx={{ button: { color: "#ffffff" } }}
-              onChange={handleChange}
-              className={s.Pagination}
-            />
-          </ThemeProvider>
+          <Pagination
+            selected
+            count={pagesCount}
+            page={page}
+            showFirstButton
+            showLastButton
+            onChange={handleChange}
+            className={s.Pagination}
+            classes={{ selected: s.selected }}
+            sx={{
+              ".Mui-selected": {
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                color: "white",
+              },
+            }}
+          />
         </div>
         <div className={s.Btns}>
           <button className={s.Btn} onClick={() => setIsOpen(false)}>

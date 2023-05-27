@@ -2,16 +2,19 @@ import React, { useState, createRef } from "react";
 import s from "./Libraries.module.css";
 import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 import { Link } from "react-router-dom";
-import addNewImage from "../../Images/add-new.jpg";
 import Modal from "./Modal/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { CreateNewPlaylist, DeletePlaylist } from "../../../redux/Actions";
 import { IconContext } from "react-icons";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import ReactLoading from "react-loading";
+import Pagination from "@mui/material/Pagination";
 
 const Libraries = () => {
   const list = useSelector((state) => state.Playlist).playlists;
+
   const [isOpen, setIsOpen] = useState(false);
   let newLibraryElementName = createRef();
   let newLibraryElementImg = createRef();
@@ -25,7 +28,7 @@ const Libraries = () => {
         "https://cdn10.phillymag.com/wp-content/uploads/sites/3/2020/09/monthly-playlist.jpg";
     }
     if (newLibraryName === "") {
-      newLibraryName = "MyLibrary";
+      newLibraryName = `MyLibrary #${list.length}`;
     }
     let NewPlaylist = {
       name: newLibraryName,
@@ -33,7 +36,18 @@ const Libraries = () => {
       tracks: [],
     };
     dispatch(CreateNewPlaylist(NewPlaylist));
+
     setIsOpen(false);
+  };
+
+  const [page, setPage] = useState(1);
+  const [countElement] = useState(14);
+  const lastLibraryIndex = page * countElement;
+  const firstLibraryIndex = lastLibraryIndex - countElement;
+  const currentLibraries = list.slice(firstLibraryIndex, lastLibraryIndex);
+  const pagesCount = Math.ceil(list.length / countElement);
+  const handleChange = (event, value) => {
+    setPage(value);
   };
 
   const navigate = useNavigate();
@@ -41,11 +55,15 @@ const Libraries = () => {
     navigate(-1);
   };
   const viewLibrary = (lib) => {
-    navigate("/m/LibraryPage/Library", { state: { lib } });
+    navigate(`/m/LibraryPage/Library/${lib.name}`);
   };
-  console.log(list);
+
+  const fade = () => {
+    let elem = document.getElementById("loader");
+    elem.style.display = "none";
+  };
   return (
-    <div>
+    <div onLoad={fade}>
       <IconContext.Provider
         value={{
           size: "70px",
@@ -56,7 +74,7 @@ const Libraries = () => {
       </IconContext.Provider>
       <h3 className={s.Text}>Your Library</h3>
       <div className={s.Libraries}>
-        {list.map((lib) => (
+        {currentLibraries.map((lib) => (
           <li key={lib.name} className={s.Library}>
             <div className={s.Image} onClick={() => viewLibrary(lib)}>
               <img id={lib.name} className={s.Icon} alt="" src={lib.imageURL} />
@@ -74,8 +92,10 @@ const Libraries = () => {
         ))}
         <li className={s.Library} onClick={() => setIsOpen(true)}>
           <div className={s.addNewPlaylist}>
-            <img alt="" className={s.AddNewIcon} src={addNewImage} />
-            <p>Add New Playlist</p>
+            <IconContext.Provider value={{ className: s.AddNewBtn }}>
+              <AiOutlinePlusCircle />
+            </IconContext.Provider>
+            <p>Add New </p>
           </div>
         </li>
       </div>
@@ -101,6 +121,32 @@ const Libraries = () => {
           setIsOpen={setIsOpen}
         />
       )}
+      <div id="loader" className={s.loader}>
+        <div className={s.Loading}>
+          <ReactLoading
+            type={"bars"}
+            color={"white"}
+            height={"10%"}
+            width={"10%"}
+          />
+        </div>
+      </div>
+      <div className={s.PaginationBox}>
+        <Pagination
+          count={pagesCount}
+          page={page}
+          showFirstButton
+          showLastButton
+          onChange={handleChange}
+          className={s.Pagination}
+          sx={{
+            ".Mui-selected": {
+              backgroundColor: "rgba(70, 70, 70, 0.8)",
+              color: "white",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };

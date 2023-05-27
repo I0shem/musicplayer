@@ -41,4 +41,5 @@ ul li::before {
   margin-left: -20vw;
   margin-top: 6.2vh;
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+  z-index: 10;
 }

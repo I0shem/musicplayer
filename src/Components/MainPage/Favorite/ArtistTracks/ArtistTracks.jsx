@@ -12,8 +12,6 @@ import { useLocation } from "react-router-dom";
 import { IoPlayOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IconContext } from "react-icons";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
@@ -21,14 +19,6 @@ import AddToList from "../../../ModalAddToList/AddToList";
 const KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const ArtistTracks = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: purple[800],
-      },
-    },
-  });
-
   const location = useLocation();
   const getMusicDB = useCallback(() => {
     axios({
@@ -140,62 +130,63 @@ const ArtistTracks = () => {
           <IoIosArrowRoundBack onClick={returnToMain} />
         </IconContext.Provider>
         <h3 className={s.Text}>{location.state.fav.name} - Top tracks</h3>
-        <div>
-          <div className={s.MusicData}>
-            {currentMusic.map((m, index) => {
-              return (
-                <div key={m.id} className={s.TrackBox}>
-                  <div className={s.PlayButton}>
-                    <IconContext.Provider value={{ className: s.playBtn }}>
-                      <IoPlayOutline onClick={() => HandlePlayClick(m)} />
-                    </IconContext.Provider>
-                  </div>
-                  {CheckLiked(m)}
-                  <div className={s.AddButton}>
-                    <IconContext.Provider value={{ className: s.addToListBtn }}>
-                      <BiAddToQueue onClick={() => addTrackToList(m)} />
-                    </IconContext.Provider>
-                  </div>
-                  <img
-                    className={s.AlbumImage}
-                    src={
-                      "https://api.napster.com/imageserver/v2/albums/" +
-                      m.albumId +
-                      "/images/500x500.jpg"
-                    }
-                    alt=""
-                  />
-                  <div className={s.ImageOverlay}>
-                    <h5>"{m.name}"</h5>
-                    <h6> by {m.artistName}</h6>
-                    <h6>Album: {m.albumName}</h6>
-                  </div>
+
+        <div className={s.MusicData}>
+          {currentMusic.map((m, index) => {
+            return (
+              <div key={m.id} className={s.TrackBox}>
+                <div className={s.PlayButton}>
+                  <IconContext.Provider value={{ className: s.playBtn }}>
+                    <IoPlayOutline onClick={() => HandlePlayClick(m)} />
+                  </IconContext.Provider>
                 </div>
-              );
-            })}
-            <div className={s.PaginationBox}>
-              <ThemeProvider theme={theme}>
-                <Pagination
-                  count={pagesCount}
-                  page={page}
-                  showFirstButton
-                  showLastButton
-                  color="primary"
-                  sx={{ button: { color: "#ffffff" } }}
-                  onChange={handleChange}
-                  className={s.Pagination}
+                {CheckLiked(m)}
+                <div className={s.AddButton}>
+                  <IconContext.Provider value={{ className: s.addToListBtn }}>
+                    <BiAddToQueue onClick={() => addTrackToList(m)} />
+                  </IconContext.Provider>
+                </div>
+                <img
+                  className={s.AlbumImage}
+                  src={
+                    "https://api.napster.com/imageserver/v2/albums/" +
+                    m.albumId +
+                    "/images/500x500.jpg"
+                  }
+                  alt=""
                 />
-              </ThemeProvider>
-            </div>
+                <div className={s.ImageOverlay}>
+                  <h5>"{m.name}"</h5>
+                  <h6> by {m.artistName}</h6>
+                  <h6>Album: {m.albumName}</h6>
+                </div>
+              </div>
+            );
+          })}
+          <div className={s.PaginationBox}>
+            <Pagination
+              count={pagesCount}
+              page={page}
+              showFirstButton
+              showLastButton
+              onChange={handleChange}
+              className={s.Pagination}
+              sx={{
+                ".Mui-selected": {
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  color: "white",
+                },
+              }}
+            />
           </div>
         </div>
-        <div className={s.rectangle}></div>{" "}
-        {isOpen && (
-          <>
-            <AddToList setIsOpen={setIsOpen} song={track} />
-          </>
-        )}
       </div>
+      <div className={s.rectangle}></div>
+      {isOpen && (
+        <>
+          <AddToList setIsOpen={setIsOpen} song={track} />
+        </>
+      )}
     </div>
   );
 };

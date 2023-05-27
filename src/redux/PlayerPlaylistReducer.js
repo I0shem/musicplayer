@@ -37,7 +37,6 @@ const State = {
 export const PlayerPlaylistReducer = (state = State, action) => {
   switch (action.type) {
     case ADD_NEW_SONG: {
-      console.log(action.NewSong);
       return {
         ...state,
         initialPlayerPlaylist: [...state.initialPlayerPlaylist, action.NewSong],

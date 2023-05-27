@@ -16,15 +16,19 @@ const MusicPlayer = () => {
     return l.previewURL;
   });
   const [autoPlay, setAutoPlay] = useState(false);
-  useEffect(() => {
-    setIndex(list.length - 1);
-    setAutoPlay(true);
-  }, [listLength]);
 
+  const checkLength = (name) => {
+    if (name.length > 20) {
+      let newName = name.slice(0, 23) + "...";
+      return newName;
+    } else {
+      return name;
+    }
+  };
   return (
     <AudioPlayerProvider>
       <div className={s.component}>
-        <img className={s.musicCover} src={previewImg} alt="" />
+        <img id="musicCover" className={s.musicCover} src={previewImg} alt="" />
         <div>
           <div className={s.scrollingBox}>
             <div className={s.scrollingText}>
@@ -36,8 +40,12 @@ const MusicPlayer = () => {
               </p>
             </div>
           </div>
-          <h5 className={s.subTitle}>by {list[index].artistName}</h5>
-          <h5 className={s.subTitleAlbum}>Album: {list[index].albumName}</h5>
+          <h5 className={s.subTitle}>
+            by {checkLength(list[index].artistName)}
+          </h5>
+          <h5 className={s.subTitleAlbum}>
+            Album: {checkLength(list[index].albumName)}
+          </h5>
         </div>
         <div>
           <PlayBar file={currentSong} />

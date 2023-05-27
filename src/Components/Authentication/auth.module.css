@@ -1,8 +1,6 @@
 .Authentication {
-  position: fixed;
   display: flex;
   width: 30%;
-  top: 0.5vh;
 }
 .SignOutBtn {
   margin-top: 0.5vh;
@@ -24,10 +22,8 @@
 }
 .SignInBtn {
   font-size: 0.7vw;
-  position: fixed;
-  top: 0.5vh;
   margin-top: 0.5vh;
-  margin-left: 5vw;
+
   background-color: transparent;
   color: white;
   border: 2px solid white;

@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import s from "./Library.module.css";
 import Pagination from "@mui/material/Pagination";
-import { useDispatch } from "react-redux";
-import { PlaySong } from "./../../../redux/Actions";
-import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { PlaySong, DeleteFromPlaylist } from "./../../../redux/Actions";
 import { IoPlayOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IconContext } from "react-icons";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ReactComponent as Sprite } from "../../Icons/bin.svg";
 
 const Library = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: purple[800],
-      },
-    },
+  let state = useParams();
+  const list = useSelector((state) => state.Playlist).playlists;
+  let [tracks] = useState([]);
+  let index = 0;
+  list.map((playlist, i) => {
+    if (playlist.name === state.id) {
+      tracks = playlist.tracks;
+      index = i;
+    }
+    return null;
   });
-  const location = useLocation();
-  const library = location.state.lib;
-  const tracks = library.tracks;
 
   const [page, setPage] = useState(1);
   const [countElement] = useState(8);
@@ -30,11 +30,11 @@ const Library = () => {
   const currentMusic = tracks.slice(firstMusicIndex, lastMusicIndex);
   const pagesCount = Math.ceil(tracks.length / countElement);
 
-  const dispatch = useDispatch();
   const handleChange = (event, value) => {
     setPage(value);
   };
 
+  const dispatch = useDispatch();
   const HandlePlayClick = (m) => {
     let NewSong = {
       name: m.name,
@@ -47,7 +47,9 @@ const Library = () => {
     var visualAudio = document.getElementById("Visualizer");
     visualAudio.style.display = "none";
   };
-
+  let deleteFromList = (m) => {
+    dispatch(DeleteFromPlaylist(m.id, index));
+  };
   const navigate = useNavigate();
   const returnTo = () => {
     navigate(-1);
@@ -58,13 +60,12 @@ const Library = () => {
       <div className={s.RightWindow}>
         <IconContext.Provider
           value={{
-            size: "70px",
             className: s.backBtn,
           }}
         >
           <IoIosArrowRoundBack onClick={returnTo} />
         </IconContext.Provider>
-        <h3 className={s.Text}>Library: {location.state.lib.name} - Tracks</h3>
+        <h3 className={s.Text}>Library: {state.id} - Tracks</h3>
         <div>
           <div className={s.MusicData}>
             {currentMusic.map((m) => {
@@ -83,22 +84,34 @@ const Library = () => {
                     <h6> by {m.artistName}</h6>
                     <h6>Album: {m.albumName}</h6>
                   </div>
+                  <div onClick={() => deleteFromList(m)}>
+                    <Link href="" className={s.link}>
+                      <Sprite
+                        fill="white"
+                        stroke="white"
+                        className={s.Remove}
+                      />
+                    </Link>
+                  </div>
                 </div>
               );
             })}
             <div className={s.PaginationBox}>
-              <ThemeProvider theme={theme}>
-                <Pagination
-                  count={pagesCount}
-                  page={page}
-                  showFirstButton
-                  showLastButton
-                  color="primary"
-                  sx={{ button: { color: "#ffffff" } }}
-                  onChange={handleChange}
-                  className={s.Pagination}
-                />
-              </ThemeProvider>
+              <Pagination
+                count={pagesCount}
+                page={page}
+                showFirstButton
+                showLastButton
+                onChange={handleChange}
+                className={s.Pagination}
+                classes={{ selected: s.selected }}
+                sx={{
+                  ".Mui-selected": {
+                    backgroundColor: "rgba(70, 70, 70, 0.8)",
+                    color: "white",
+                  },
+                }}
+              />
             </div>
           </div>
         </div>

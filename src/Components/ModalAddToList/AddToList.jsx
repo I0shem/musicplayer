@@ -2,12 +2,13 @@ import React from "react";
 import s from "./AddToList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddToPlaylist } from "../../redux/Actions";
-
+import { BsCheck } from "react-icons/bs";
+import { IconContext } from "react-icons";
 const AddToList = ({ setIsOpen, song }) => {
   console.log(song);
   const dispatch = useDispatch();
 
-  const AddSongPlaylist = (index) => {
+  const AddSongPlaylist = (name, index) => {
     let newSong = {
       id: song.id,
       name: song.name,
@@ -20,9 +21,10 @@ const AddToList = ({ setIsOpen, song }) => {
         "/images/500x500.jpg",
     };
     dispatch(AddToPlaylist(newSong, index));
-    setIsOpen(false);
+    document.getElementById(name).style.display = "block";
   };
   const Lists = useSelector((state) => state.Playlist).playlists;
+
   return (
     <div className={s.ModalWindow} onClick={(e) => e.stopPropagation()}>
       <div className={s.ModalWindow__content}>
@@ -36,11 +38,16 @@ const AddToList = ({ setIsOpen, song }) => {
               <li
                 key={list.name}
                 className={s.List}
-                onClick={() => AddSongPlaylist(index)}
+                onClick={() => AddSongPlaylist(list.name, index)}
               >
                 <img src={list.imageURL} alt="" />
                 <div className={s.imgShadow}>
                   <span>{list.name}</span>
+                </div>
+                <div id={list.name} className={s.clicked}>
+                  <IconContext.Provider value={{ className: s.clickBtn }}>
+                    <BsCheck />
+                  </IconContext.Provider>
                 </div>
               </li>
             ))}

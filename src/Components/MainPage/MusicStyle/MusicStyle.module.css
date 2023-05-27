@@ -52,9 +52,25 @@
   border-radius: 0.9vw;
 }
 .MusicDBContainer {
+  position: relative;
   width: 95%;
+  height: 9.5vw;
   margin-left: 2vw;
 }
 .Styles:first-child {
   margin-left: 0px;
+}
+.loading {
+  align-items: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 9.5vw;
+  width: 75vw;
+  top: 0vw;
+  border-radius: 25px;
+}
+.loading svg {
+  position: relative;
+  top: 2.5vw;
+  left: 36vw;
 }

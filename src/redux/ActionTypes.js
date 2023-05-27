@@ -7,3 +7,6 @@ export const DARK_MODE = "DARK_MODE";
 export const ADD_LIKED_SONG = "ADD_LIKED_SONG";
 export const DELETE_LIKED_SONG = "DELETE_LIKED_SONG";
 export const ADD_TO_LIST = "ADD_TO_LIST";
+export const DELETE_FROM_LIST = "DELETE_FROM_LIST";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";

@@ -26,7 +26,6 @@ const State = {
 export const FavoritesReducer = (state = State, action) => {
   switch (action.type) {
     case ADD_FAVORITE: {
-      console.log(action.newFav);
       return {
         ...state,
         initialFavorites: [...state.initialFavorites, action.newFav],

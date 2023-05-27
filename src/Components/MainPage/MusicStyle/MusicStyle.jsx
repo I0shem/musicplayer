@@ -5,12 +5,17 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ReactLoading from "react-loading";
+
 const MUSIC_STYLE_KEY = process.env.REACT_APP_MUSIC_STYLE_KEY;
 
 const MusicStyle = () => {
   const [musicStylesDB, setMusicStylesDB] = useState([]);
-
+  const [loaded, setLoaded] = useState(false);
   const getGenres = async () => {
+    var loadingAudio = document.getElementById("loading");
+    loadingAudio.style.display = "none";
+
     try {
       const response = await axios.get(
         `https://api.napster.com/v2.2/genres?apikey=${MUSIC_STYLE_KEY}`
@@ -19,10 +24,12 @@ const MusicStyle = () => {
     } catch (error) {
       console.log(error);
     }
+    loadingAudio.style.display = "block";
   };
 
   useEffect(() => {
     getGenres();
+    setLoaded(true);
   }, []);
 
   return (
@@ -45,6 +52,16 @@ const MusicStyle = () => {
           />
         ))}
       </Slider>
+      {!loaded && (
+        <div id="loading" className={styles.loading}>
+          <ReactLoading
+            type={"bars"}
+            color={"white"}
+            height={"5%"}
+            width={"5%"}
+          />
+        </div>
+      )}
     </div>
   );
 };

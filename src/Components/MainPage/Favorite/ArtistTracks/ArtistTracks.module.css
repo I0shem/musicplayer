@@ -31,12 +31,13 @@
 
 .rectangle {
   position: fixed;
-  height: 40px;
-  width: 15px;
+  height: 2.083vw;
+  width: 0.781vw;
   background-color: rgb(255, 255, 255);
-  margin-left: -20vw;
-  margin-top: 0.1vh;
+  left: 0vw;
+  top: 6.2vh;
   filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
+  z-index: 10;
 }
 
 .AlbumImage {
@@ -125,14 +126,10 @@ h6 {
   left: 5%;
   z-index: 1;
 }
-.TrackBox:hover,
-.TrackBox.h5:hover,
-.TrackBox.h6:hover,
-.TrackBox.p:hover {
+.TrackBox:hover {
   filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.8));
   transform: scale(1.06);
   font-size: 105%;
-  color: white;
 }
 
 .TrackBox,
@@ -165,9 +162,9 @@ p {
   left: 40%;
   z-index: 1;
 }
-.LikeButton:hover,
-.AddButton:hover,
-.PlayButton:hover {
+.likeBtn:hover,
+.addToListBtn:hover,
+.playBtn:hover {
   text-shadow: rgb(0, 0, 0) 3px 0 10px;
   filter: drop-shadow(3px 3px 10px rgba(255, 255, 255, 0.8));
   transform: scale(1.06);
@@ -193,4 +190,22 @@ p {
   position: fixed;
   bottom: 0;
   right: 0;
+}
+.Pagination-textPrimary {
+  color: rgb(252, 252, 252);
+}
+.Pagination svg {
+  width: 1vw;
+  height: 1vw;
+}
+
+.Pagination li {
+  width: 1vw;
+  height: 2vw;
+  margin-left: 20px;
+}
+.Pagination button {
+  height: 1.5vw;
+  color: grey;
+  background-color: rgba(0, 0, 0, 0.4);
 }

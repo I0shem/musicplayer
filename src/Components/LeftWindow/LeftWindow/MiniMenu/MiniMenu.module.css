@@ -6,7 +6,9 @@
   height: auto;
   stroke-width: 1.5px;
 }
-
+.MiniMenu ul {
+  margin-top: 4vh;
+}
 .MiniMenu li:first-child {
   margin-left: 0vw;
 }
@@ -29,12 +31,42 @@
   display: inline-flex;
   margin-top: -10px;
 }
+
 .Auth {
-  margin-bottom: 10px;
+  display: flex;
+  position: absolute;
+  left: 1vw;
+  top: 2vh;
+  font-weight: 600;
+  font-size: 20px;
 }
+
 p,
 span {
   font-weight: bold;
   font-size: 14px;
   text-shadow: 10px rgb(0, 0, 0, 1);
+}
+.Logout {
+  position: relative;
+  left: 1vw;
+  border: solid white 1px;
+  border-radius: 25px;
+  padding: 5px 10px;
+}
+
+.user:hover,
+.Logout:hover {
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 1));
+  text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+.userBox {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+  font-size: 20px;
+  z-index: 199;
 }
