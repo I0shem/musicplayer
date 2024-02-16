@@ -18,7 +18,7 @@ const MusicStyle = () => {
 
     try {
       const response = await axios.get(
-        `https://api.napster.com/v2.2/genres?apikey=${MUSIC_STYLE_KEY}`
+        `https://napi-v2-2-cloud-run-b3gtd5nmxq-uw.a.run.app/v2.2/genres?apikey=${MUSIC_STYLE_KEY}`
       );
       setMusicStylesDB(response.data.genres);
     } catch (error) {

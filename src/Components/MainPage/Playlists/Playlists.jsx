@@ -33,13 +33,15 @@ function Recommended() {
   const getPlaylists = async () => {
     try {
       const response = await axios.get(
-        `https://napi-v2-2-cloud-run-b3gtd5nmxq-uw.a.run.app/v2.2/playlists/featured?apikey=${KEY}`
+        `https://api.napster.com//v2.2/playlists/top?apikey=${KEY}`
       );
       setFeaturedPlaylistsDB(response.data.playlists);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getPlaylists();
     setLoaded(true);

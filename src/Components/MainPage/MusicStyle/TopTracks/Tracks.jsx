@@ -25,7 +25,7 @@ const Tracks = () => {
   const getMusicDB = useCallback(() => {
     axios({
       method: "GET",
-      url: `https://api.napster.com/v2.2/genres/${location.state.ms.id}/tracks/top?apikey=${KEY}`,
+      url: `https://napi-v2-2-cloud-run-b3gtd5nmxq-uw.a.run.app/v2.2/genres/${location.state.ms.id}/tracks/top?apikey=${KEY}`,
     })
       .then((response) => {
         return setMusicDB(response.data.tracks);
