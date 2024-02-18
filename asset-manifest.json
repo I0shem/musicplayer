@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/musicplayer/static/css/main.db7aba0d.css",
-    "main.js": "/musicplayer/static/js/main.e9022022.js",
-    "static/media/records.jpg": "/musicplayer/static/media/records.974f4d2298e2e6eb3411.jpg",
+    "main.js": "/musicplayer/static/js/main.90bdaa75.js",
+    "static/media/records.jpg": "/musicplayer/static/media/records.cc454678b522b65bfe58.jpg",
     "static/media/cassets.jpg": "/musicplayer/static/media/cassets.5447b40ddc82f4421582.jpg",
     "static/media/heart.png": "/musicplayer/static/media/heart.8767cdf9ad768c587af1.png",
+    "static/media/not-found.jpg": "/musicplayer/static/media/not-found.bae37d4bee80585d6ff8.jpg",
     "static/media/frame-3.svg": "/musicplayer/static/media/frame-3.fcd418279aadc18b0314af066e4d53ce.svg",
     "static/media/frame-1.svg": "/musicplayer/static/media/frame-1.68263da50eb0db1124af7db54a08a748.svg",
     "static/media/slick.svg": "/musicplayer/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -15,10 +16,10 @@
     "static/media/frame-2.svg": "/musicplayer/static/media/frame-2.568aee9deb3f789b55a3feed7416981f.svg",
     "static/media/bin.svg": "/musicplayer/static/media/bin.d8e4c86223609736968c20afefc42f8a.svg",
     "main.db7aba0d.css.map": "/musicplayer/static/css/main.db7aba0d.css.map",
-    "main.e9022022.js.map": "/musicplayer/static/js/main.e9022022.js.map"
+    "main.90bdaa75.js.map": "/musicplayer/static/js/main.90bdaa75.js.map"
   },
   "entrypoints": [
     "static/css/main.db7aba0d.css",
-    "static/js/main.e9022022.js"
+    "static/js/main.90bdaa75.js"
   ]
 }
