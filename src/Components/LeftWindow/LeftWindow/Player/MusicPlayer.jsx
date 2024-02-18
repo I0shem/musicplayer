@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "./Player.module.css";
 import { useSelector } from "react-redux";
 import { AudioPlayerProvider } from "react-use-audio-player";
 import AudioPlayer from "./AudioPlayer.jsx";
 import PlayBar from "./PlayBar.jsx";
+import NotFound from "../../../Images/not-found.jpg";
+
 const MusicPlayer = () => {
   const list = useSelector(
     (state) => state.PlayerPlaylist
@@ -28,7 +30,17 @@ const MusicPlayer = () => {
   return (
     <AudioPlayerProvider>
       <div className={s.component}>
-        <img id="musicCover" className={s.musicCover} src={previewImg} alt="" />
+        <img
+          loading="lazy"
+          id="musicCover"
+          className={s.musicCover}
+          src={previewImg}
+          alt="File not found"
+          onError={(e) => {
+            e.target.onerror = null; // Prevent infinite loop
+            e.target.src = NotFound; // Replace with default image
+          }}
+        />
         <div>
           <div className={s.scrollingBox}>
             <div className={s.scrollingText}>

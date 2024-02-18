@@ -4,19 +4,29 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
 import ReactLoading from "react-loading";
+import NotFound from "../../Images/not-found.jpg";
 const KEY = process.env.REACT_APP_MUSIC_STYLE_KEY;
 
 const PlaylistsProps = (props) => {
   const navigate = useNavigate();
   const toFeaturedPlaylists = () => {
-    navigate("/m/FeaturedPlaylist", { state: { fp: props.fp } });
+    navigate("/musicplayer/FeaturedPlaylist", { state: { fp: props.fp } });
   };
   return (
     <>
       <ul onClick={toFeaturedPlaylists} className={styles.FPs}>
         <li className={styles.FP}>
           <div className={styles.Image}>
-            <img className={styles.Icon} alt="" src={props.icon} />
+            <img
+              loading="lazy"
+              className={styles.Icon}
+              alt="File not found"
+              onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop
+                e.target.src = NotFound; // Replace with default image
+              }}
+              src={props.icon}
+            />
             <div className={styles.ImageFilter}>
               <p>{props.name}</p>
             </div>

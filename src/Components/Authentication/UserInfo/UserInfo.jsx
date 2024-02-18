@@ -5,6 +5,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { firebaseApp } from "../../Authentication/firebase";
 import { SignOut } from "../../../redux/Actions";
 import { useDispatch } from "react-redux";
+import NotFound from "../../Images/not-found.jpg";
 const UserInfoBox = ({ userInfoBox, setUserInfoBox }) => {
   const UserInfo = useSelector((state) => state.User).userInfo;
   const auth = getAuth(firebaseApp);
@@ -31,7 +32,16 @@ const UserInfoBox = ({ userInfoBox, setUserInfoBox }) => {
             </div>
             <ul>
               <li>
-                <img className={s.userImg} src={UserInfo.photoURL} alt="" />
+                <img
+                  loading="lazy"
+                  className={s.userImg}
+                  src={UserInfo.photoURL}
+                  alt="File not found"
+                  onError={(e) => {
+                    e.target.onerror = null; // Prevent infinite loop
+                    e.target.src = NotFound; // Replace with default image
+                  }}
+                />
               </li>
               <li>{UserInfo.name}</li>
               <li>{UserInfo.email}</li>

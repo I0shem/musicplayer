@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddToPlaylist } from "../../redux/Actions";
 import { BsCheck } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import NotFound from "../Images/not-found.jpg";
 const AddToList = ({ setIsOpen, song }) => {
   console.log(song);
   const dispatch = useDispatch();
@@ -40,7 +41,15 @@ const AddToList = ({ setIsOpen, song }) => {
                 className={s.List}
                 onClick={() => AddSongPlaylist(list.name, index)}
               >
-                <img src={list.imageURL} alt="" />
+                <img
+                  loading="lazy"
+                  src={list.imageURL}
+                  alt="File not found"
+                  onError={(e) => {
+                    e.target.onerror = null; // Prevent infinite loop
+                    e.target.src = NotFound; // Replace with default image
+                  }}
+                />
                 <div className={s.imgShadow}>
                   <span>{list.name}</span>
                 </div>

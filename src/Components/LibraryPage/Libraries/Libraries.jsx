@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import ReactLoading from "react-loading";
 import Pagination from "@mui/material/Pagination";
+import NotFound from "../../Images/not-found.jpg";
 
 const Libraries = () => {
   const list = useSelector((state) => state.Playlist).playlists;
@@ -77,7 +78,17 @@ const Libraries = () => {
         {currentLibraries.map((lib) => (
           <li key={lib.name} className={s.Library}>
             <div className={s.Image} onClick={() => viewLibrary(lib)}>
-              <img id={lib.name} className={s.Icon} alt="" src={lib.imageURL} />
+              <img
+                loading="lazy"
+                id={lib.name}
+                className={s.Icon}
+                alt="File not found"
+                onError={(e) => {
+                  e.target.onerror = null; // Prevent infinite loop
+                  e.target.src = NotFound; // Replace with default image
+                }}
+                src={lib.imageURL}
+              />
               <div className={s.ImageOverlay}>
                 <p>{lib.name}</p>
               </div>

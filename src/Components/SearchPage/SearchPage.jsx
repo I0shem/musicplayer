@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { BiAddToQueue } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 import AddToList from "../ModalAddToList/AddToList";
+import NotFound from "../Images/not-found.jpg";
 const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const SearchPage = () => {
@@ -134,14 +135,6 @@ const SearchPage = () => {
     setIsOpen(true);
   };
 
-  const checkLength = (text) => {
-    if (text.length > 37) {
-      let newName = text.slice(0, 37) + "...";
-      return newName;
-    } else {
-      return text;
-    }
-  };
   return (
     <>
       <div className={s.RightWindow}>
@@ -192,18 +185,40 @@ const SearchPage = () => {
                     </IconContext.Provider>
                   </div>
                   <img
+                    loading="lazy"
                     className={s.AlbumImage}
                     src={
                       "https://api.napster.com/imageserver/v2/albums/" +
                       m.albumId +
                       "/images/500x500.jpg"
                     }
-                    alt=""
+                    alt="File not found"
+                    onError={(e) => {
+                      e.target.onerror = null; // Prevent infinite loop
+                      e.target.src = NotFound; // Replace with default image
+                    }}
                   />
                   <div className={s.ImageOverlay}>
-                    <h5>"{checkLength(m.name)}"</h5>
-                    <h6> by {m.artistName}</h6>
-                    <h6>Album: {checkLength(m.albumName)}</h6>
+                    <h5>
+                      "
+                      {m.name.length > 45
+                        ? `${m.name.slice(0, 42)}...`
+                        : m.name}
+                      "
+                    </h5>
+                    <h6>
+                      {" "}
+                      by{" "}
+                      {m.artistName.length > 45
+                        ? `${m.artistName.slice(0, 42)}...`
+                        : m.artistName}
+                    </h6>
+                    <h6>
+                      Album:{" "}
+                      {m.albumName.length > 45
+                        ? `${m.albumName.slice(0, 42)}...`
+                        : m.albumName}
+                    </h6>
                   </div>
                 </div>
               );

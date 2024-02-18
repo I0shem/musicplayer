@@ -1,3 +1,6 @@
+.MusicDBContainer {
+  min-height: 20vh;
+}
 .Styles {
   display: inline-flex;
   height: auto;

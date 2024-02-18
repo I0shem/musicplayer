@@ -1,3 +1,6 @@
+.featuredPlaylistsDB {
+  min-height: 20vh;
+}
 .FPs {
   display: inline-flex;
   height: auto;

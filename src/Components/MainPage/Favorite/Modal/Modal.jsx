@@ -8,6 +8,7 @@ import { IconContext } from "react-icons";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { BsCircle } from "react-icons/bs";
 import useSound from "use-sound";
+import NotFound from "../../../Images/not-found.jpg";
 const SEARCH_KEY = process.env.REACT_APP_SEARCH_KEY;
 
 const Modal = ({ setIsOpen }) => {
@@ -58,12 +59,6 @@ const Modal = ({ setIsOpen }) => {
 
   const handleChange = (event, value) => {
     setPage(value);
-  };
-
-  const replaceImage = (error) => {
-    //replacement of broken Image
-    error.target.src =
-      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
   };
 
   const addFavorite = (a) => {
@@ -127,14 +122,18 @@ const Modal = ({ setIsOpen }) => {
               <div key={a.id} className={s.ArtistBox}>
                 {CheckFav(a)}
                 <img
+                  loading="lazy"
                   className={s.ArtistImage}
                   src={
                     "https://api.napster.com/imageserver/v2/artists/" +
                     a.id +
                     "/images/633x422.jpg"
                   }
-                  alt=""
-                  onError={replaceImage}
+                  alt="File not found"
+                  onError={(e) => {
+                    e.target.onerror = null; // Prevent infinite loop
+                    e.target.src = NotFound; // Replace with default image
+                  }}
                 />
                 <div className={s.ImageOverlay}>
                   <h5>{a.name}</h5>

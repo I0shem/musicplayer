@@ -1,6 +1,7 @@
 .Favorite {
   margin-left: 3vw;
   z-index: 10;
+  min-height: 20vh;
 }
 .Band {
   margin-left: 2.5vw;

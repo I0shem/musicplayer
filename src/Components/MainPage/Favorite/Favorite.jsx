@@ -8,20 +8,30 @@ import { useNavigate } from "react-router-dom";
 import { DeleteFavorite } from "../../../redux/Actions";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
-
+import NotFound from "../../Images/not-found.jpg";
 import Pagination from "@mui/material/Pagination";
 
 const FavoriteProps = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toArtistTracks = () => {
-    navigate("/m/ArtistTracks", { state: { fav: props.fav } });
+    navigate("/musicplayer/ArtistTracks", { state: { fav: props.fav } });
   };
   return (
     <>
       <li className={s.Band}>
         <div className={s.Image} onClick={toArtistTracks}>
-          <img id="object-position" className={s.Icon} alt="" src={props.Img} />
+          <img
+            loading="lazy"
+            id="object-position"
+            className={s.Icon}
+            alt="File not found"
+            onError={(e) => {
+              e.target.onerror = null; // Prevent infinite loop
+              e.target.src = NotFound; // Replace with default image
+            }}
+            src={props.Img}
+          />
           <div className={s.ImageOverlay}>
             <p>{props.name}</p>
           </div>
