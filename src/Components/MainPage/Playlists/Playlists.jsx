@@ -40,22 +40,21 @@ const PlaylistsProps = (props) => {
 function Recommended() {
   const [featuredPlaylistsDB, setFeaturedPlaylistsDB] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    getPlaylists();
+  }, []);
+
   const getPlaylists = async () => {
     try {
       const response = await axios.get(
         `https://api.napster.com//v2.2/playlists/top?apikey=${KEY}`
       );
       setFeaturedPlaylistsDB(response.data.playlists);
-      console.log(response);
+      setLoaded(true);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching playlists:", error);
     }
   };
-
-  useEffect(() => {
-    getPlaylists();
-    setLoaded(true);
-  }, []);
 
   return (
     <div className={styles.featuredPlaylistsDB}>

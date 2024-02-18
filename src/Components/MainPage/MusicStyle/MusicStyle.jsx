@@ -21,6 +21,7 @@ const MusicStyle = () => {
         `https://napi-v2-2-cloud-run-b3gtd5nmxq-uw.a.run.app/v2.2/genres?apikey=${MUSIC_STYLE_KEY}`
       );
       setMusicStylesDB(response.data.genres);
+      setLoaded(true);
     } catch (error) {
       console.log(error);
     }
@@ -29,7 +30,6 @@ const MusicStyle = () => {
 
   useEffect(() => {
     getGenres();
-    setLoaded(true);
   }, []);
 
   return (
