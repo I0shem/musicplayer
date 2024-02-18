@@ -57,15 +57,19 @@ const MiniMenu = () => {
         />
       </div>
       <ul>
-        <MiniMenuBox text="Home" To="/m" Sprite={Sprite1}></MiniMenuBox>
+        <MiniMenuBox
+          text="Home"
+          To="/musicplayer"
+          Sprite={Sprite1}
+        ></MiniMenuBox>
         <MiniMenuBox
           text="Search"
-          To="/m/SearchPage"
+          To="/musicplayer/SearchPage"
           Sprite={Sprite2}
         ></MiniMenuBox>
         <MiniMenuBox
           text="Library"
-          To="/m/LibraryPage"
+          To="/musicplayer/LibraryPage"
           Sprite={Sprite3}
         ></MiniMenuBox>
       </ul>

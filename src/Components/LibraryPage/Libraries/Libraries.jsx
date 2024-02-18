@@ -55,7 +55,7 @@ const Libraries = () => {
     navigate(-1);
   };
   const viewLibrary = (lib) => {
-    navigate(`/m/LibraryPage/Library/${lib.name}`);
+    navigate(`/musicplayer/LibraryPage/Library/${lib.name}`);
   };
 
   const fade = () => {

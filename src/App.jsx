@@ -53,17 +53,26 @@ const App = () => {
               <div id={MyTheme}>
                 <LeftWindow />
                 <Routes>
-                  <Route path="/m" element={<HomePage />} />
-                  <Route path="/m/SearchPage" element={<SearchPage />} />
-                  <Route path="/m/LibraryPage" element={<LibraryPage />} />{" "}
-                  <Route path="/m/Tracks" element={<Tracks />} />
+                  <Route path="/musicplayer" element={<HomePage />} />
                   <Route
-                    path="/m/LibraryPage/Library/:id"
+                    path="/musicplayer/SearchPage"
+                    element={<SearchPage />}
+                  />
+                  <Route
+                    path="/musicplayer/LibraryPage"
+                    element={<LibraryPage />}
+                  />
+                  <Route path="/musicplayer/Tracks" element={<Tracks />} />
+                  <Route
+                    path="/musicplayer/LibraryPage/Library/:id"
                     element={<Library />}
                   />
-                  <Route path="/m/ArtistTracks" element={<ArtistTracks />} />
                   <Route
-                    path="/m/FeaturedPlaylist"
+                    path="/musicplayer/ArtistTracks"
+                    element={<ArtistTracks />}
+                  />
+                  <Route
+                    path="/musicplayer/FeaturedPlaylist"
                     element={<FeaturedPlaylist />}
                   />
                 </Routes>

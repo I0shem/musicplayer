@@ -69,7 +69,7 @@ const ArtistTracks = () => {
 
   const navigate = useNavigate();
   const returnToMain = () => {
-    navigate("/m");
+    navigate("/musicplayer");
   };
 
   const LikedList = useSelector((state) => state.Playlist).playlists[0].tracks;
