@@ -10,6 +10,7 @@ import {
   BiVolumeMute,
 } from "react-icons/bi";
 import ReactLoading from "react-loading";
+import { useNavigate } from "react-router-dom";
 
 const AudioPlayer = ({
   list,
@@ -40,16 +41,7 @@ const AudioPlayer = ({
       volume: vol,
       onend: () => SkipForward(),
     });
-
-  useEffect(() => {
-    var visualAudio = document.getElementById("Visualizer");
-    if (playing) {
-      visualAudio.style.display = "block";
-    } else {
-      visualAudio.style.display = "none";
-    }
-  }, [playing]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     var loadingAudio = document.getElementById("loading");
     if (loading === true) {
@@ -57,7 +49,7 @@ const AudioPlayer = ({
     } else {
       loadingAudio.style.display = "none";
     }
-  }, [loading]);
+  }, [loading, navigate]);
 
   const SkipForward = () => {
     if (listLength === index) {
@@ -100,39 +92,16 @@ const AudioPlayer = ({
   return (
     <div className={s.component}>
       <div id="Visual" className={s.Visual}>
-        <div id="Visualizer" className={s.AudioVisualizerBox}>
-          <div className={s.icon}>
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
         <div id="loading" className={s.loading}>
-          <ReactLoading
-            className={s.loadingSvgContainer}
-            type={"bars"}
-            color={"white"}
-            height={"20%"}
-            width={"20%"}
-          />
+          {loading && (
+            <ReactLoading
+              className={s.loadingSvgContainer}
+              type={"bars"}
+              color={"white"}
+              height={"20%"}
+              width={"20%"}
+            />
+          )}
         </div>
       </div>
       <div className={s.Controls}>

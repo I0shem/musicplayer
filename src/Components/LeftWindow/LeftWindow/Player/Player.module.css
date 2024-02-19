@@ -116,6 +116,7 @@
   top: 18.2291vw;
   width: 20vw;
   margin-left: 1.5625vw;
+  display: none;
 }
 .audiolineBox {
   display: flex;
@@ -146,7 +147,6 @@
 }
 .loading {
   position: relative;
-  display: flex;
   justify-content: center;
   align-items: center;
   top: 40%;

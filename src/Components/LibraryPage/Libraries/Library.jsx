@@ -45,8 +45,6 @@ const Library = () => {
       imageSrc: m.imageSrc,
     };
     dispatch(PlaySong(NewSong));
-    var visualAudio = document.getElementById("Visualizer");
-    visualAudio.style.display = "none";
   };
   let deleteFromList = (m) => {
     dispatch(DeleteFromPlaylist(m.id, index));
