@@ -9,12 +9,17 @@ const KEY = process.env.REACT_APP_MUSIC_STYLE_KEY;
 
 const PlaylistsProps = (props) => {
   const navigate = useNavigate();
-  const toFeaturedPlaylists = () => {
-    navigate("/musicplayer/FeaturedPlaylist", { state: { fp: props.fp } });
+  const toFeaturedPlaylists = (name) => {
+    navigate(`/musicplayer/FeaturedPlaylist/${name}`, {
+      state: { fp: props.fp },
+    });
   };
   return (
     <>
-      <ul onClick={toFeaturedPlaylists} className={styles.FPs}>
+      <ul
+        onClick={() => toFeaturedPlaylists(props.name)}
+        className={styles.FPs}
+      >
         <li className={styles.FP}>
           <div className={styles.Image}>
             <img

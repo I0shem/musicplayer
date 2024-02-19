@@ -14,13 +14,15 @@ import Pagination from "@mui/material/Pagination";
 const FavoriteProps = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const toArtistTracks = () => {
-    navigate("/musicplayer/ArtistTracks", { state: { fav: props.fav } });
+  const toArtistTracks = (name) => {
+    navigate(`/musicplayer/ArtistTracks/${name}`, {
+      state: { fav: props.fav },
+    });
   };
   return (
     <>
       <li className={s.Band}>
-        <div className={s.Image} onClick={toArtistTracks}>
+        <div className={s.Image} onClick={() => toArtistTracks(props.name)}>
           <img
             loading="lazy"
             id="object-position"

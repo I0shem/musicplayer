@@ -6,7 +6,7 @@ const MusicStylePropBox = (props) => {
   const navigate = useNavigate();
 
   const toComponentB = () => {
-    navigate("/musicplayer/Tracks", { state: { ms: props.ms } });
+    navigate(`/musicplayer/Tracks/${props.name}`, { state: { ms: props.ms } });
   };
   return (
     <ul onClick={toComponentB} className={styles.Styles}>

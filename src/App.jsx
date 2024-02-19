@@ -62,17 +62,17 @@ const App = () => {
                     path="/musicplayer/LibraryPage"
                     element={<LibraryPage />}
                   />
-                  <Route path="/musicplayer/Tracks" element={<Tracks />} />
+                  <Route path="/musicplayer/Tracks/:id" element={<Tracks />} />
                   <Route
                     path="/musicplayer/LibraryPage/Library/:id"
                     element={<Library />}
                   />
                   <Route
-                    path="/musicplayer/ArtistTracks"
+                    path="/musicplayer/ArtistTracks/:id"
                     element={<ArtistTracks />}
                   />
                   <Route
-                    path="/musicplayer/FeaturedPlaylist"
+                    path="/musicplayer/FeaturedPlaylist/:id"
                     element={<FeaturedPlaylist />}
                   />
                 </Routes>
