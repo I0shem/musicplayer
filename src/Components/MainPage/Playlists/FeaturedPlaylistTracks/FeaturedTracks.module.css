@@ -191,3 +191,18 @@ p {
   color: grey;
   background-color: rgba(0, 0, 0, 0.4);
 }
+.loadingScreen {
+  position: absolute;
+  margin-left: 21.5%;
+  margin-top: 1.5%;
+  display: flex;
+  background-color: rgba(100, 96, 96, 0.4);
+  width: 77%;
+  border-radius: 25px;
+  height: 94%;
+}
+.loadingSvgContainer {
+  position: relative;
+  top: 45%;
+  left: 45%;
+}

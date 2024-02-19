@@ -125,7 +125,7 @@
   position: fixed;
   left: 60%;
   transform: translateX(-50%);
-  bottom: 1vw;
+  bottom: 1vh;
 }
 
 .Pagination svg {
