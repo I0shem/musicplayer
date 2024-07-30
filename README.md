@@ -1,6 +1,4 @@
-Certainly! Creating a good README for your GitHub project is essential to help users understand your project, get started, and contribute. Here's a step-by-step guide on how to write an effective README:
-
-## Project Title: Music Player
+## Music Player
 
 ### Description
 
